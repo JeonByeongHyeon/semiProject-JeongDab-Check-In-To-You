@@ -1,37 +1,36 @@
 package org.kosta.jeongdab.tou.model;
-/**
- * 게시판 페이징 처리 로직을 정의한 객체
- * @author KOSTA
- *
- */
+
 public class Pagination {
 	/**
 	 * 현재 페이지
 	 */
-	private long nowPage=1;
+	private long nowPage = 1;
 	/**
 	 * 페이지당 게시물수 
 	 */
-	private long postCountPerPage=5;
+	private long postCountPerPage = 5;
 	/**
 	 * 페이지 그룹당 페이지수 
 	 */
-	private long pageCountPerPageGroup=4;
+	private long pageCountPerPageGroup = 4;
 	/**
 	 * 총게시물수 ( 데이터베이스에 저장되어 있는 ) 
 	 */
 	private long totalPostCount;
-	
+
 	public Pagination(long totalPostCount) {
-		this.totalPostCount=totalPostCount;
+		this.totalPostCount = totalPostCount;
 	}
-	public Pagination(long totalPostCount,long nowPage) {
-		this.totalPostCount=totalPostCount;
-		this.nowPage=nowPage;
+
+	public Pagination(long totalPostCount, long nowPage) {
+		this.totalPostCount = totalPostCount;
+		this.nowPage = nowPage;
 	}
+
 	public long getNowPage() {
 		return nowPage;
 	}
+
 	/**
 	 * 현재 페이지 번호에( nowPage ) 해당하는 게시물 리스트의 시작 row number를 반환 <br>
 	 * 이전 페이지 마지막 번호 + 1 <br>
@@ -43,8 +42,9 @@ public class Pagination {
 	 * @return startRowNumber
 	 */
 	public long getStartRowNumber() {
-		return (this.nowPage-1)*this.postCountPerPage+1;
+		return (this.nowPage - 1) * this.postCountPerPage + 1;
 	}
+
 	/**
 	 * 현재 페이지 번호(nowPage) 에 해당하는 게시물 리스트의 게시물 row의 마지막 번호를 반환 <br>
 	 * nowPage * postCountPerPage 의 연산결과가 게시물의 마지막 번호이나 <br>
@@ -53,11 +53,12 @@ public class Pagination {
 	 * @return endRowNumber
 	 */
 	public long getEndRowNumber() {
-		long endRowNumber=this.nowPage*this.postCountPerPage;
-		if(this.totalPostCount<endRowNumber)
-			endRowNumber=totalPostCount;
+		long endRowNumber = this.nowPage * this.postCountPerPage;
+		if (this.totalPostCount < endRowNumber)
+			endRowNumber = totalPostCount;
 		return endRowNumber;
 	}
+
 	/**
 	 * 총 페이지 수를 반환 <br>
 	 * 
@@ -69,11 +70,12 @@ public class Pagination {
 	 * @return totalPage
 	 */
 	public long getTotalPage() {
-		long totalPage=totalPostCount / postCountPerPage;
-		if(totalPostCount%postCountPerPage!=0)
-			totalPage=totalPage+1;
+		long totalPage = totalPostCount / postCountPerPage;
+		if (totalPostCount % postCountPerPage != 0)
+			totalPage = totalPage + 1;
 		return totalPage;
 	}
+
 	/**
 	 * 총페이지 그룹수를 반환 <br>
 	 * getTotalPage() 총페이지수  /  pageCountPerPageGroup -> 나머지가 0이면 나눈값이 총그룹수<br>
@@ -82,13 +84,14 @@ public class Pagination {
 	 * 		 페이지   1 2 3 4 	5 6 7 8     9 10
 	 *  페이지그룹     1group     2group      3group 
 	 * @return totalPageGroup
-	 */	
+	 */
 	public long getTotalPageGroup() {
-		long totalPageGroup=getTotalPage()/pageCountPerPageGroup;
-		if(getTotalPage()%pageCountPerPageGroup!=0)
-			totalPageGroup+=1;
+		long totalPageGroup = getTotalPage() / pageCountPerPageGroup;
+		if (getTotalPage() % pageCountPerPageGroup != 0)
+			totalPageGroup += 1;
 		return totalPageGroup;
 	}
+
 	/**
 	 * 현재 페이지가 속한 페이지 그룹이 몇번째 그룹인지를 리턴 <br>
 	 * nowPage / pageCountPerPageGroup  값의 나머지가 0이면 나눈값이 현재 페이지그룹 <br>
@@ -100,11 +103,12 @@ public class Pagination {
 	 * @return nowPageGroup
 	 */
 	public long getNowPageGroup() {
-		long nowPageGroup=nowPage/pageCountPerPageGroup;
-		if(nowPage%pageCountPerPageGroup!=0)
-			nowPageGroup+=1;
+		long nowPageGroup = nowPage / pageCountPerPageGroup;
+		if (nowPage % pageCountPerPageGroup != 0)
+			nowPageGroup += 1;
 		return nowPageGroup;
 	}
+
 	/**
 	 * 현재 페이지가 속한 그룹의 시작 페이지 번호를 반환 <br>
 	 * 
@@ -117,9 +121,10 @@ public class Pagination {
 	 *                  1group          2group      3group <br> 
 	 * @return startPage
 	 */
-	public long getStartPageOfPageGroup() {		
-		return (this.getNowPageGroup()-1)*pageCountPerPageGroup+1;
+	public long getStartPageOfPageGroup() {
+		return (this.getNowPageGroup() - 1) * pageCountPerPageGroup + 1;
 	}
+
 	/**
 	 * 현재 페이지 그룹의 마지막 번호를 리턴 <br>
 	 * 
@@ -132,34 +137,33 @@ public class Pagination {
 	 * @return endPage
 	 */
 	public long getEndPageOfPageGroup() {
-		long endPage=getNowPageGroup() * pageCountPerPageGroup;
-		if(endPage>getTotalPage())
-			endPage=getTotalPage();
+		long endPage = getNowPageGroup() * pageCountPerPageGroup;
+		if (endPage > getTotalPage())
+			endPage = getTotalPage();
 		return endPage;
 	}
+
 	/**
 	 * 이전 페이지 그룹이 존재하는 지 여부를 리턴 <br>
 	 * getNowPageGroup() 이 1보다 크면 이전 페이지 그룹이 존재 <br> 
 	 * @return flag
 	 */
 	public boolean isPreviousPageGroup() {
-		boolean flag=false;
-		if(getNowPageGroup()>1)
-			flag=true;
+		boolean flag = false;
+		if (getNowPageGroup() > 1)
+			flag = true;
 		return flag;
 	}
+
 	/**
 	 * 다음 페이지 그룹이 존재하는 지 여부를 리턴 <br>
 	 * getTotalPageGroup() 보다 getNowPageGroup() 이 작으면 다음 페이지 그룹이 존재  
 	 * @return flag
 	 */
 	public boolean isNextPageGroup() {
-		boolean flag=false;
-		if(getTotalPageGroup()>getNowPageGroup())
-			flag=true;
+		boolean flag = false;
+		if (getTotalPageGroup() > getNowPageGroup())
+			flag = true;
 		return flag;
 	}
 }
-
-
-
