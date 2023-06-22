@@ -8,22 +8,26 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 public class ServiceBoardDAO {
-	private static ServiceBoardDAO instance=new ServiceBoardDAO();
+	private static ServiceBoardDAO instance = new ServiceBoardDAO();
 	private DataSource dataSource;
+
 	private ServiceBoardDAO() {
-		dataSource=DataSourceManager.getInstance().getDataSource();
+		dataSource = DataSourceManager.getInstance().getDataSource();
 	}
+
 	public static ServiceBoardDAO getInstance() {
 		return instance;
-	}	
-	public void closeAll(PreparedStatement pstmt,Connection con) throws SQLException {
-		if(pstmt!=null)
-			pstmt.close();
-		if(con!=null)
-			con.close(); // connection을 dbcp에 반환한다 
 	}
-	public void closeAll(ResultSet rs,PreparedStatement pstmt,Connection con) throws SQLException {
-		if(rs!=null)
+
+	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
+		if (pstmt != null)
+			pstmt.close();
+		if (con != null)
+			con.close();
+	}
+
+	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
+		if (rs != null)
 			rs.close();
 		closeAll(pstmt, con);
 	}
