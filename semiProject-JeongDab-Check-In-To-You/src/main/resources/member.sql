@@ -27,8 +27,10 @@ CREATE TABLE service_board (
 );
 
 CREATE SEQUENCE service_board_seq;
+create sequence member_seq;
 
-INSERT INTO service_board()VALUES(service_board_seq.nextval);
+INSERT INTO service_board(service_board_no)VALUES(service_board_seq.nextval);
 
-
-
+insert into member(member_no,member_name, member_email, password, member_birth, member_status, member_address, member_detail_address) 
+values(member_seq.nextval,'박해준','cyon8254@gmail.com','1234',sysdate,0,'성남시','아튼빌');
+delete from member;
