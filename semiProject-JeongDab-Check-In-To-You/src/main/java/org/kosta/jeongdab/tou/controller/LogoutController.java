@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 public class LogoutController implements Controller {
 	private static final String POST_METHOD = "POST";
-	private static final String REDIRECT_URL = "redirect:layout2.jsp";
+	private static final String REDIRECT_URL = "redirect:index.jsp";
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {

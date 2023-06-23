@@ -16,11 +16,11 @@ public class ServiceBoardListController implements Controller {
 		if (pageNo == null) {
 			pagination = new Pagination(totalPostCount);
 		} else {
-			pagination = new Pagination(totalPostCount,Long.parseLong(pageNo));
+			pagination = new Pagination(totalPostCount, Long.parseLong(pageNo));
 		}
 		request.setAttribute("pagination", pagination);
 		request.setAttribute("list", ServiceBoardDAO.getInstance().serviceBoardList(pagination));
-		request.setAttribute("url", "board/serviceboard-list.jsp");
-		return "board/serviceboard-list.jsp";	
+//		request.setAttribute("url", "board/serviceboard-list.jsp");
+		return "board/serviceboard-list.jsp";
 	}
 }

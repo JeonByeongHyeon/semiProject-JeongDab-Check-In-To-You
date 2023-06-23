@@ -28,7 +28,7 @@ public class LoginController implements Controller {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberNo);
 			System.out.println("로그인 성공"); // 로깅 프레임워크 사용
-			return "redirect:layout2.jsp";
+			return "redirect:index.jsp";
 		}
 	}
 
