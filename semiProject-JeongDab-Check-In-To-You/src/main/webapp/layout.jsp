@@ -135,7 +135,7 @@
 									<h6 class="mb-0">박해준&nbsp;&nbsp;2023-06-20</h6>
 								</div>
 							</a>
-							</sdiv>
+							</div>
 						</div>
 					</div>
 				</div>

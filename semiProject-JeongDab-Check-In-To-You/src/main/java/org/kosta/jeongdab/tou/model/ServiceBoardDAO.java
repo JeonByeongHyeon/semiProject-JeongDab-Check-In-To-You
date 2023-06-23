@@ -50,6 +50,7 @@ public class ServiceBoardDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				svo=new ServiceBoardVO();
+				svo.setServiceBoardNo(rs.getLong("service_board_no"));
 				svo.setServiceBoardTitle(rs.getString("service_board_title"));
 				svo.setServiceBoardContent(rs.getString("service_board_content"));
 				svo.setServiceBoardCreateDate(rs.getString("service_board_create_date"));
