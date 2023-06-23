@@ -1,13 +1,13 @@
 package org.kosta.jeongdab.tou.model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 public class MemberDAO {
 	private static MemberDAO instance = new MemberDAO();
@@ -47,7 +47,9 @@ public class MemberDAO {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(LOGIN_QUERY);
 			pstmt.setString(1, memberEmail);
-			pstmt.setString(2, password); // 실제로는 비밀번호를 해싱하여 비교해야 함
+			String hashedPassword = hashPassword(password);
+			System.out.println("login" + hashedPassword);
+			pstmt.setString(2, hashedPassword); // 실제로는 비밀번호를 해싱하여 비교해야 함
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				memberNo = rs.getLong(1);
@@ -59,40 +61,54 @@ public class MemberDAO {
 		return memberNo;
 	}
 
-	// 비밀번호를 해시화하여 저장하는 메서드
-	public static String hashPassword(String password) {
-		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-		return hashedPassword;
-	}
-
-	// 저장된 해시화된 비밀번호를 확인하는 메서드
-	public static boolean checkPassword(String password, String hashedPassword) {
-		boolean passwordMatch = BCrypt.checkpw(password, hashedPassword);
-		return passwordMatch;
-	}
-
 	public void registerMember(MemberVO memberVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			con= dataSource.getConnection();
+			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("insert into member(member_no,member_name, member_email, password, member_birth, member_address, member_detail_address) ");
+			sql.append(
+					"insert into member(member_no,member_name, member_email, password, member_birth, member_address, member_detail_address) ");
 			sql.append("values(member_seq.nextval,?,?,?,?,?,?) ");
-			
+
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, memberVO.getMemberName());
 			pstmt.setString(2, memberVO.getMemberEmail());
-			pstmt.setString(3, memberVO.getPassword());
+			String hashedPassword = hashPassword(memberVO.getPassword());
+			System.out.println("register" + hashedPassword);
+			pstmt.setString(3, hashedPassword);
 			pstmt.setString(4, memberVO.getMemberBirth());
 			pstmt.setString(5, memberVO.getMemberAddress());
 			pstmt.setString(6, memberVO.getMemberDetailAddress());
 			pstmt.executeUpdate();
-			
+
 		} finally {
 			closeAll(pstmt, con);
 		}
-		
-		
 	}
+
+	// 비밀번호 암호화를 수행하는 메서드
+	public static String hashPassword(String password) {
+		try {
+			// MessageDigest 인스턴스를 생성하여 SHA-256 알고리즘을 사용하도록 설정
+			// SHA-256은 해시 알고리즘 중 하나로, 입력값을 고유한 256비트 길이의 해시 값으로 변환합니다.
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			// 입력된 비밀번호를 바이트 배열로 변환한 후, 해당 바이트 배열을 SHA-256 해시 알고리즘으로 처리
+			// 결과로 해시된 바이트 배열을 반환
+			byte[] bytes = md.digest(password.getBytes());
+			// StringBuilder 인스턴스를 생성하여, 바이트 배열을 16진수 문자열로 변환할 준비
+			StringBuilder builder = new StringBuilder();
+			// 해시된 바이트 배열을 순회하면서 각 바이트를 16진수 형태로 변환하여 builder에 추가
+			// 예: 바이트 값이 15인 경우 '0f'로 변환
+			for (byte b : bytes) {
+				builder.append(String.format("%02x", b));
+			}
+			// 최종적으로 변환된 16진수 문자열을 반환
+			return builder.toString();
+		} catch (NoSuchAlgorithmException e) { // SHA-256 알고리즘이 사용할 수 없는 경우 예외 처리
+			// RuntimeException을 발생시키며, 상세한 오류 메시지와 함께 원본 예외를 포함
+			throw new RuntimeException("SHA-256 algorithm not found.", e);
+		}
+	}
+
 }
