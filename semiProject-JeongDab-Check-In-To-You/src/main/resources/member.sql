@@ -48,6 +48,7 @@ ALTER TABLE member MODIFY (member_status DEFAULT 1);
 ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0); 
 
 
+
 -- 회원보기
 SELECT * FROM member;
 
@@ -70,3 +71,5 @@ INNER JOIN member m ON s.member_no=m.member_no
 WHERE s.service_board_no=21;
 
 commit
+
+select * from member;

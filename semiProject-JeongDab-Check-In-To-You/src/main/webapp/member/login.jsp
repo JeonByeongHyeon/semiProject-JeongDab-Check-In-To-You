@@ -54,14 +54,14 @@
 					</a>
 				</div>
 				<div class="login-form">
-					<form action="Login.do" method="post">
+					<form action="${pageContext.request.contextPath}/MemberLogin.do" method="post">
 						<div class="form-group">
 							<label>이메일 계정</label> <input type="email" class="form-control"
-								placeholder="이메일">
+								name="memberEmail" placeholder="이메일">
 						</div>
 						<div class="form-group">
 							<label>비밀번호</label> <input type="password" class="form-control"
-								placeholder="비밀번호">
+								name="password" placeholder="비밀번호">
 						</div>
 						<div class="checkbox">
 							<label class="pull-right"> <a href="#">비밀번호 찾기</a>
@@ -72,7 +72,7 @@
 							class="btn btn-success btn-flat m-b-30 m-t-30">로그인</button>
 						<div class="register-link m-t-15 text-center">
 							<p>
-								계정이 없습니까 ? <a href="#"> 회원가입 하러 가기</a>
+								계정이 없습니까 ? <a href="register.jsp"> 회원가입 하러 가기</a>
 							</p>
 						</div>
 					</form>
@@ -91,7 +91,6 @@
 		src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/member/assets/js/main.js"></script>
-
 </body>
 
 </html>
