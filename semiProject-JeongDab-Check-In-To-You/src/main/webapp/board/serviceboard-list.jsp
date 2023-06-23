@@ -69,7 +69,7 @@
 				<c:forEach items="${list}" var="board">
 					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 						<a class="service-item d-block rounded text-center h-100 p-4"
-							href="#"> <img class="img-fluid rounded mb-4"
+							href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}"> <img class="img-fluid rounded mb-4"
 							src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
 							alt="">
 							<h4 class="mb-0">${board.serviceBoardTitle}</h4>

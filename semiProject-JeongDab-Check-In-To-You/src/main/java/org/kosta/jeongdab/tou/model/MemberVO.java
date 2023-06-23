@@ -6,8 +6,8 @@ import java.util.Date;
 public class MemberVO implements Serializable {
 	private static final long serialVersionUID = -7822446113218586799L;
 	private long memberNo;
-	private String memberEmail;
 	private String memberName;
+	private String memberEmail;
 	private String password;
 	private String  memberBirth;
 	private int memberStatus;
@@ -19,19 +19,20 @@ public class MemberVO implements Serializable {
 
 	}
 
-	public MemberVO(long memberNo, String memberEmail, String memberName, String password, String memberBirth,
+	
+	public MemberVO(long memberNo, String memberName, String memberEmail, String password, String memberBirth,
 			int memberStatus, String memberAddress, String memberDetailAddress) {
 		super();
 		this.memberNo = memberNo;
-		this.memberEmail = memberEmail;
 		this.memberName = memberName;
+		this.memberEmail = memberEmail;
 		this.password = password;
 		this.memberBirth = memberBirth;
 		this.memberStatus = memberStatus;
 		this.memberAddress = memberAddress;
 		this.memberDetailAddress = memberDetailAddress;
 	}
-	
+
 
 	public long getMemberNo() {
 		return memberNo;
