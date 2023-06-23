@@ -53,20 +53,23 @@
 					</a>
 				</div>
 				<div class="login-form">
-					<form action="Register.do" method="post">
+					<form action="../RegisterMember.do" method="post">
 						<div class="form-group">
-							<label>이름</label> <input type="text" class="form-control"
+							<label>이름</label> <input type="text" name ="name" class="form-control"
 								placeholder="이름" required="required">
 						</div>
 						<label>이메일</label>
 						<div class="input-group">
-							<input type="email" class="form-control" placeholder="이메일"
+							<input type="email" name="email" class="form-control" placeholder="이메일"
 								required="required">
+								<!--  인증번호 전송기능 
 							<div class="input-group-append">
 								<button type="button" class="btn btn-info"
 									onclick="certificationEmail()">인증번호 전송</button>
 							</div>
+							-->
 						</div>
+						<!--  인증번호 확인 기능
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="인증번호"
 								required="required">
@@ -75,32 +78,40 @@
 									onclick="numberCheck()">인증번호 확인</button>
 							</div>
 						</div>
+						-->
 						<span style="color: blue;">인증번호가 일치합니다(동적으로 일치 불일치 검사)</span>
 						<div class="form-group">
-							<label>비밀번호</label> <input type="password" class="form-control"
+							<label>비밀번호</label> <input type="password" name="password" class="form-control"
 								placeholder="비밀번호" required="required">
 						</div>
+						<!--  비밀번호 확인 기능
 						<div class="form-group">
 							<input type="password" class="form-control" placeholder="비밀번호 확인"
 								required="required"> <span style="color: blue;">사용
 								가능한 비밀번호 입니다(ajax로 구현)</span>
 						</div>
+						-->
 						<div class="form-group">
-							<label>생년월일</label> <input type="date" class="form-control"
+							<label>생년월일</label> <input type="date" name="birth" class="form-control"
 								placeholder="" required="required">
 						</div>
 						<div class="form-group">
 							<label>주소</label>
+							  
 							<div class="input-group">
 								<input type="text" class="form-control" name="address"
 									id="address" placeholder="주소 검색 버튼으로 주소 선택" required="required"
 									readonly>
+									
 								<div class="input-group-append">
 									<button type="button" class="btn btn-info"
 										onclick="searchAddress()">주소 검색</button>
 								</div>
+								
 							</div>
-							<input type="text" class="form-control" name="addressDetail"
+							
+							
+							<input type="text" name="address"class="form-control" name="addressDetail"
 								id="addressDetail" placeholder="상세주소">
 						</div>
 						<button type="submit"

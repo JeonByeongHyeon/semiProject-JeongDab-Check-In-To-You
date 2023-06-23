@@ -51,6 +51,7 @@ ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0);
 
 -- 회원보기
 SELECT * FROM member;
+SELECT  FROM member;
 
 
 -- 게시글 보기
@@ -73,3 +74,6 @@ WHERE s.service_board_no=21;
 commit
 
 select * from member;
+
+insert into member(member_no,member_name, member_email, password, member_birth,member_address, member_detail_address) 
+values(member_seq.nextval,'박해준','cyon8254@gmail.com','1234',sysdate,'성남시','아튼빌');

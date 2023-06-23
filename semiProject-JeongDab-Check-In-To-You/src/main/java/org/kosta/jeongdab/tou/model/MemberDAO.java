@@ -69,4 +69,29 @@ public class MemberDAO {
 		boolean passwordMatch = BCrypt.checkpw(password, hashedPassword);
 		return passwordMatch;
 	}
+
+	public void registerMember(MemberVO memberVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con= dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("insert into member(member_no,member_name, member_email, password, member_birth, member_address, member_detail_address) ");
+			sql.append("values(member_seq.nextval,?,?,?,?,?,?) ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, memberVO.getMemberName());
+			pstmt.setString(2, memberVO.getMemberEmail());
+			pstmt.setString(3, memberVO.getPassword());
+			pstmt.setString(4, memberVO.getMemberBirth());
+			pstmt.setString(5, memberVO.getMemberAddress());
+			pstmt.setString(6, memberVO.getMemberDetailAddress());
+			pstmt.executeUpdate();
+			
+		} finally {
+			closeAll(pstmt, con);
+		}
+		
+		
+	}
 }

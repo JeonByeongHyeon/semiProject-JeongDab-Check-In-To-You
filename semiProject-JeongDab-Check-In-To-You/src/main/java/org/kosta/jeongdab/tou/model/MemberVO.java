@@ -9,7 +9,7 @@ public class MemberVO implements Serializable {
 	private String memberEmail;
 	private String memberName;
 	private String password;
-	private Date memberBirth;
+	private String  memberBirth;
 	private int memberStatus;
 	private String memberAddress;
 	private String memberDetailAddress;
@@ -19,7 +19,7 @@ public class MemberVO implements Serializable {
 
 	}
 
-	public MemberVO(long memberNo, String memberEmail, String memberName, String password, Date memberBirth,
+	public MemberVO(long memberNo, String memberEmail, String memberName, String password, String memberBirth,
 			int memberStatus, String memberAddress, String memberDetailAddress) {
 		super();
 		this.memberNo = memberNo;
@@ -31,6 +31,7 @@ public class MemberVO implements Serializable {
 		this.memberAddress = memberAddress;
 		this.memberDetailAddress = memberDetailAddress;
 	}
+	
 
 	public long getMemberNo() {
 		return memberNo;
@@ -64,11 +65,11 @@ public class MemberVO implements Serializable {
 		this.password = password;
 	}
 
-	public Date getMemberBirth() {
+	public String getMemberBirth() {
 		return memberBirth;
 	}
 
-	public void setMemberBirth(Date memberBirth) {
+	public void setMemberBirth(String memberBirth) {
 		this.memberBirth = memberBirth;
 	}
 
@@ -96,11 +97,17 @@ public class MemberVO implements Serializable {
 		this.memberDetailAddress = memberDetailAddress;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberVO [memberNo=" + memberNo + ", memberEmail=" + memberEmail + ", memberName=" + memberName
+		return "MemberVO2 [memberNo=" + memberNo + ", memberEmail=" + memberEmail + ", memberName=" + memberName
 				+ ", password=" + password + ", memberBirth=" + memberBirth + ", memberStatus=" + memberStatus
 				+ ", memberAddress=" + memberAddress + ", memberDetailAddress=" + memberDetailAddress + "]";
 	}
+
+	
 
 }
