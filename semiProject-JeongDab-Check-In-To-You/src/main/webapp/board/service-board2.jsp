@@ -166,7 +166,7 @@
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 text-center">
 		<div class="property-item mb-30">
 			<a href="#" class="img"> <img
-				src="${pageContext.request.contextPath}/assets/img/img_1.jpg"
+				src="${pageContext.request.contextPath}/img/service-1.jpg"
 				alt="Image" class="img-fluid" />
 
 				<div class="property-content">
