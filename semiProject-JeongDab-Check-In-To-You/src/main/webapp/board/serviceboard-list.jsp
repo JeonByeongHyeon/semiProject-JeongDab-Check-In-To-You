@@ -50,6 +50,12 @@
 	href="${pageContext.request.contextPath}/board/assets/css/style.css"
 	rel="stylesheet">
 </head>
+			<%-- header 영역 --%>
+			<div class="row header">
+				
+					<c:import url="/fix/header.jsp" />
+				
+			</div>
 <body>
 	<div class="container-xxl py-5">
 		<div class="container">
@@ -68,7 +74,7 @@
 							alt="">
 							<h4 class="mb-0">${board.serviceBoardTitle}</h4>
 							<div>
-								<h6 class="mb-0">박해준&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+								<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
 							</div>
 						</a>
 					</div>

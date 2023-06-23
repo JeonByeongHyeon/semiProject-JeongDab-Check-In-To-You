@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ms-auto py-4 py-lg-0">
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-					href="index.html">봉사 구인 게시판</a></li>
+					href="${pageContext.request.contextPath}/ServiceBoardList.do">봉사 구인 게시판</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="about.html">후기 게시판</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
