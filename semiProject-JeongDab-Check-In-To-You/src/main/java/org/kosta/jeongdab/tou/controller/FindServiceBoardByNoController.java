@@ -16,6 +16,7 @@ public class FindServiceBoardByNoController implements Controller {
 			return "layout2.jsp";
 		}
 		long no=Long.parseLong(request.getParameter("no"));
+		System.out.println(no);
 		request.setAttribute("serviceBoard", ServiceBoardDAO.getInstance().findServiceBoardByNo(no));
 		return "board/service-board-detail.jsp";
 	}
