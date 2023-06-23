@@ -79,3 +79,26 @@ select * from member;
 
 insert into member(member_no,member_name, member_email, password, member_birth,member_address, member_detail_address) 
 values(member_seq.nextval,'박해준','cyon8254@gmail.com','1234',sysdate,'성남시','아튼빌');
+
+
+
+SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits
+FROM service_board; 
+
+
+
+
+SELECT service_board_no,service_board_title,TO_CHAR(service_date,'YYYY.MM.DD') as service_date,service_board_hits
+from(
+	SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits FROM  service_board
+)
+inner join member m on m.member_no =sb.member_no
+where rnum between 1 and 5
+
+
+
+SELECT rnum,service_board_no,service_board_title,TO_CHAR(service_date,'YYYY.MM.DD') as service_date,service_board_hits
+FROM (
+	SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits  FROM  service_board 
+) sb WHERE rnum BETWEEN 1 AND 5
+
