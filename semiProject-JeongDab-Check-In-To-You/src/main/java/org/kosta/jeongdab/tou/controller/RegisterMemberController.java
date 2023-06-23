@@ -18,6 +18,7 @@ public class RegisterMemberController implements Controller {
 		String addressDetail = request.getParameter("addressDetail");
 		MemberVO memberVO = new MemberVO(0, name,email,password,birth,0, address,addressDetail);
 		MemberDAO.getInstance().registerMember(memberVO);
+		
 		return "redirect:member/register-result.jsp";
 	}
 
