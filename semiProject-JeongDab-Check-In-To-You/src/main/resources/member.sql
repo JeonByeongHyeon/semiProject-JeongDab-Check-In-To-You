@@ -102,3 +102,94 @@ FROM (
 	SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits  FROM  service_board 
 ) sb WHERE rnum BETWEEN 1 AND 5
 
+
+
+
+
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'30캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'31캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'32캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'33캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'34캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'35캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'36캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'37캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'38캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'39캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'40캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'41캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'42캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'43캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'44캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'45캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'46캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'47캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'48캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
+service_board_create_date,service_date,nation,member_no) VALUES
+(service_board_seq.nextval,'49캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+
+
+
+
+
+
