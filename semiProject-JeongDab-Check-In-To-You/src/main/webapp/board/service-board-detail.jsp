@@ -45,7 +45,6 @@
 			</div>
 	<%-- main(게시판 상세글보기) 영역 --%>		
 			<div class="row main">
-			 ${serviceBoard}
 				<div class="col-sm-8 offset-sm-2">
 					<table class="table">
 						<tr>
