@@ -1,4 +1,4 @@
-package org.kosta.jeongdab.test2;
+package org.kosta.jeongdab.test.passwordEncryption;
 
 import org.mindrot.jbcrypt.BCrypt;
 

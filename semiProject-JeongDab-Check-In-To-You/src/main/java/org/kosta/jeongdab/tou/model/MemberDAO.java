@@ -31,4 +31,5 @@ public class MemberDAO {
 			rs.close();
 		closeAll(pstmt, con);
 	}
+
 }

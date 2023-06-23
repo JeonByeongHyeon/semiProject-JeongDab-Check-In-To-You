@@ -1,4 +1,4 @@
-package org.kosta.jeongdab.test3;
+package org.kosta.jeongdab.test.email;
 
 // 이메일 발송 테스트
 import java.util.Properties;
