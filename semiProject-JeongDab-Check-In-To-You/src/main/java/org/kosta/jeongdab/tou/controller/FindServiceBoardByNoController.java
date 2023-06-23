@@ -20,6 +20,6 @@ public class FindServiceBoardByNoController implements Controller {
 
 		request.setAttribute("serviceBoard", ServiceBoardDAO.getInstance().findServiceBoardByNo(no));
 //		request.setAttribute("url", "board/serviceboard-list.jsp");
-		return "board/serviceboard-list.jsp";
+		return "board/service-board-detail.jsp";
 	}
 }
