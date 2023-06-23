@@ -69,7 +69,7 @@ public class ServiceBoardDAO {
 		return svo;
 	}
 	//게시물 리스트 보기
-		public ArrayList<ServiceBoardVO> serviceBoardList() throws SQLException{
+		public ArrayList<ServiceBoardVO> serviceBoardList(Pagination pagination) throws SQLException{
 			System.out.println("===============DAO들어옴================");
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -78,11 +78,13 @@ public class ServiceBoardDAO {
 			try {
 				con=dataSource.getConnection();
 				StringBuilder sql=new StringBuilder();
-				sql.append("SELECT sb.service_board_no,sb.service_board_title,TO_CHAR(sb.service_date,'YYYY.MM.DD') as service_date,sb.service_board_hits ");
-				sql.append("FROM service_board sb ");
-				sql.append("inner join member m on m.member_no =sb.member_no ");
-				sql.append("ORDER BY sb.service_board_no DESC ");
+				sql.append("SELECT rnum,service_board_no,service_board_title,TO_CHAR(service_date,'YYYY.MM.DD') as service_date,service_board_hits ");
+				sql.append("FROM ( ");
+				sql.append("SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits  FROM  service_board ");
+				sql.append(") sb WHERE rnum BETWEEN ? AND ?");
 				pstmt=con.prepareStatement(sql.toString());
+				pstmt.setLong(1, pagination.getStartRowNumber());
+				pstmt.setLong(2, pagination.getEndRowNumber());
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
 				ServiceBoardVO sbvo=new ServiceBoardVO();
