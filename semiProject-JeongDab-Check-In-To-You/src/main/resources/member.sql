@@ -63,6 +63,8 @@ service_board_create_date,service_date,nation,member_no) VALUES
 (service_board_seq.nextval,'캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
 sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
 
+select count(*)from service_board
+
 -- 상세글보기(게시글번호로 검색)
 SELECT s.service_board_no,s.service_board_title,s.service_board_content,
 to_char(service_board_create_date,'YYYY.MM.DD') as service_board_create_date,

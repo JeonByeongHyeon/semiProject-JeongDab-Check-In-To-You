@@ -15,17 +15,30 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ms-auto py-4 py-lg-0">
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-					href="index.html">봉사 구인 게시판</a></li>
+					href="${pageContext.request.contextPath}/ServiceBoardList.do">봉사 구인 게시판</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="about.html">후기 게시판</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="post.html">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="contact.html">Contact</a></li>
-				<button class="btn btn-outline-warning btn-sm" onclick="login()">로그인</button>
-				<button class="btn btn-outline-warning btn-sm"
-					onclick="redirectToSignUp()">회원가입</button>
-				<script>
+				<c:choose>
+					<c:when test="${not empty sessionScope.member}">
+						<!-- 사용자가 로그인한 상태 -->
+						<button class="btn btn-outline-warning btn-sm" onclick="logout()">로그아웃</button>
+						<form method="post"
+							action="${pageContext.request.contextPath}/Logout.do"
+							id="logoutForm"></form>
+					</c:when>
+					<c:otherwise>
+						<!-- 사용자가 로그아웃 상태 또는 로그인하지 않은 상태 -->
+						<button class="btn btn-outline-warning btn-sm" onclick="login()">로그인</button>
+						<button class="btn btn-outline-warning btn-sm"
+							onclick="redirectToSignUp()">회원가입</button>
+					</c:otherwise>
+				</c:choose>
+
+				<script type="text/javascript">
 					function login() {
 						// 로그인 페이지로 이동
 						window.location.href = "${pageContext.request.contextPath}/member/login.jsp";
@@ -34,6 +47,10 @@
 					function redirectToSignUp() {
 						// 회원가입 페이지로 이동
 						window.location.href = "${pageContext.request.contextPath}/member/register.jsp";
+					}
+					function logout() {
+						// 로그아웃
+						document.getElementById("logoutForm").submit();
 					}
 				</script>
 			</ul>

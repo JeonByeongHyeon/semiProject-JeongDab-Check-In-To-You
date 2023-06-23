@@ -54,7 +54,7 @@
 					</a>
 				</div>
 				<div class="login-form">
-					<form action="${pageContext.request.contextPath}/MemberLogin.do" method="post">
+					<form action="${pageContext.request.contextPath}/Login.do" method="post">
 						<div class="form-group">
 							<label>이메일 계정</label> <input type="email" class="form-control"
 								name="memberEmail" placeholder="이메일">
