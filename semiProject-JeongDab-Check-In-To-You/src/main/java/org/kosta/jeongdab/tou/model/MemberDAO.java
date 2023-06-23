@@ -34,19 +34,20 @@ public class MemberDAO {
 		closeAll(pstmt, con);
 	}
 
-//	로그인
+	private static final String LOGIN_QUERY = "SELECT member_no FROM member WHERE member_email=? AND password=?";
+
+	// 로그인
 	public long login(String memberEmail, String password) throws SQLException {
-		System.out.println("==============로그인==============");
+		System.out.println("login 메서드 시작"); // 로깅 프레임워크 사용
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		long memberNo = 0;
 		try {
 			con = dataSource.getConnection();
-			String sql = "SELECT member_no FROM member WHERE member_email=? AND password=?";
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(LOGIN_QUERY);
 			pstmt.setString(1, memberEmail);
-			pstmt.setString(2, password);
+			pstmt.setString(2, password); // 실제로는 비밀번호를 해싱하여 비교해야 함
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				memberNo = rs.getLong(1);
@@ -54,7 +55,7 @@ public class MemberDAO {
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
-		System.out.println(memberNo);
+		System.out.println("회원 번호: " + memberNo); // 로깅 프레임워크 사용
 		return memberNo;
 	}
 
