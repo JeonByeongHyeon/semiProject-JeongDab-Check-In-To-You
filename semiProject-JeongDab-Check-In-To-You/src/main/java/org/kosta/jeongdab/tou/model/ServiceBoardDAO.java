@@ -79,7 +79,7 @@ public class ServiceBoardDAO {
 				StringBuilder sql=new StringBuilder();
 				sql.append("SELECT sb.service_board_no,sb.service_board_title,TO_CHAR(sb.service_date,'YYYY.MM.DD') as service_date,sb.service_board_hits ");
 				sql.append("FROM service_board sb ");
-				sql.append("inner join member m on sb.member_no =sb.member_no ");
+				sql.append("inner join member m on m.member_no =sb.member_no ");
 				sql.append("ORDER BY sb.service_board_no DESC ");
 				pstmt=con.prepareStatement(sql.toString());
 				rs=pstmt.executeQuery();

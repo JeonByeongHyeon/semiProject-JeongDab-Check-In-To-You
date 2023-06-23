@@ -19,10 +19,10 @@ public class ServiceBoardListController implements Controller {
 			pagination = new Pagination(totalPostCount,Long.parseLong(pageNo));
 		}
 		System.out.println("=====================controller들어옴========================");
-		System.out.println(ServiceBoardDAO.getInstance().serviceBoardList());
+		System.out.println(ServiceBoardDAO.getInstance().serviceBoardList()+"aaaaaaaaaaaaaaaaaaaaa");
 		request.setAttribute("pagination", pagination);
 		request.setAttribute("list", ServiceBoardDAO.getInstance().serviceBoardList());
 		request.setAttribute("url", "board/serviceboard-list.jsp");
-		return "/header.jsp";	
+		return "board/serviceboard-list.jsp";	
 	}
 }

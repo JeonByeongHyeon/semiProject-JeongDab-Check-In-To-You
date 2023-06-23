@@ -56,17 +56,24 @@
 					<form action="Register.do" method="post">
 						<div class="form-group">
 							<label>이름</label> <input type="text" class="form-control"
-								placeholder="이름" required="required">
+								id="nameInput" placeholder="이름" required="required">
+							<div id="nameError" style="color: red;"></div>
 						</div>
-						<label>이메일</label>
-						<div class="input-group">
-							<input type="email" class="form-control" placeholder="이메일"
-								required="required">
-							<div class="input-group-append">
-								<button type="button" class="btn btn-info"
-									onclick="certificationEmail()">인증번호 전송</button>
+						<div class="form-group">
+							<label>이메일</label>
+							<div class="input-group">
+								<input type="email" class="form-control" id="emailInput"
+									placeholder="이메일" required="required">
+								<div class="input-group-append">
+									<button type="button" class="btn btn-info"
+										id="certificationButton" onclick="certificationEmail()"
+										disabled>인증번호 전송</button>
+								</div>
 							</div>
+							<div id="emailError" style="color: red;"></div>
 						</div>
+
+						<div id="emailError" style="color: red;"></div>
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="인증번호"
 								required="required">
@@ -78,13 +85,15 @@
 						<span style="color: blue;">인증번호가 일치합니다(동적으로 일치 불일치 검사)</span>
 						<div class="form-group">
 							<label>비밀번호</label> <input type="password" class="form-control"
-								placeholder="비밀번호" required="required">
+								id="password" placeholder="비밀번호" required="required">
+							<div id="passwordError" style="color: red;"></div>
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" placeholder="비밀번호 확인"
-								required="required"> <span style="color: blue;">사용
-								가능한 비밀번호 입니다(ajax로 구현)</span>
+							<input type="password" class="form-control" id="passwordConfirm"
+								placeholder="비밀번호 확인" required="required"> <span
+								id="passwordMatchMessage" style="color: blue;"></span>
 						</div>
+
 						<div class="form-group">
 							<label>생년월일</label> <input type="date" class="form-control"
 								placeholder="" required="required">

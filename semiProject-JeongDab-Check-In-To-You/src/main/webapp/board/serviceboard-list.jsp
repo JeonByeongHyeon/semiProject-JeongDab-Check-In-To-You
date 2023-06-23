@@ -50,6 +50,12 @@
 	href="${pageContext.request.contextPath}/board/assets/css/style.css"
 	rel="stylesheet">
 </head>
+			<%-- header 영역 --%>
+			<div class="row header">
+				
+					<c:import url="/fix/header.jsp" />
+				
+			</div>
 <body>
 	<div class="container-xxl py-5">
 		<div class="container">
