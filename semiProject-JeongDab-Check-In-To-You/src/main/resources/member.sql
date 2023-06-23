@@ -47,4 +47,4 @@ ALTER TABLE member MODIFY (member_status DEFAULT 1);
 --게시판 조회수 기본값 설정 
 ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0); 
 
-
+select * from member;
