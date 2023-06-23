@@ -55,16 +55,9 @@
 				<div class="login-form">
 					<form action="../RegisterMember.do" method="post">
 						<div class="form-group">
-<<<<<<< HEAD
 							<label>이름</label> <input type="text" name ="name" class="form-control"
 								placeholder="이름" required="required">
-=======
-							<label>이름</label> <input type="text" class="form-control"
-								id="nameInput" placeholder="이름" required="required">
-							<div id="nameError" style="color: red;"></div>
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 						</div>
-<<<<<<< HEAD
 						<label>이메일</label>
 						<div class="input-group">
 							<input type="email" name="email" class="form-control" placeholder="이메일"
@@ -73,31 +66,10 @@
 							<div class="input-group-append">
 								<button type="button" class="btn btn-info"
 									onclick="certificationEmail()">인증번호 전송</button>
-=======
-						<div class="form-group">
-							<label>이메일</label>
-							<div class="input-group">
-								<input type="email" class="form-control" id="emailInput"
-									placeholder="이메일" required="required">
-								<div class="input-group-append">
-									<button type="button" class="btn btn-info"
-										id="certificationButton" onclick="certificationEmail()"
-										disabled>인증번호 전송</button>
-								</div>
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 							</div>
-<<<<<<< HEAD
 							-->
-=======
-							<div id="emailError" style="color: red;"></div>
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 						</div>
-<<<<<<< HEAD
 						<!--  인증번호 확인 기능
-=======
-
-						<div id="emailError" style="color: red;"></div>
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="인증번호"
 								required="required">
@@ -109,26 +81,16 @@
 						-->
 						<span style="color: blue;">인증번호가 일치합니다(동적으로 일치 불일치 검사)</span>
 						<div class="form-group">
-<<<<<<< HEAD
 							<label>비밀번호</label> <input type="password" name="password" class="form-control"
 								placeholder="비밀번호" required="required">
-=======
-							<label>비밀번호</label> <input type="password" class="form-control"
-								id="password" placeholder="비밀번호" required="required">
-							<div id="passwordError" style="color: red;"></div>
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 						</div>
 						<!--  비밀번호 확인 기능
 						<div class="form-group">
-							<input type="password" class="form-control" id="passwordConfirm"
-								placeholder="비밀번호 확인" required="required"> <span
-								id="passwordMatchMessage" style="color: blue;"></span>
+							<input type="password" class="form-control" placeholder="비밀번호 확인"
+								required="required"> <span style="color: blue;">사용
+								가능한 비밀번호 입니다(ajax로 구현)</span>
 						</div>
-<<<<<<< HEAD
 						-->
-=======
-
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 						<div class="form-group">
 							<label>생년월일</label> <input type="date" name="birth" class="form-control"
 								placeholder="" required="required">
