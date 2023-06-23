@@ -39,7 +39,9 @@ public class TestEmail {
 			// 이메일 메시지 작성
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("cyon8254@gmail.com"));
+//			input에 입력한 이메일을 여기에 넣어줌
+			String email = "cyon8254@gmail.com";
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 			message.setSubject("Test Email");
 
 			// 랜덤 인증번호 생성
@@ -47,8 +49,7 @@ public class TestEmail {
 
 			// HTML 형식의 본문 작성
 			String htmlContent = "<html><body>" + "<h1 style=\"color: blue;\">너에개 체크인!</h1>"
-					+ "<p>This is a test email with HTML formatting.</p>" + "<p>Your verification code: "
-					+ verificationCode + " 오늘도 잘했다</p>"
+					+ "<p>Your verification code: " + verificationCode + " 오늘도 잘했다</p>"
 					+ "<a href=\"https://naver.com\">Click here</a> to visit our website." + "</body></html>";
 
 			// 이메일 본문 설정

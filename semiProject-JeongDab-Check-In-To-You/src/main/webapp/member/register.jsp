@@ -49,49 +49,52 @@
 			<div class="login-content">
 				<div class="login-logo">
 					<a href="index.html"> <img class="align-content"
-						src="${pageContext.request.contextPath}/img/logo.png" alt="">
+						src="${pageContext.request.contextPath}/img/logo1.png" alt="">
 					</a>
 				</div>
 				<div class="login-form">
-
-					<form>
+					<form action="Register.do" method="post">
 						<div class="form-group">
 							<label>이름</label> <input type="text" class="form-control"
-								placeholder="이름">
+								placeholder="이름" required="required">
 						</div>
 						<label>이메일</label>
 						<div class="input-group">
-							<input type="email" class="form-control" placeholder="이메일">
+							<input type="email" class="form-control" placeholder="이메일"
+								required="required">
 							<div class="input-group-append">
 								<button type="button" class="btn btn-info"
 									onclick="certificationEmail()">인증번호 전송</button>
 							</div>
 						</div>
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="인증번호">
+							<input type="text" class="form-control" placeholder="인증번호"
+								required="required">
 							<div class="input-group-append">
-								<button type="button" class="btn btn-info" onclick="">인증번호
-									확인</button>
+								<button type="button" class="btn btn-info"
+									onclick="numberCheck()">인증번호 확인</button>
 							</div>
 						</div>
-						<span style="color: blue;">인증번호가 일치합니다</span>
+						<span style="color: blue;">인증번호가 일치합니다(동적으로 일치 불일치 검사)</span>
 						<div class="form-group">
 							<label>비밀번호</label> <input type="password" class="form-control"
-								placeholder="비밀번호">
+								placeholder="비밀번호" required="required">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" placeholder="비밀번호 확인">
-							<span style="color: blue;">사용 가능한 비밀번호 입니다(ajax로 구현)</span>
+							<input type="password" class="form-control" placeholder="비밀번호 확인"
+								required="required"> <span style="color: blue;">사용
+								가능한 비밀번호 입니다(ajax로 구현)</span>
 						</div>
 						<div class="form-group">
 							<label>생년월일</label> <input type="date" class="form-control"
-								placeholder="">
+								placeholder="" required="required">
 						</div>
 						<div class="form-group">
 							<label>주소</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="address"
-									id="address" placeholder="주소 검색 버튼으로 주소 선택">
+									id="address" placeholder="주소 검색 버튼으로 주소 선택" required="required"
+									readonly>
 								<div class="input-group-append">
 									<button type="button" class="btn btn-info"
 										onclick="searchAddress()">주소 검색</button>
@@ -100,8 +103,6 @@
 							<input type="text" class="form-control" name="addressDetail"
 								id="addressDetail" placeholder="상세주소">
 						</div>
-
-
 						<button type="submit"
 							class="btn btn-primary btn-flat m-b-30 m-t-30">회원가입</button>
 

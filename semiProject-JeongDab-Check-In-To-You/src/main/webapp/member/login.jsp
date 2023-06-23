@@ -50,11 +50,11 @@
 			<div class="login-content">
 				<div class="login-logo">
 					<a href="#"> <img class="align-content"
-						src="${pageContext.request.contextPath}/img/logo.png" alt="">
+						src="${pageContext.request.contextPath}/img/logo1.png" alt="">
 					</a>
 				</div>
 				<div class="login-form">
-					<form>
+					<form action="Login.do" method="post">
 						<div class="form-group">
 							<label>이메일 계정</label> <input type="email" class="form-control"
 								placeholder="이메일">
