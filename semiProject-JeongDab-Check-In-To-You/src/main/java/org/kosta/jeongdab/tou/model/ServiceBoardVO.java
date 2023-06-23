@@ -6,23 +6,25 @@ public class ServiceBoardVO {
 	private long serviceBoardNo;
 	private String serviceBoardTitle;
 	private String serviceBoardContent;
-	private Date serviceBoardCreateDate;
+	private String serviceBoardCreateDate;
+	private String serviceDate;
 	private long serviceBoardHits;
 	private String nation;
 	private MemberVO memberVO;
 
 	public ServiceBoardVO() {
 		super();
-
 	}
 
 	public ServiceBoardVO(long serviceBoardNo, String serviceBoardTitle, String serviceBoardContent,
-			Date serviceBoardCreateDate, long serviceBoardHits, String nation, MemberVO memberVO) {
+			String serviceBoardCreateDate, String serviceDate, long serviceBoardHits, String nation,
+			MemberVO memberVO) {
 		super();
 		this.serviceBoardNo = serviceBoardNo;
 		this.serviceBoardTitle = serviceBoardTitle;
 		this.serviceBoardContent = serviceBoardContent;
 		this.serviceBoardCreateDate = serviceBoardCreateDate;
+		this.serviceDate = serviceDate;
 		this.serviceBoardHits = serviceBoardHits;
 		this.nation = nation;
 		this.memberVO = memberVO;
@@ -52,12 +54,20 @@ public class ServiceBoardVO {
 		this.serviceBoardContent = serviceBoardContent;
 	}
 
-	public Date getServiceBoardCreateDate() {
+	public String getServiceBoardCreateDate() {
 		return serviceBoardCreateDate;
 	}
 
-	public void setServiceBoardCreateDate(Date serviceBoardCreateDate) {
+	public void setServiceBoardCreateDate(String serviceBoardCreateDate) {
 		this.serviceBoardCreateDate = serviceBoardCreateDate;
+	}
+
+	public String getServiceDate() {
+		return serviceDate;
+	}
+
+	public void setServiceDate(String serviceDate) {
+		this.serviceDate = serviceDate;
 	}
 
 	public long getServiceBoardHits() {
@@ -88,7 +98,9 @@ public class ServiceBoardVO {
 	public String toString() {
 		return "ServiceBoardVO [serviceBoardNo=" + serviceBoardNo + ", serviceBoardTitle=" + serviceBoardTitle
 				+ ", serviceBoardContent=" + serviceBoardContent + ", serviceBoardCreateDate=" + serviceBoardCreateDate
-				+ ", serviceBoardHits=" + serviceBoardHits + ", nation=" + nation + ", memberVO=" + memberVO + "]";
+				+ ", serviceDate=" + serviceDate + ", serviceBoardHits=" + serviceBoardHits + ", nation=" + nation
+				+ ", memberVO=" + memberVO + "]";
 	}
+	
 
 }
