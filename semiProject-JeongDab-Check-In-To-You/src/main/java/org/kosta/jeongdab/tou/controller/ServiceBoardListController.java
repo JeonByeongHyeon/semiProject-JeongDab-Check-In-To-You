@@ -23,6 +23,6 @@ public class ServiceBoardListController implements Controller {
 		request.setAttribute("pagination", pagination);
 		request.setAttribute("list", ServiceBoardDAO.getInstance().serviceBoardList());
 		request.setAttribute("url", "board/serviceboard-list.jsp");
-		return "layout.jsp";	
+		return "/header.jsp";	
 	}
 }
