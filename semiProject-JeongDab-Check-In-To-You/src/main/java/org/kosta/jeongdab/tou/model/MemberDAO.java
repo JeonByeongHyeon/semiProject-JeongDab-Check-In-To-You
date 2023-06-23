@@ -35,30 +35,27 @@ public class MemberDAO {
 	}
 
 //	로그인
-	public MemberVO login(String memberEmail, String password) throws SQLException {
+	public long login(String memberEmail, String password) throws SQLException {
 		System.out.println("==============로그인==============");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MemberVO memberVO = null;
+		long memberNo = 0;
 		try {
 			con = dataSource.getConnection();
-			String sql = "SELECT member_name FROM member WHERE member_email=? AND password=?";
+			String sql = "SELECT member_no FROM member WHERE member_email=? AND password=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberEmail);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				memberVO = new MemberVO();
-				memberVO.setMemberName(rs.getString(1));
-				memberVO.setMemberEmail(memberEmail);
-				memberVO.setPassword(password);
+				memberNo = rs.getLong(1);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
-		System.out.println(memberVO);
-		return memberVO;
+		System.out.println(memberNo);
+		return memberNo;
 	}
 
 	// 비밀번호를 해시화하여 저장하는 메서드

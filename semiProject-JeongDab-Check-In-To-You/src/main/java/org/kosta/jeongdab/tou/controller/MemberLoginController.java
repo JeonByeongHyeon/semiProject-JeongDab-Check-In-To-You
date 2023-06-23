@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.jeongdab.tou.model.MemberDAO;
-import org.kosta.jeongdab.tou.model.MemberVO;
 
 public class MemberLoginController implements Controller {
 
@@ -19,13 +18,13 @@ public class MemberLoginController implements Controller {
 		System.out.println("==============들어옴2=============");
 		String memberEmail = request.getParameter("memberEmail");
 		String password = request.getParameter("password");
-		MemberVO memberVO = MemberDAO.getInstance().login(memberEmail, password);
-		if (memberVO == null) {
+		long memberNo = MemberDAO.getInstance().login(memberEmail, password);
+		if (memberNo == 0) {
 			System.out.println("로그인 실패");
 			return "redirect:member/login-fail.jsp";
 		} else {
 			HttpSession session = request.getSession();
-			session.setAttribute("member", memberVO);
+			session.setAttribute("member", memberNo);
 			System.out.println("로그인 성공");
 			return "redirect:index.jsp";
 		}
