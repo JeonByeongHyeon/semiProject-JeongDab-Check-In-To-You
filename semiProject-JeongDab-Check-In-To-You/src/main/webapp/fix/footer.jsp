@@ -27,8 +27,8 @@
 						</span>
 					</a></li>
 				</ul>
-				<div class="small text-center text-muted fst-italic">너에개 체크인
-					&copy; 정답조</div>
+				<div class="small text-center text-muted fst-italic">Copyright
+					&copy; Your Website 2023</div>
 			</div>
 		</div>
 	</div>
@@ -39,12 +39,4 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="fix/assets/js/scripts.js"></script>
-
 <!-- end header footer 관련 js 링크 -->
-
-<script type="text/javascript">
-	function writeForm() {
-		console.log("누름");
-		location.href = "${pageContext.request.contextPath}/board/write-post.jsp";
-	}
-</script>
