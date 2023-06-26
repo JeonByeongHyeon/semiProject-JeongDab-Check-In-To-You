@@ -16,7 +16,7 @@ public class UpdateServiceBoardFormController implements Controller {
 		HttpSession session=request.getSession(false);
 		if(session==null||session.getAttribute("member")==null) {
 			System.out.println("인증안돼서 서비스 안해줌!");
-			request.setAttribute("url", "index.jsp");
+			return "redirect:ServiceBoardList.do";
 		}	
 		long no = Long.parseLong(request.getParameter("no"));
 		request.setAttribute("serviceBoard", ServiceBoardDAO.getInstance().findServiceBoardByNo(no));
