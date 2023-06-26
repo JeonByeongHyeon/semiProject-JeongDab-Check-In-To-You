@@ -205,4 +205,4 @@ WHERE service_board_no=63;
 select * from member;
 >>>>>>> refs/heads/main
 
-delete from member where member_no = 63;
+delete from member where member_no = 66;
