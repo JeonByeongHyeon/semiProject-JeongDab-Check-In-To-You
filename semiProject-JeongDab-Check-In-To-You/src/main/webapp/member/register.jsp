@@ -114,13 +114,12 @@
 								</div>
 
 							</div>
-
-
 							<input type="text" name="address" class="form-control"
 								name="addressDetail" id="addressDetail" placeholder="상세주소">
 						</div>
-						<button type="submit"
-							class="btn btn-primary btn-flat m-b-30 m-t-30">회원가입</button>
+						<button type="submit" id="signupButton"
+							class="btn btn-primary btn-flat m-b-30 m-t-30" disabled>회원가입</button>
+
 
 						<div class="register-link m-t-15 text-center">
 							<p>

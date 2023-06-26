@@ -50,16 +50,15 @@
 	href="${pageContext.request.contextPath}/board/assets/css/style.css"
 	rel="stylesheet">
 </head>
-			<%-- header 영역 --%>
-			<div class="row header">
-					<c:import url="/fix/header.jsp" />
-			</div>
+<%-- header 영역 --%>
+<div class="row header">
+	<c:import url="/fix/header.jsp" />
+</div>
 <body>
 	<div class="container-xxl py-5">
-		<div class="container">
 			<div class="text-center mx-auto mb-5 wow fadeInUp"
-				data-wow-delay="0.1s" style="max-width: 600px;">
-				<h1 class="display-6 mb-4">봉사 구인 게시판</h1>
+				data-wow-delay="0.1s" style="max-width: 500px;">
+				<h1 class="display-6 mb-4">봉사 구인 게시판</h1>				
 			</div>
 			<div class="row g-4">
 				<%--시작 --%>
@@ -67,7 +66,8 @@
 				<c:forEach items="${list}" var="board">
 					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 						<a class="service-item d-block rounded text-center h-100 p-4"
-							href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}"> <img class="img-fluid rounded mb-4"
+							href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
+							<img class="img-fluid rounded mb-4"
 							src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
 							alt="">
 							<h4 class="mb-0">${board.serviceBoardTitle}</h4>
@@ -77,6 +77,7 @@
 						</a>
 					</div>
 				</c:forEach>
+				
 				<%--</c:forEach>--%>
 				<%--끝 --%>
 
