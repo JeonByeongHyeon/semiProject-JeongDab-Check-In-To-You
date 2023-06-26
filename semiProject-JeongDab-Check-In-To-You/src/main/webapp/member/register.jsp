@@ -114,7 +114,7 @@
 								</div>
 
 							</div>
-							<input type="text" name="address" class="form-control"
+							<input type="text" class="form-control"
 								name="addressDetail" id="addressDetail" placeholder="상세주소">
 						</div>
 						<button type="submit" id="signupButton"

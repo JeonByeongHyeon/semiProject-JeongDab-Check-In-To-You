@@ -197,4 +197,4 @@ INSERT INTO service_board(service_board_no,service_board_title,service_board_con
 
 select * from member;
 
-delete from member where member_no = 63;
+delete from member where member_no = 66;

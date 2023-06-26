@@ -82,7 +82,7 @@
 
 					</table>
 					<c:if
-						test="${sessionScope.memberNo.memberEmail==requestScope.serviceBoard.memberVO.memberEmail }">
+						test="${sessionScope.member.memberStatus == 0 }">
 
 						<table>
 							<tr>
