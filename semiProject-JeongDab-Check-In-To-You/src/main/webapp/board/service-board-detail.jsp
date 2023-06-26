@@ -116,7 +116,7 @@
 									</script> <%-- </c:if> --%></td>
 							</tr>
 						</table>
-						 </c:if>
+					</c:if>
 				</div>
 			</div>
 			<%--footer 영역 --%>

@@ -1,7 +1,5 @@
 package org.kosta.jeongdab.tou.model;
 
-import java.util.Date;
-
 public class ServiceBoardVO {
 	private long serviceBoardNo;
 	private String serviceBoardTitle;
@@ -101,6 +99,5 @@ public class ServiceBoardVO {
 				+ ", serviceDate=" + serviceDate + ", serviceBoardHits=" + serviceBoardHits + ", nation=" + nation
 				+ ", memberVO=" + memberVO + "]";
 	}
-	
 
 }

@@ -8,11 +8,11 @@ public class TestUnitServiceBoardUpdate {
 	public static void main(String[] args) {
 		try {
 			ServiceBoardVO svo=new ServiceBoardVO();
-			svo.setServiceBoardTitle("한번테스트");
-			svo.setServiceBoardContent("내용바뀌냐고");
-			svo.setServiceDate("2023-7-14");
-			svo.setNation("뉴저지로갈꺼래");
-			svo.setServiceBoardNo(63);
+			svo.setServiceBoardTitle("업데이트 테스트");
+			svo.setServiceBoardContent("업데이트 테스트");
+			svo.setServiceDate("2023-7-07");
+			svo.setNation("미국");
+			svo.setServiceBoardNo(65);
 			ServiceBoardDAO.getInstance().updateServiceBoard(svo);
 			System.out.println("수정되땅!");
 		}catch(Exception e) {

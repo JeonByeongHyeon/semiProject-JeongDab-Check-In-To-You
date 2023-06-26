@@ -24,19 +24,20 @@
 <body>
 	<div class="container pt-3">
 		<form method="post"
-			action="${pageContext.request.contextPath}/WritePost.do">
+			action="${pageContext.request.contextPath}/UpdateServiceBoard.do">
+			<input type="hidden" name="no" value="${serviceBoard.serviceBoardNo}">
 			<table class="table">
 				<tr>
 					<td><input type="text" name="title" placeholder="글제목"
-						required="required"></td>
+						required="required" value="${serviceBoard.serviceBoardTitle}"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="date" placeholder="출국 날짜"
-						required="required"></td>
+					<td><input type="text" name="serviceDate" placeholder="출국 날짜"
+						required="required" value="${serviceBoard.serviceDate}"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="country" placeholder="나라 선택"
-						required="required"></td>
+					<td><input type="text" name="nation" placeholder="나라 선택"
+						required="required" value="${serviceBoard.nation}"></td>
 				</tr>
 				<tr>
 					<td><input type="file" class="form-control-file border"
@@ -44,8 +45,9 @@
 				</tr>
 				<tr>
 					<td><textarea rows="10" class="form-control" name="content"
-							placeholder="본문내용" required="required"></textarea></td>
+							required="required"> ${serviceBoard.serviceBoardContent}</textarea></td>
 				</tr>
+
 			</table>
 			<div class="text-center">
 				<button type="submit" class="btn btn-primary">확인</button>
