@@ -1,82 +1,173 @@
+let nameFlag = false;
+let emailFlag = false;
+let passwordFlag = false;
+let numberFlag = false;
+    
 function searchAddress() {
     new daum.Postcode({
         oncomplete: function (data) {
-            // 주소를 가져오는 로직을 변경해야 합니다.
-            let addr = ''; // 주소 변수
-
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+            let addr = '';
+            if (data.userSelectedType === 'R') {
                 addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+            } else {
                 addr = data.jibunAddress;
             }
-
-            // 주소 필드에 값을 설정하는 방식을 변경해야 합니다.
-            // document.getElementById('zipcode').value = data.zonecode;
-            document.getElementById('address').value = addr;
-
-            // 상세주소 필드로 커서를 이동하는 부분은 유지합니다.
-            document.getElementById('addressDetail').focus();
-
-            // 기타 필요한 로직을 추가하거나 수정합니다.
-            // addressCheckFlag = true;
-            // $('#searchAddressBtn').parent().next().hide();
+            // jQuery를 사용하여 주소 필드에 값을 설정합니다.
+            $('#address').val(addr);
+            // 상세주소 필드로 커서를 이동합니다.
+            $('#addressDetail').focus();
         }
     }).open();
 }
-$(document).ready(function() {
-	$('#nameInput').on('input', function() {
-		const name = $(this).val();
-		const koreanNamePattern = /^[가-힣]+$/;
-		const hasConsonantOrVowelOnly = /[^가-힣]*[ㄱ-ㅎㅏ-ㅣ]+[^가-힣]*/;
-		if (!koreanNamePattern.test(name) || hasConsonantOrVowelOnly.test(name)) {
-			$('#nameError').text("이름은 공백 없이 제대로된 한글만 사용해주세요.");
-			$(this).focus();
-		} else {
-			$('#nameError').text("");
-		}
-	});
-});
-        
-$(document).ready(function() {
-    $('#emailInput').on('input', function() {
-        const email = $(this).val();
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-        if (!emailPattern.test(email)) {
-            $('#emailError').text("올바른 이메일 형식을 사용해주세요.");
-            $('#certificationButton').prop('disabled', true);
-        } else {
-            $('#emailError').text("");
-            $('#certificationButton').prop('disabled', false);
-        }
-	});
-});
-function certificationEmail() {
-    alert('인증번호가 전송되었습니다.');
+function validateName() {
+    let name = $("#nameInput").val();
+    let regex = /^[가-힣]+$/;
+
+    if (!regex.test(name)) {
+        $("#nameError").html("이름은 한글로만 입력해야 하며, 띄어쓰기를 포함할 수 없습니다.");
+        nameFlag = false;
+    } else {
+        $("#nameError").html("");
+        nameFlag = true;
+    }
+
+    enableSignupButton();
 }
-        
+
+function validateEmail() {
+    let emailInput = $('#emailInput');
+    let sendEmailButton = $('#sendEmailButton');
+    let emailError = $('#emailError');
+
+    let email = emailInput.val().trim();
+    if (email === '') {
+        emailError.text('');
+        sendEmailButton.prop('disabled', true);
+        emailFlag = false;
+        return;
+    }
+
+    let emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        emailError.text('유효하지 않은 이메일 주소입니다.');
+        emailError.css('color', 'red');
+        sendEmailButton.prop('disabled', true);
+        emailFlag = false;
+        return;
+    }
+
+    $.ajax({
+        url: '../EmailCheckAjax.do',
+        method: 'GET',
+        data: { memberEmail: email },
+        success: function(response) {
+            if (response == 'duplicate') {
+                emailError.text('이미 사용 중인 이메일입니다.');
+                sendEmailButton.prop('disabled', true);
+                emailError.css('color', 'red');
+                emailFlag = false;
+            } else {
+                emailError.text('사용 가능한 이메일입니다.');
+                sendEmailButton.prop('disabled', false);
+                emailError.css('color', 'blue');
+                emailFlag = true;
+            }
+
+            enableSignupButton();
+        },
+        error: function(xhr, status, error) {
+            console.error('Request failed. Status: ' + xhr.status);
+        }
+    });
+}
+
 $(document).ready(function() {
-    $('#password, #passwordConfirm').on('input', function() {
-        const password = $('#password').val();
-        const passwordConfirm = $('#passwordConfirm').val();
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        
-        // 비밀번호 패턴 검사
-        if (!passwordPattern.test(password) && password) {
-            $('#passwordError').text("비밀번호는 8자 이상이며, 대문자, 소문자, 숫자, 특수 문자를 포함해야 합니다.");
-            $('#password').focus();
+    let passwordRegex = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+    $('#password').on('keyup', function() {
+        let password = $(this).val();
+        let message = '';
+
+        if (!passwordRegex.test(password)) {
+            message = '비밀번호는 8자 이상이며, 최소한 하나의 특수 문자를 포함해야 합니다.';
+            passwordFlag = false;
         } else {
-            $('#passwordError').text("");
+            passwordFlag = true;
         }
 
-        // 비밀번호 일치 검사
-        if (password && passwordConfirm && password === passwordConfirm) {
-            $('#passwordMatchMessage').text("비밀번호가 일치합니다.").css("color", "blue");
-        } else if (password && passwordConfirm) {
-            $('#passwordMatchMessage').text("비밀번호가 일치하지 않습니다.").css("color", "red");
-        } else {
-            $('#passwordMatchMessage').text("");
+        $('#message').text(message).css('color', 'red');
+        enableSignupButton();
+    });
+
+    $('#confirm_password').on('keyup', function() {
+        let password = $('#password').val();
+        let confirmPassword = $(this).val();
+
+        if (password !== confirmPassword) {
+            $('#message').text('비밀번호가 일치하지 않습니다.').css('color', 'red');
+            passwordFlag = false;
+        } else if (password == confirmPassword) {
+            $('#message').text('비밀번호가 일치합니다').css('color', 'blue');
+            passwordFlag = true;
         }
+
+        enableSignupButton();
     });
 });
 
+
+
+
+function certificationEmail() {
+    let email = $('#emailInput').val().trim();
+
+    $.ajax({
+        url: '../SendEmailAjax.do',
+        method: 'GET',
+        data: { email: email },
+        success: function(response) {
+            alert('인증번호가 이메일로 전송되었습니다.');
+        },
+        error: function(xhr, status, error) {
+            console.error('Request failed. Status: ' + xhr.status);
+        }
+    });
+}
+
+function numberCheck() {
+    let enteredCode = $('#verificationCodeInput').val().trim();
+
+    $.ajax({
+        url: '../CheckVerificationCodeAjax.do',
+        method: 'POST',
+        data: {
+            enteredCode: enteredCode
+        },
+        success: function(response) {
+            if (response === 'success') {
+                alert('인증번호가 일치합니다.');
+                numberFlag = true;
+                $('#password').focus();
+            } else {
+                alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
+                $('#verificationCodeInput').val('');
+                $('#verificationCodeInput').focus();
+                numberFlag = false;
+            }
+
+            enableSignupButton();
+        },
+        error: function(xhr, status, error) {
+            console.error('요청이 실패했습니다. 상태 코드: ' + xhr.status);
+        }
+    });
+}
+
+function enableSignupButton() {
+    if (nameFlag && emailFlag && passwordFlag && numberFlag) {
+        $("#signupButton").prop("disabled", false);
+    } else {
+        $("#signupButton").prop("disabled", true);
+    }
+}

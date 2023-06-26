@@ -12,13 +12,20 @@ public class RegisterMemberController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		String password	= request.getParameter("password");
+		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
 		String address = request.getParameter("address");
 		String addressDetail = request.getParameter("addressDetail");
-		MemberVO memberVO = new MemberVO(0, name,email,password,birth,0, address,addressDetail);
+		System.out.println(addressDetail);
+		MemberVO memberVO = new MemberVO();
+		memberVO.setMemberName(name);
+		memberVO.setMemberEmail(email);
+		memberVO.setPassword(password);
+		memberVO.setMemberBirth(birth);
+		memberVO.setMemberAddress(address);
+		memberVO.setMemberDetailAddress(addressDetail);
 		MemberDAO.getInstance().registerMember(memberVO);
-		
+		System.out.println(memberVO);
 		return "redirect:member/register-result.jsp";
 	}
 

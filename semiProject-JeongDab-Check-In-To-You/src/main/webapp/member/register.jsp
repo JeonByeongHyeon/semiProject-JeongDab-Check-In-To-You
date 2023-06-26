@@ -55,67 +55,71 @@
 				<div class="login-form">
 					<form action="../RegisterMember.do" method="post">
 						<div class="form-group">
-							<label>이름</label> <input type="text" name ="name" class="form-control"
-								placeholder="이름" required="required">
+							<label>이름</label> <input id="nameInput" type="text" name="name"
+								class="form-control" placeholder="이름" required="required"
+								oninput="validateName()">
+							<div id="nameError" style="color: red;"></div>
 						</div>
 						<label>이메일</label>
 						<div class="input-group">
-							<input type="email" name="email" class="form-control" placeholder="이메일"
-								required="required">
-								<!--  인증번호 전송기능 
+							<input type="email" id="emailInput" name="email"
+								class="form-control" placeholder="이메일" required="required"
+								oninput="validateEmail()">
 							<div class="input-group-append">
-								<button type="button" class="btn btn-info"
-									onclick="certificationEmail()">인증번호 전송</button>
+								<button type="button" id="sendEmailButton" class="btn btn-info"
+									onclick="certificationEmail()" disabled>인증번호 전송</button>
 							</div>
-							-->
 						</div>
-						<!--  인증번호 확인 기능
+						<div>
+							<span id="emailError" style="color: red;"></span>
+						</div>
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="인증번호"
+							<input type="text" id="verificationCodeInput"
+								name="verificationCode" class="form-control" placeholder="인증번호"
 								required="required">
 							<div class="input-group-append">
 								<button type="button" class="btn btn-info"
 									onclick="numberCheck()">인증번호 확인</button>
 							</div>
 						</div>
-						-->
-						<span style="color: blue;">인증번호가 일치합니다(동적으로 일치 불일치 검사)</span>
+						<span id="verificationResult" style="color: red;"></span>
+
+
 						<div class="form-group">
-							<label>비밀번호</label> <input type="password" name="password" class="form-control"
-								placeholder="비밀번호" required="required">
+							<label>비밀번호</label> <input type="password" name="password"
+								id="password" class="form-control" placeholder="비밀번호"
+								required="required">
 						</div>
-						<!--  비밀번호 확인 기능
 						<div class="form-group">
-							<input type="password" class="form-control" placeholder="비밀번호 확인"
-								required="required"> <span style="color: blue;">사용
-								가능한 비밀번호 입니다(ajax로 구현)</span>
+							<input type="password" id="confirm_password" class="form-control"
+								placeholder="비밀번호 확인" required="required"> <span
+								id="message" style="color: blue;"></span>
 						</div>
-						-->
+
 						<div class="form-group">
-							<label>생년월일</label> <input type="date" name="birth" class="form-control"
-								placeholder="" required="required">
+							<label>생년월일</label> <input type="date" name="birth"
+								class="form-control" placeholder="" required="required">
 						</div>
 						<div class="form-group">
 							<label>주소</label>
-							  
+
 							<div class="input-group">
 								<input type="text" class="form-control" name="address"
 									id="address" placeholder="주소 검색 버튼으로 주소 선택" required="required"
 									readonly>
-									
+
 								<div class="input-group-append">
 									<button type="button" class="btn btn-info"
 										onclick="searchAddress()">주소 검색</button>
 								</div>
-								
+
 							</div>
-							
-							
-							<input type="text" name="address"class="form-control" name="addressDetail"
-								id="addressDetail" placeholder="상세주소">
+							<input type="text" name="address" class="form-control"
+								name="addressDetail" id="addressDetail" placeholder="상세주소">
 						</div>
-						<button type="submit"
-							class="btn btn-primary btn-flat m-b-30 m-t-30">회원가입</button>
+						<button type="submit" id="signupButton"
+							class="btn btn-primary btn-flat m-b-30 m-t-30" disabled>회원가입</button>
+
 
 						<div class="register-link m-t-15 text-center">
 							<p>
@@ -127,7 +131,7 @@
 			</div>
 		</div>
 	</div>
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 	<script

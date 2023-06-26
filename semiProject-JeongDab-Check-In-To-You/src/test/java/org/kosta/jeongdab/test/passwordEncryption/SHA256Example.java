@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 public class SHA256Example {
 
 	public static void main(String[] args) {
-		String password = "mysecretpassword";
+		String password = "1234";
 
 		// 비밀번호 해싱
 		String hashedPassword = hashPassword(password);
@@ -14,7 +14,7 @@ public class SHA256Example {
 		System.out.println("Hashed password: " + hashedPassword);
 
 		// 사용자가 비밀번호를 입력했다고 가정
-		String userInput = "mysecretpassword";
+		String userInput = "1234";
 		String hashedUserInput = hashPassword(userInput);
 
 		// 저장된 해시와 사용자 입력 해시 비교

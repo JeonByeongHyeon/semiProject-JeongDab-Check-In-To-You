@@ -70,7 +70,6 @@ public class ServiceBoardDAO {
 	}
 	//게시물 리스트 보기
 		public ArrayList<ServiceBoardVO> serviceBoardList(Pagination pagination) throws SQLException{
-			System.out.println("===============DAO들어옴================");
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
@@ -99,7 +98,6 @@ public class ServiceBoardDAO {
 			}finally {
 				closeAll(rs, pstmt, con);
 			}
-			System.out.println("===============DAO들어옴================"+list);
 			return list;
 		}
 
@@ -124,20 +122,23 @@ public class ServiceBoardDAO {
 		public void posting(ServiceBoardVO serviceBoardVO) throws SQLException {
 			Connection con=null;
 			PreparedStatement pstmt=null;
-			ResultSet rs=null;
 			try {
 				con=dataSource.getConnection();
 				StringBuilder sql=new StringBuilder();
-				sql.append("INSERT INTO service_board(service_board_no,service_board_title,service_board_content ");
+				sql.append("INSERT INTO service_board(service_board_no,service_board_title,service_board_content, ");
 				sql.append("service_board_create_date,service_date,nation,member_no) VALUES ");
-				sql.append("(service_board_seq.nextval,'?','?', ");
-				sql.append("sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),?,?) ");
+				sql.append("(service_board_seq.nextval,?,?, sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),?,?) ");
+				pstmt=con.prepareStatement(sql.toString());
 				pstmt.setString(1, serviceBoardVO.getServiceBoardTitle());
-				pstmt.setString(1, serviceBoardVO.getServiceBoardContent());
+				pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
+				pstmt.setString(3, serviceBoardVO.getNation());
+				pstmt.setLong(4, serviceBoardVO.getMemberVO().getMemberNo());
+				pstmt.executeUpdate();
 			}finally {
-				
+				closeAll( pstmt, con);
 			}
 		}
+
 		public void updateServiceBoard(ServiceBoardVO serviceBoardVO) throws SQLException {
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -157,5 +158,21 @@ public class ServiceBoardDAO {
 			}finally {
 				closeAll(pstmt, con);
 			}
+		}
+
+		public void deletePostByNo(long no) throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			try {
+				con = dataSource.getConnection();
+				String sql = "delete from service_board where service_board_no= ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, no);
+				pstmt.executeUpdate();
+			} finally {
+				closeAll(pstmt, con);
+			}
+			
+
 		}
 }
