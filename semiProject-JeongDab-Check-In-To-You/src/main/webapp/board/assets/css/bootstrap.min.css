@@ -6607,7 +6607,7 @@ none
 }
 
 .border-top {
-	border-top: 1px solid #dee2e6 !important
+	    border-top: 45px solid #ffffff !important;
 }
 
 .border-top-0 {
@@ -7394,7 +7394,7 @@ none
 }
 
 .py-5 {
-	padding-top: 3rem !important;
+	padding-top: 114px !important;
 	padding-bottom: 3rem !important
 }
 
