@@ -70,29 +70,27 @@
 						
 						</table>
 						<table>
+						
 						<tr>
 		<td colspan="5" class="text-center">
-			<a href="bbs.jsp" class="btn btn-primary" onclick="()">목록</a>
-			<a href="bbs.jsp" class="btn btn-primary" onclick="deletePost()">삭제</a>
-			<a href="bbs.jsp" class="btn btn-primary" onclick="updatePost()">수정</a>
-			<form id="deletePostForm" action="DeletePost.do" method="post"> 
-			<input type="hidden" name="no" value="${post.no}">
-			</form>
-			<form id="updatePostForm" action="UpdatePostForm.do" method="post"> 
-			<input type="hidden" name="no" value="${post.no}">
+			<a class="btn btn-primary" onclick="${pageContext.request.contextPath}/ServiceBoardList.do">목록</a>
+	
+	<c:if test="${sessionScope.member.memberStatus==serviceBoard.memberVO.memberStatus}">
+			<a href="" class="btn btn-primary" onclick="">삭제</a>
+			
+			<a class="btn btn-primary" onclick="updateServiceBoard()">수정</a>
+			<form id="updateServiceBoard" action="UpdateServiceBoardForm.do" method="post"> 
+			<input type="hidden" name="no" value="${serviceBoard.serviceBoardNo}">
 			</form>
 			<script type="text/javascript">
-				function deletePost() {
-					if(confirm("삭제하시겠습니까?")){
-						document.getElementById("deletePostForm").submit();
-					}
-				}
-				function updatePost() {
+			
+				function updateServiceBoard() {
 					if(confirm("수정하시겠습니까?")){
-						document.getElementById("updatePostForm").submit();
+						document.getElementById("updateServiceBoard").submit();
 					}
 				}
 			</script>
+	</c:if>
 		</td>
 	</tr>
 					</table>
