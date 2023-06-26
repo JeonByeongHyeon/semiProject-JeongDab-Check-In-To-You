@@ -65,10 +65,321 @@
 			<%-- main 영역 --%>
 			
 		<div class="row">
-			<div class="col-sm-8 offset-sm-2">
-				<c:import url="${requestScope.url}"></c:import>
+			<form action="writeAction.jsp" method="post">
+				<table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="2"
+								style="background-color: #eeeeee; text-align: center;">게시판
+								글쓰기 양식</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control"
+								placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+
+						</tr>
+						<tr>
+							<td><input type="date" class="form-control"
+								placeholder="출국날짜 " name="bbsTitle" maxlength="50"></td>
+
+						</tr>
+						<tr>
+							<td><input type="text" class="form-control"
+								placeholder="이동국가 " name="bbsTitle" maxlength="50"></td>
+
+						</tr>
+						<tr>
+							<td><textarea type="text" class="form-control"
+									placeholder="글 내용" name="bbsContent" maxlength="2048"
+									style="height: 350px"></textarea></td>
+						</tr>
+					
+					</tbody>
+				</table>
+				<input type="submit" class="btn btn-primary" value="글쓰기">
+			</form>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
 			</div>
-		</div>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+	<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="date" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="country" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">등록</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary">삭제</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+		</form>
+	</div>
 
 			<%--footer 영역 --%>
 			<div class="row">
