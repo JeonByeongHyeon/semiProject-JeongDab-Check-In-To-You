@@ -64,42 +64,42 @@
 				</div>
 			</div>
 			<%-- main 영역 --%>
-
-			<div class="container pt-3">
-				<form method="post"
-					action="${pageContext.request.contextPath}/WritePost.do">
-					<table class="table">
-						<tr>
-							<td><input type="text" name="title" placeholder="글제목"
-								required="required"></td>
-						</tr>
-						<tr>
-							<td><input type="text" name="content" placeholder="출국 날짜"
-								required="required"></td>
-						</tr>
-						<tr>
-							<td><input type="text" name="nation" placeholder="나라 선택"
-								required="required"></td>
-						</tr>
-						<tr>
-							<td><input type="file" class="form-control-file border"
-								name="file"></td>
-						</tr>
-						<tr>
-							<td><textarea rows="10" class="form-control" name="content"
-									placeholder="본문내용" required="required"></textarea></td>
-						</tr>
-					</table>
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary">확인</button>
-						<button type="reset" class="btn btn-primary">취소</button>
-					</div>
-				</form>
-				<%--footer 영역 --%>
-				<div class="row">
-					<!-- 메인영역을 동적으로 import 해옴-->
-					<c:import url="/fix/footer.jsp" />
-				</div>
+			
+				<div class="container pt-3">
+		<form method="post"
+			action="${pageContext.request.contextPath}/WritePost.do">
+			<table class="table">
+				<tr>
+					<td><input type="text" name="title" placeholder="글제목"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="content" placeholder="출국 날짜"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="nation" placeholder="나라 선택"
+						required="required"></td>
+				</tr>
+				<tr>
+					<td><input type="file" class="form-control-file border"
+						name="file"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="10" class="form-control" name="content"
+							placeholder="본문내용" required="required"></textarea></td>
+				</tr>
+			</table>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">확인</button>
+				<button type="reset" class="btn btn-primary">취소</button>
+			</div>
+		</form>
+	</div>
+			<%--footer 영역 --%>
+			<div class="row">
+				<!-- 메인영역을 동적으로 import 해옴-->
+				<c:import url="/fix/footer.jsp" />
 			</div>
 		</div>
 	</div>
