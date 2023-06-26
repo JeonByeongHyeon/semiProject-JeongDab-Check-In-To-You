@@ -138,4 +138,24 @@ public class ServiceBoardDAO {
 				
 			}
 		}
+		public void updateServiceBoard(ServiceBoardVO serviceBoardVO) throws SQLException {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			try {
+				con=dataSource.getConnection();
+				StringBuilder sql= new StringBuilder();
+				sql.append("UPDATE service_board SET service_board_title=?,service_board_content=?, ");
+				sql.append("service_date=?, nation=? ");
+				sql.append("WHERE service_board_no=?");
+				pstmt=con.prepareStatement(sql.toString());
+				pstmt.setString(1,serviceBoardVO.getServiceBoardTitle());
+				pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
+				pstmt.setString(3, serviceBoardVO.getServiceDate());
+				pstmt.setString(4, serviceBoardVO.getNation());
+				pstmt.setLong(5, serviceBoardVO.getServiceBoardNo());
+				pstmt.executeUpdate();
+			}finally {
+				closeAll(pstmt, con);
+			}
+		}
 }
