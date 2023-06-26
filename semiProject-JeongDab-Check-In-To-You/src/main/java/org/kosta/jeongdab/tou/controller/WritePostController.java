@@ -38,7 +38,7 @@ public class WritePostController implements Controller {
 		sbvo.setMemberVO(memberVO);
 		ServiceBoardDAO.getInstance().posting(sbvo);
 		System.out.println(sbvo);
-		return "ServiceBoardList.do";
+		return "redirect:ServiceBoardList.do";
 	}
 
 }
