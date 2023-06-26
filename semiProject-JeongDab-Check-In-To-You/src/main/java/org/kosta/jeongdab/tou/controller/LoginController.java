@@ -10,7 +10,8 @@ import org.kosta.jeongdab.tou.model.MemberVO;
 
 public class LoginController implements Controller {
 
-	private static final String POST_METHOD = "POST";
+
+   private static final String POST_METHOD = "POST";
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -31,5 +32,6 @@ public class LoginController implements Controller {
 			return "redirect:index.jsp";
 		}
 	}
+
 
 }

@@ -35,6 +35,7 @@ public class MemberDAO {
 		closeAll(pstmt, con);
 	}
 
+
 	private static final String LOGIN_QUERY = "SELECT member_no ,member_status FROM member WHERE member_email=? AND password=?";
 	
 
@@ -63,6 +64,7 @@ public class MemberDAO {
 		}
 		return memberVO;
 	}
+
 
 	public void registerMember(MemberVO memberVO) throws SQLException {
 		Connection con = null;
