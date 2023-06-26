@@ -32,7 +32,7 @@ public class UpdateServiceBoardController implements Controller {
 		serviceBoardVO.setNation(nation);
 		ServiceBoardDAO.getInstance().updateServiceBoard(serviceBoardVO);
 		System.out.println(serviceBoardVO);
-		return "redirect:FindServiceBoardByNo.do";
+		return "redirect:FindServiceBoardByNo.do?no=" + no;
 	}
 
 }
