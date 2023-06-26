@@ -120,4 +120,22 @@ public class ServiceBoardDAO {
 					}
 			return totalPostCount;
 		}
+
+		public void posting(ServiceBoardVO serviceBoardVO) throws SQLException {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=dataSource.getConnection();
+				StringBuilder sql=new StringBuilder();
+				sql.append("INSERT INTO service_board(service_board_no,service_board_title,service_board_content ");
+				sql.append("service_board_create_date,service_date,nation,member_no) VALUES ");
+				sql.append("(service_board_seq.nextval,'?','?', ");
+				sql.append("sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),?,?) ");
+				pstmt.setString(1, serviceBoardVO.getServiceBoardTitle());
+				pstmt.setString(1, serviceBoardVO.getServiceBoardContent());
+			}finally {
+				
+			}
+		}
 }
