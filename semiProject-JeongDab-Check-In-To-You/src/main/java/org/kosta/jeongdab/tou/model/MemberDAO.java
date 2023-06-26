@@ -35,7 +35,7 @@ public class MemberDAO {
 		closeAll(pstmt, con);
 	}
 
-	private static final String LOGIN_QUERY = "SELECT member_no member_status FROM member WHERE member_email=? AND password=?";
+	private static final String LOGIN_QUERY = "SELECT member_no, member_status FROM member WHERE member_email=? AND password=?";
 
 	// 로그인
 	public MemberVO login(String memberEmail, String password) throws SQLException {
@@ -77,11 +77,12 @@ public class MemberDAO {
 			pstmt.setString(1, memberVO.getMemberName());
 			pstmt.setString(2, memberVO.getMemberEmail());
 			String hashedPassword = hashPassword(memberVO.getPassword());
-			System.out.println("register" + hashedPassword);
+//			System.out.println("register" + hashedPassword);
 			pstmt.setString(3, hashedPassword);
 			pstmt.setString(4, memberVO.getMemberBirth());
 			pstmt.setString(5, memberVO.getMemberAddress());
 			pstmt.setString(6, memberVO.getMemberDetailAddress());
+			System.out.println(memberVO.getMemberDetailAddress());
 			pstmt.executeUpdate();
 
 		} finally {
@@ -127,6 +128,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getInt(1);
+				System.out.println(result);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);

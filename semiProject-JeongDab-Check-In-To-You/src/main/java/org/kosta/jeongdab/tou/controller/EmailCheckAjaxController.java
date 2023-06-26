@@ -9,7 +9,7 @@ public class EmailCheckAjaxController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String memberEmail = request.getParameter("email");
+		String memberEmail = request.getParameter("memberEmail");
 		int count = MemberDAO.getInstance().checkEmail(memberEmail);
 		String responseBody;
 		if (count > 0) {

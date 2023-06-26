@@ -194,6 +194,6 @@ INSERT INTO service_board(service_board_no,service_board_title,service_board_con
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
 
 
+select * from member;
 
-
-
+delete from member where member_no = 63;
