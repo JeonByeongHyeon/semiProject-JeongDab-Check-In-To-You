@@ -16,21 +16,29 @@ public class WritePostController implements Controller {
 		if(request.getMethod().equals("POST")==false)
 			throw new ServletException("POST 방식만 서비스 가능합니다");
 		//회원만 사용 가능
+		System.out.println("controller");
 		HttpSession session=request.getSession(false);
-		if(session==null||session.getAttribute("memberId")==null) {
+		if(session==null||session.getAttribute("member")==null) {
 			System.out.println("회원만 서비스 이용 가능합니다");
-			return "redirect:FindPostList.do";
+			return "redirect:ServiceBoardList.do";
 		}
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
-		MemberVO memberVO=(MemberVO) session.getAttribute("memberVO");
-		ServiceBoardVO serviceBoardVO=new ServiceBoardVO();
-		serviceBoardVO.setServiceBoardTitle(title);
-		serviceBoardVO.setServiceBoardContent(content);
-		serviceBoardVO.setMemberVO(memberVO);
-		ServiceBoardDAO.getInstance().posting(serviceBoardVO);
-		
-		return null;
+		String nation=request.getParameter("nation");
+		System.out.println(title);
+		System.out.println(nation);
+		System.out.println(content);
+		long memberNo = (long) session.getAttribute("member");
+		MemberVO memberVO= new MemberVO();
+		memberVO.setMemberNo(memberNo);
+		ServiceBoardVO sbvo=new ServiceBoardVO();
+		sbvo.setServiceBoardTitle(title);
+		sbvo.setServiceBoardContent(content);
+		sbvo.setNation(nation);
+		sbvo.setMemberVO(memberVO);
+		ServiceBoardDAO.getInstance().posting(sbvo);
+		System.out.println(sbvo);
+		return "ServiceBoardList.do";
 	}
 
 }

@@ -16,11 +16,11 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <title></title>
 </head>
-<div class="row">
+
 	<div class="col">
 		<c:import url="/fix/header.jsp" />
 	</div>
-</div>
+
 <body>
 	<div class="container pt-3">
 		<form method="post"
@@ -31,11 +31,11 @@
 						required="required"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="date" placeholder="출국 날짜"
+					<td><input type="text" name="content" placeholder="출국 날짜"
 						required="required"></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="country" placeholder="나라 선택"
+					<td><input type="text" name="nation" placeholder="나라 선택"
 						required="required"></td>
 				</tr>
 				<tr>
