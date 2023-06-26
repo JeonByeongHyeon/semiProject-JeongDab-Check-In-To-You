@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -34,15 +35,15 @@ public class MemberDAO {
 		closeAll(pstmt, con);
 	}
 
-	private static final String LOGIN_QUERY = "SELECT member_no FROM member WHERE member_email=? AND password=?";
+	private static final String LOGIN_QUERY = "SELECT member_no member_status FROM member WHERE member_email=? AND password=?";
 
 	// 로그인
-	public long login(String memberEmail, String password) throws SQLException {
+	public MemberVO login(String memberEmail, String password) throws SQLException {
 		System.out.println("login 메서드 시작"); // 로깅 프레임워크 사용
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		long memberNo = 0;
+		MemberVO memberVO = null;
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(LOGIN_QUERY);
@@ -52,13 +53,14 @@ public class MemberDAO {
 			pstmt.setString(2, hashedPassword); // 실제로는 비밀번호를 해싱하여 비교해야 함
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				memberNo = rs.getLong(1);
+				memberVO = new MemberVO();
+				memberVO.setMemberNo(rs.getLong(1));
+				memberVO.setMemberStatus(rs.getInt(2));
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
-		System.out.println("회원 번호: " + memberNo); // 로깅 프레임워크 사용
-		return memberNo;
+		return memberVO;
 	}
 
 	public void registerMember(MemberVO memberVO) throws SQLException {
@@ -111,4 +113,32 @@ public class MemberDAO {
 		}
 	}
 
+	// 이메일 중복 검사
+	public int checkEmail(String memberEmail) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT COUNT(*) FROM member WHERE member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return result;
+	}
+
+//	랜덤한 인증번호 생성 메소드
+	public String generateVerificationCode() {
+		// 6자리의 랜덤 숫자 생성
+		Random random = new Random();
+		int code = 100000 + random.nextInt(900000);
+		return String.valueOf(code);
+	}
 }

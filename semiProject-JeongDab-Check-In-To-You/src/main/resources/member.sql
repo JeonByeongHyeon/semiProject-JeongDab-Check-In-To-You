@@ -189,7 +189,17 @@ service_board_create_date,service_date,nation,member_no) VALUES
 sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
 
 
+SELECT * FROM member;
 
+ALTER TABLE member
+ADD CONSTRAINT unique_email  UNIQUE (member_email);
 
+ALTER TABLE member
+ADD CONSTRAINT unique_name  UNIQUE (member_name);
+
+delete from member;
+
+ALTER TABLE member
+DROP CONSTRAINT unique_name;
 
 

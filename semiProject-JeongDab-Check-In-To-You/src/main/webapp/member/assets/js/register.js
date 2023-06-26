@@ -1,82 +1,146 @@
 function searchAddress() {
     new daum.Postcode({
         oncomplete: function (data) {
-            // 주소를 가져오는 로직을 변경해야 합니다.
-            let addr = ''; // 주소 변수
-
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+            let addr = '';
+            if (data.userSelectedType === 'R') {
                 addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+            } else {
                 addr = data.jibunAddress;
             }
-
-            // 주소 필드에 값을 설정하는 방식을 변경해야 합니다.
-            // document.getElementById('zipcode').value = data.zonecode;
-            document.getElementById('address').value = addr;
-
-            // 상세주소 필드로 커서를 이동하는 부분은 유지합니다.
-            document.getElementById('addressDetail').focus();
-
-            // 기타 필요한 로직을 추가하거나 수정합니다.
-            // addressCheckFlag = true;
-            // $('#searchAddressBtn').parent().next().hide();
+            // jQuery를 사용하여 주소 필드에 값을 설정합니다.
+            $('#address').val(addr);
+            // 상세주소 필드로 커서를 이동합니다.
+            $('#addressDetail').focus();
         }
     }).open();
 }
-$(document).ready(function() {
-	$('#nameInput').on('input', function() {
-		const name = $(this).val();
-		const koreanNamePattern = /^[가-힣]+$/;
-		const hasConsonantOrVowelOnly = /[^가-힣]*[ㄱ-ㅎㅏ-ㅣ]+[^가-힣]*/;
-		if (!koreanNamePattern.test(name) || hasConsonantOrVowelOnly.test(name)) {
-			$('#nameError').text("이름은 공백 없이 제대로된 한글만 사용해주세요.");
-			$(this).focus();
-		} else {
-			$('#nameError').text("");
-		}
-	});
-});
-        
-$(document).ready(function() {
-    $('#emailInput').on('input', function() {
-        const email = $(this).val();
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-        if (!emailPattern.test(email)) {
-            $('#emailError').text("올바른 이메일 형식을 사용해주세요.");
-            $('#certificationButton').prop('disabled', true);
-        } else {
-            $('#emailError').text("");
-            $('#certificationButton').prop('disabled', false);
-        }
-	});
-});
-function certificationEmail() {
-    alert('인증번호가 전송되었습니다.');
+function validateName() {
+    // 이름 입력 필드에서 값을 가져옵니다.
+    var name = $("#nameInput").val();
+
+    // 한글로만 구성되어 있고 띄어쓰기가 없는지 확인하는 정규식
+    var regex = /^[가-힣]+$/;
+
+    // 정규식에 맞는지 검사합니다.
+    if (!regex.test(name)) {
+        $("#nameError").html("이름은 한글로만 입력해야 하며, 띄어쓰기를 포함할 수 없습니다.");
+    } else {
+        $("#nameError").html("");
+    }
 }
-        
-$(document).ready(function() {
-    $('#password, #passwordConfirm').on('input', function() {
-        const password = $('#password').val();
-        const passwordConfirm = $('#passwordConfirm').val();
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        
-        // 비밀번호 패턴 검사
-        if (!passwordPattern.test(password) && password) {
-            $('#passwordError').text("비밀번호는 8자 이상이며, 대문자, 소문자, 숫자, 특수 문자를 포함해야 합니다.");
-            $('#password').focus();
-        } else {
-            $('#passwordError').text("");
-        }
+	function validateEmail() {
+		var emailInput = $('#emailInput');
+		var sendEmailButton = $('#sendEmailButton');
+		var emailError = $('#emailError');
 
-        // 비밀번호 일치 검사
-        if (password && passwordConfirm && password === passwordConfirm) {
-            $('#passwordMatchMessage').text("비밀번호가 일치합니다.").css("color", "blue");
-        } else if (password && passwordConfirm) {
-            $('#passwordMatchMessage').text("비밀번호가 일치하지 않습니다.").css("color", "red");
+		var email = emailInput.val().trim();
+		if (email === '') {
+			emailError.text('');
+			sendEmailButton.prop('disabled', true);
+			return;
+		}
+
+		var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+		if (!emailRegex.test(email)) {
+			emailError.text('유효하지 않은 이메일 주소입니다.');
+			emailError.css('color', 'red');
+			sendEmailButton.prop('disabled', true);
+			return;
+		}
+
+		$.ajax({
+			url: '../EmailCheckAjax.do',
+			method: 'GET',
+			data: { memberEmail: email },
+			success: function(response) {
+				if (response === 'duplicate') {
+					emailError.text('이미 사용 중인 이메일입니다.');
+					sendEmailButton.prop('disabled', true);
+					emailError.css('color', 'red'); // 이미 사용 중인 이메일인 경우 텍스트 색상을 빨간색으로 설정
+				} else {
+					emailError.text('사용 가능한 이메일입니다.');
+					sendEmailButton.prop('disabled', false);
+					emailError.css('color', 'blue'); // 사용 가능한 이메일인 경우 텍스트 색상을 파란색으로 설정
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error('Request failed. Status: ' + xhr.status);
+			}
+		});
+	}
+
+$(document).ready(function() {
+    // 비밀번호가 8자리 이상이며, 최소 한 개의 특수 문자를 포함하고 있는지 검사하는 정규식
+    var passwordRegex = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    $('#password, #confirm_password').on('keyup', function() {
+        var password = $("#password").val();
+        var confirmPassword = $("#confirm_password").val();
+        if (password !== confirmPassword) {
+            $('#message').html('비밀번호가 일치하지 않습니다').css('color', 'red');
         } else {
-            $('#passwordMatchMessage').text("");
+            $('#message').html('비밀번호가 일치합니다').css('color', 'blue');
+        }
+        if (!passwordRegex.test(password)) {
+            $('#message').html('비밀번호는 8자리 이상이며, 최소 한 개의 특수 문자를 포함해야 합니다').css('color', 'red');
         }
     });
 });
 
+function certificationEmail() {
+    var email = $('#emailInput').val().trim();
+
+    $.ajax({
+        url: '../SendEmailAjax.do',
+        method: 'GET',
+        data: { email: email },
+        success: function(response) {
+            // 인증번호 전송 성공 시
+            alert('인증번호가 이메일로 전송되었습니다.');
+            // 추가적인 처리를 수행할 수 있습니다.
+        },
+        error: function(xhr, status, error) {
+            console.error('Request failed. Status: ' + xhr.status);
+            // 에러 처리를 수행할 수 있습니다.
+        }
+    });
+}
+
+function numberCheck() {
+    var enteredCode = $('#verificationCodeInput').val().trim();
+    var verificationCode = $('#verificationCode').text();
+
+    if (enteredCode === verificationCode) {
+        alert('인증번호가 일치합니다.');
+        // 추가적인 처리를 수행할 수 있습니다.
+    } else {
+        alert('인증번호가 일치하지 않습니다.');
+        // 추가적인 처리를 수행할 수 있습니다.
+    }
+}
+
+function numberCheck() {
+    var enteredCode = $('#verificationCodeInput').val().trim();
+	console.log(enteredCode);
+
+    $.ajax({
+       	url: '../CheckVerificationCodeAjax.do',
+        method: 'POST',
+        data:"enteredCode=" +enteredCode,
+        success: function(response) {
+            if (response === 'success') {
+                // 인증번호 일치
+                alert('인증번호가 일치합니다.');
+                // 추가적인 처리를 수행할 수 있습니다.
+            } else {
+                // 인증번호 불일치
+                alert('인증번호가 일치하지 않습니다. 다시 입력해주세요.');
+                $('#verificationCodeInput').val(''); // 입력 필드 비우기
+                $('#verificationCodeInput').focus(); // 다시 입력 필드에 포커스 설정
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('요청이 실패했습니다. 상태 코드: ' + xhr.status);
+        }
+    });
+}
