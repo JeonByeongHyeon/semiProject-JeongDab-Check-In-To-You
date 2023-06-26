@@ -102,7 +102,8 @@ FROM (
 	SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits  FROM  service_board 
 ) sb WHERE rnum BETWEEN 1 AND 5
 
-
+--게시글 삭제
+delete from service_board where service_board_no= 74;
 
 
 
@@ -194,6 +195,6 @@ INSERT INTO service_board(service_board_no,service_board_title,service_board_con
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
 
 
+select * from member;
 
-
-
+delete from member where member_no = 63;
