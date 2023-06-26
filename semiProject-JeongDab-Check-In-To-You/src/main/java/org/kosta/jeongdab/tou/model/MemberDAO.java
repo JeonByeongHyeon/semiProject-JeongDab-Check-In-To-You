@@ -35,7 +35,7 @@ public class MemberDAO {
 		closeAll(pstmt, con);
 	}
 
-	private static final String LOGIN_QUERY = "SELECT member_no member_status FROM member WHERE member_email=? AND password=?";
+	private static final String LOGIN_QUERY = "SELECT member_no ,member_status FROM member WHERE member_email=? AND password=?";
 
 	// 로그인
 	public MemberVO login(String memberEmail, String password) throws SQLException {
