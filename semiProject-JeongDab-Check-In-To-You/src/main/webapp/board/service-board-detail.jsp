@@ -79,40 +79,44 @@
 							</pre></td>
 						</tr>
 					</table>
-				<c:if
-						test="${sessionScope.member.memberStatus == 0 }">
+					<c:if test="${sessionScope.member.memberStatus == 0 }">
 
-					<table>
-						<tr>
-							<td colspan="5" class="text-center">
-							<a href="../ServiceBoardList.do" class="btn btn-primary">목록</a>
-				<%-- <c:if test="${sessionScope.memberNo.memberEmail==requestScope.serviceBoard.memberVO.memberEmail }">
+						<table>
+							<tr>
+								<td colspan="5" class="text-center"><a
+									href="../ServiceBoardList.do" class="btn btn-primary">목록</a> <%-- <c:if test="${sessionScope.memberNo.memberEmail==requestScope.serviceBoard.memberVO.memberEmail }">
 					 --%>
-					<button type="button" class="btn btn-primary" onclick="deletePost()">삭제</button> 
-						<form id="deletePostForm" action="DeletePost.do" method="post">
-							<input type="hidden" name="no" value="${serviceBoard.serviceBoardNo}">
-						</form>
-					<button type="button" class="btn btn-primary" onclick="updateServiceBoard()">수정</button> 
-						<form id="updateServiceBoard" action="UpdateServiceBoardForm.do" method="post"> 
-							<input type="hidden" name="no" value="${serviceBoard.serviceBoardNo}">
-						</form>
-						 <script type="text/javascript">
-							function deletePost() {
-								if (confirm("삭제하시겠습니까?")) {
-									document.getElementById("deletePostForm").submit();
-									}
-								}
-							function updateServiceBoard() {
-								if(confirm("수정하시겠습니까?")){
-									document.getElementById("updateServiceBoard").submit();
-								}
-							}			
-						</script>
-					<%-- </c:if> --%>
-					</td>
-				</tr>
-		</table>
-
+									<button type="button" class="btn btn-primary"
+										onclick="deletePost()">삭제</button>
+									<form id="deletePostForm" action="DeletePost.do" method="post">
+										<input type="hidden" name="no"
+											value="${serviceBoard.serviceBoardNo}">
+									</form>
+									<button type="button" class="btn btn-primary"
+										onclick="updateServiceBoard()">수정</button>
+									<form id="updateServiceBoard"
+										action="UpdateServiceBoardForm.do" method="post">
+										<input type="hidden" name="no"
+											value="${serviceBoard.serviceBoardNo}">
+									</form> <script type="text/javascript">
+										function deletePost() {
+											if (confirm("삭제하시겠습니까?")) {
+												document.getElementById(
+														"deletePostForm")
+														.submit();
+											}
+										}
+										function updateServiceBoard() {
+											if (confirm("수정하시겠습니까?")) {
+												document.getElementById(
+														"updateServiceBoard")
+														.submit();
+											}
+										}
+									</script> <%-- </c:if> --%></td>
+							</tr>
+						</table>
+						 </c:if>
 				</div>
 			</div>
 			<%--footer 영역 --%>
