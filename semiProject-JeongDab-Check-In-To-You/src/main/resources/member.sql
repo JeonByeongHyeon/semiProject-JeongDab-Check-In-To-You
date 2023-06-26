@@ -110,7 +110,7 @@ delete from service_board where service_board_no= 74;
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
 service_board_create_date,service_date,nation,member_no) VALUES
 (service_board_seq.nextval,'30캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
-sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
+sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',6);
 
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,
 service_board_create_date,service_date,nation,member_no) VALUES
@@ -189,7 +189,11 @@ service_board_create_date,service_date,nation,member_no) VALUES
 (service_board_seq.nextval,'49캐나다로 가는 애견이동봉사자 구합니다!','2023년 7월 1일 출국하시는 캐나다행 봉사자구해요~!',
 sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),'캐나다',22);
 
+ALTER TABLE member
+ADD CONSTRAINT unique_email  UNIQUE (member_email);
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
+INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
+
 
 
 

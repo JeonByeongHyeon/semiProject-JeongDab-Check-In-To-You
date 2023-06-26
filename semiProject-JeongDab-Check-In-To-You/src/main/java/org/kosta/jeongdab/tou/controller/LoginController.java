@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.jeongdab.tou.model.MemberDAO;
+import org.kosta.jeongdab.tou.model.MemberVO;
 
 public class LoginController implements Controller {
 
 	private static final String POST_METHOD = "POST";
-	private static final long INVALID_MEMBER_NO = 0;
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,14 +20,14 @@ public class LoginController implements Controller {
 		}
 		String memberEmail = request.getParameter("memberEmail");
 		String password = request.getParameter("password");
-		long memberNo = MemberDAO.getInstance().login(memberEmail, password);
-		if (memberNo == INVALID_MEMBER_NO) {
-			System.out.println("로그인 실패"); // 로깅 프레임워크 사용
+		MemberVO memberVO = MemberDAO.getInstance().login(memberEmail, password);
+		if (memberVO == null) {
+			System.out.println("로그인 실패");
 			return "redirect:member/login-fail.jsp";
 		} else {
 			HttpSession session = request.getSession();
-			session.setAttribute("member", memberNo);
-			System.out.println("로그인 성공"); // 로깅 프레임워크 사용
+			session.setAttribute("member", memberVO);
+			System.out.println("로그인 성공");
 			return "redirect:index.jsp";
 		}
 	}
