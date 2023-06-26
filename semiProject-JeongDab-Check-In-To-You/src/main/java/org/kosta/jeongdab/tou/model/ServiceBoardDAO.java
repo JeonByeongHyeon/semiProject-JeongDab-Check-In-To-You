@@ -138,4 +138,19 @@ public class ServiceBoardDAO {
 				
 			}
 		}
+
+		public void deletePostByNo(long no) throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			try {
+				con = dataSource.getConnection();
+				String sql = "delete from service_board where service_board_no= ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setLong(1, no);
+				pstmt.executeUpdate();
+			} finally {
+				closeAll(pstmt, con);
+			}
+			
+		}
 }

@@ -46,56 +46,64 @@
 	<%-- main(게시판 상세글보기) 영역 --%>		
 			<div class="row main">
 				<div class="col-sm-8 offset-sm-2">
-		
-					<table class="table table-bordered" >
-						<tr >
+
+					<table class="table table-bordered">
+						<tr>
 							<td>글번호 ${serviceBoard.serviceBoardNo}</td>
 							<td>제목 ${serviceBoard.serviceBoardTitle}</td>
 							<td>${serviceBoard.serviceBoardCreateDate}</td>
-							<td >이동국가 ${serviceBoard.nation}</td>
+							<td>이동국가 ${serviceBoard.nation}</td>
 						</tr>
 						<tr>
-							<td >작성자 ${serviceBoard.memberVO.memberName}</td>
+							<td>작성자 ${serviceBoard.memberVO.memberName}</td>
 							<td>아이디 ${serviceBoard.memberVO.memberEmail}</td>
 							<td>조회수 ${serviceBoard.serviceBoardHits}</td>
 						</tr>
 						<tr>
-							<td >출국일시 ${serviceBoard.serviceDate}</td>
+							<td>출국일시 ${serviceBoard.serviceDate}</td>
 						</tr>
 						<tr>
-							<td>
-								<pre><font size="6">내용${serviceBoard.serviceBoardContent}</font></pre>
-							</td>
+							<td><pre>
+									<font size="6">내용${serviceBoard.serviceBoardContent}</font>
+								</pre></td>
 						</tr>
-						
-						</table>
-						<table>
-						<tr>
-		<td colspan="5" class="text-center">
-			<a href="bbs.jsp" class="btn btn-primary" onclick="()">목록</a>
-			<a href="bbs.jsp" class="btn btn-primary" onclick="deletePost()">삭제</a>
-			<a href="bbs.jsp" class="btn btn-primary" onclick="updatePost()">수정</a>
-			<form id="deletePostForm" action="DeletePost.do" method="post"> 
-			<input type="hidden" name="no" value="${post.no}">
-			</form>
-			<form id="updatePostForm" action="UpdatePostForm.do" method="post"> 
-			<input type="hidden" name="no" value="${post.no}">
-			</form>
-			<script type="text/javascript">
-				function deletePost() {
-					if(confirm("삭제하시겠습니까?")){
-						document.getElementById("deletePostForm").submit();
-					}
-				}
-				function updatePost() {
-					if(confirm("수정하시겠습니까?")){
-						document.getElementById("updatePostForm").submit();
-					}
-				}
-			</script>
-		</td>
-	</tr>
+
 					</table>
+<%-- 					<c:if test="${sessionScope.memberNo.memberEmail==requestScope.serviceBoard.memberVO.memberEmail }">
+ --%>
+						<table>
+							<tr>
+								<td colspan="5" class="text-center"><a
+									href="../ServiceBoardList.do" class="btn btn-primary">목록</a>
+									<button type="button" class="btn btn-primary" onclick="deletePost()">삭제</button> <a
+									href="bbs.jsp" class="btn btn-primary" onclick="updatePost()">수정</a>
+									<form id="deletePostForm" action="DeletePost.do" method="post">
+										<input type="hidden" name="no"
+											value="${serviceBoard.serviceBoardNo}">
+									</form>
+									<form id="updatePostForm" action="UpdatePostForm.do"
+										method="post">
+										<input type="hidden" name="no" value="${post.no}">
+									</form> <script type="text/javascript">
+										function deletePost() {
+											if (confirm("삭제하시겠습니까?")) {
+												document.getElementById(
+														"deletePostForm")
+														.submit();
+											}
+										}
+										function updatePost() {
+											if (confirm("수정하시겠습니까?")) {
+												document.getElementById(
+														"updatePostForm")
+														.submit();
+											}
+										}
+									</script></td>
+							</tr>
+						</table>
+<%-- 					</c:if>
+ --%>
 				</div>
 			</div>
 	<%--footer 영역 --%>
