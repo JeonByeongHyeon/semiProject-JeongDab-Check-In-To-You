@@ -4,32 +4,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<title>봉사 구인 게시판</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--start header footer 관련 링크 -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>봉사구인게시글수정하기</title>
+<link rel="icon" type="image/x-icon" href="fix/assets/favicon.ico" />
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+	crossorigin="anonymous"></script>
+<!-- Google fonts-->
 <link
-	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
-	rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+	rel="stylesheet" type="text/css" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="fix/assets/css/styles.css" rel="stylesheet" />
+<!--end header footer 관련 링크 -->
 
-<!-- Icon Font Stylesheet -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-	rel="stylesheet">
-
-<!-- Libraries Stylesheet -->
+<!-- start board 관련 링크 -->
 <link
 	href="${pageContext.request.contextPath}/board/assets/lib/animate/animate.min.css"
 	rel="stylesheet">
@@ -39,22 +36,21 @@
 <link
 	href="${pageContext.request.contextPath}/board/assets/lib/lightbox/css/lightbox.min.css"
 	rel="stylesheet">
-
 <!-- Customized Bootstrap Stylesheet -->
 <link
 	href="${pageContext.request.contextPath}/board/assets/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <!-- Template Stylesheet -->
 <link
 	href="${pageContext.request.contextPath}/board/assets/css/style.css"
 	rel="stylesheet">
+<!-- end board 관련 링크 -->
 </head>
+<body>
 <%-- header 영역 --%>
 <div class="row header">
 	<c:import url="/fix/header.jsp" />
 </div>
-<body>
 	<div class="container-xxl py-5">
 		<div class="text-center mx-auto mb-5 wow fadeInUp"
 			data-wow-delay="0.1s" style="max-width: 500px;">
@@ -135,5 +131,11 @@
 			location.href = "${pageContext.request.contextPath}/board/write-post.jsp";
 		}
 	</script>
+	
+<%--footer 영역 --%>
+			<div class="row footer">
+				<c:import url="/fix/footer.jsp" />
+			</div>
+	
 </body>
 </html>
