@@ -77,9 +77,11 @@
 					</a>
 				</div>
 			</c:forEach>
+				<c:if test="${sessionScope.member.memberStatus == 0 }">
 			<div>
 				<button type="submit" class="btn btn-primary" onclick="writeForm()">글쓰기</button>
 			</div>
+			</c:if>
 			<%--</c:forEach>--%>
 			<%--끝 --%>
 
