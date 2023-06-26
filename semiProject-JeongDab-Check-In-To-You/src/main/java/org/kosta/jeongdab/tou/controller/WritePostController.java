@@ -28,9 +28,9 @@ public class WritePostController implements Controller {
 		System.out.println(title);
 		System.out.println(nation);
 		System.out.println(content);
-		long memberNo = (long) session.getAttribute("member");
+		MemberVO memberNo = (MemberVO) session.getAttribute("member");
 		MemberVO memberVO= new MemberVO();
-		memberVO.setMemberNo(memberNo);
+		memberVO.setMemberNo(memberNo.getMemberNo());
 		ServiceBoardVO sbvo=new ServiceBoardVO();
 		sbvo.setServiceBoardTitle(title);
 		sbvo.setServiceBoardContent(content);

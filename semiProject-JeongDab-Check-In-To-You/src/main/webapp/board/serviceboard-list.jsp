@@ -56,59 +56,61 @@
 </div>
 <body>
 	<div class="container-xxl py-5">
-			<div class="text-center mx-auto mb-5 wow fadeInUp"
-				data-wow-delay="0.1s" style="max-width: 500px;">
-				<h1 class="display-6 mb-4">봉사 구인 게시판</h1>				
+		<div class="text-center mx-auto mb-5 wow fadeInUp"
+			data-wow-delay="0.1s" style="max-width: 500px;">
+			<h1 class="display-6 mb-4">봉사 구인 게시판</h1>
+		</div>
+		<div class="row g-4">
+			<%--시작 --%>
+			<%-- <c:forEach begin="1" end="6" var="num" >--%>
+			<c:forEach items="${list}" var="board">
+				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+					<a class="service-item d-block rounded text-center h-100 p-4"
+						href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
+						<img class="img-fluid rounded mb-4"
+						src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+						alt="">
+						<h4 class="mb-0">${board.serviceBoardTitle}</h4>
+						<div>
+							<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+						</div>
+					</a>
+				</div>
+			</c:forEach>
+			<div>
+				<button type="submit" class="btn btn-primary" onclick="writeForm()">글쓰기</button>
 			</div>
-			<div class="row g-4">
-				<%--시작 --%>
-				<%-- <c:forEach begin="1" end="6" var="num" >--%>
-				<c:forEach items="${list}" var="board">
-					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-						<a class="service-item d-block rounded text-center h-100 p-4"
-							href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
-							<img class="img-fluid rounded mb-4"
-							src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
-							alt="">
-							<h4 class="mb-0">${board.serviceBoardTitle}</h4>
-							<div>
-								<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
-							</div>
-						</a>
-					</div>
-				</c:forEach>
-				
-				<%--</c:forEach>--%>
-				<%--끝 --%>
+			<%--</c:forEach>--%>
+			<%--끝 --%>
 
-				<!--
+			<!--
       pagination 
 -->
-				<ul class="pagination justify-content-center" style="margin: 20px 0">
-					<c:if test="${pagination.previousPageGroup}">
-						<li class="page-item"><a class="page-link"
-							href="ServiceBoardList.do?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
-					</c:if>
-					<c:forEach begin="${pagination.startPageOfPageGroup}"
-						end="${pagination.endPageOfPageGroup}" var="page">
-						<c:choose>
-							<c:when test="${pagination.nowPage==page}">
-								<li class="page-item active"><a class="page-link"
-									href="ServiceBoardList.do?pageNo=${page}">${page}</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									href="ServiceBoardList.do?pageNo=${page}">${page}</a></li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${pagination.nextPageGroup}">
-						<li class="page-item"><a class="page-link"
-							href="ServiceBoardList.do?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>
-					</c:if>
-				</ul>
-			</div>
+			<ul class="pagination justify-content-center" style="margin: 20px 0">
+				<c:if test="${pagination.previousPageGroup}">
+					<li class="page-item"><a class="page-link"
+						href="ServiceBoardList.do?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
+				</c:if>
+				<c:forEach begin="${pagination.startPageOfPageGroup}"
+					end="${pagination.endPageOfPageGroup}" var="page">
+					<c:choose>
+						<c:when test="${pagination.nowPage==page}">
+							<li class="page-item active"><a class="page-link"
+								href="ServiceBoardList.do?pageNo=${page}">${page}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="ServiceBoardList.do?pageNo=${page}">${page}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${pagination.nextPageGroup}">
+					<li class="page-item"><a class="page-link"
+						href="ServiceBoardList.do?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>
+				</c:if>
+			</ul>
 		</div>
+	</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
@@ -125,5 +127,11 @@
 		src="${pageContext.request.contextPath}/board/assets/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/board/assets/lib/lightbox/js/lightbox.min.js"></script>
+	<script type="text/javascript">
+		function writeForm() {
+			console.log("누름");
+			location.href = "${pageContext.request.contextPath}/board/write-post.jsp";
+		}
+	</script>
 </body>
 </html>
