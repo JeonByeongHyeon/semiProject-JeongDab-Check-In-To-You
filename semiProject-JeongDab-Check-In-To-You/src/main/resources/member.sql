@@ -39,6 +39,7 @@ CREATE TABLE reply (
 );
 --댓글 삽입
 insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'두번째 댓글',sysdate,62,65); 
+insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'야미',sysdate,62,65); 
 select*from reply
 
 --시퀀스 생성
@@ -55,6 +56,8 @@ INNER JOIN Member m ON r.member_no = m.member_no
 INNER JOIN Service_board sb ON r.service_board_no = sb.service_board_no
 where sb.service_board_no = 65 and m.member_no =62
 
+--댓글 삭제
+delete from reply where reply_no= 3 and member_no=62
 
 
 
