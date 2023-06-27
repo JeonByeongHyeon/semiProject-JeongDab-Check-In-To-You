@@ -47,10 +47,10 @@
 <!-- end board 관련 링크 -->
 </head>
 <body>
-<%-- header 영역 --%>
-<div class="row header">
-	<c:import url="/fix/header.jsp" />
-</div>
+	<%-- header 영역 --%>
+	<div class="row header">
+		<c:import url="/fix/header.jsp" />
+	</div>
 	<div class="container-xxl py-5">
 		<div class="text-center mx-auto mb-5 wow fadeInUp"
 			data-wow-delay="0.1s" style="max-width: 500px;">
@@ -58,27 +58,46 @@
 		</div>
 		<div class="row g-4">
 			<%--시작 --%>
-			<%-- <c:forEach begin="1" end="6" var="num" >--%>
+
 			<c:forEach items="${list}" var="board">
 				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-					<a class="service-item d-block rounded text-center h-100 p-4"
-						href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
-						<img class="img-fluid rounded mb-4"
-						src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
-						alt="">
-						<h4 class="mb-0">${board.serviceBoardTitle}</h4>
-						<div>
-							<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
-						</div>
-					</a>
+					<c:choose>
+						<c:when test="${sessionScope.member==null }">
+							<a class="service-item d-block rounded text-center h-100 p-4"
+								href="#">
+								<img class="img-fluid rounded mb-4"
+								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+								alt="">
+
+								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
+								<div>
+									<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+								</div>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a class="service-item d-block rounded text-center h-100 p-4"
+								href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
+								<img class="img-fluid rounded mb-4"
+								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+								alt="">
+
+								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
+								<div>
+									<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+								</div>
+							</a>
+						</c:otherwise>
+
+					</c:choose>
 				</div>
 			</c:forEach>
 			<div>
 				<c:if test="${sessionScope.member.memberStatus == 0 }">
-				<button type="submit" class="btn btn-primary" onclick="writeForm()">글쓰기</button>
-			</c:if>
+					<button type="submit" class="btn btn-primary" onclick="writeForm()">글쓰기</button>
+				</c:if>
 			</div>
-			<%--</c:forEach>--%>
+
 			<%--끝 --%>
 
 			<!--
@@ -131,11 +150,11 @@
 			location.href = "${pageContext.request.contextPath}/board/write-post.jsp";
 		}
 	</script>
-	
-<%--footer 영역 --%>
-			<div class="row footer">
-				<c:import url="/fix/footer.jsp" />
-			</div>
-	
+
+	<%--footer 영역 --%>
+	<div class="row footer">
+		<c:import url="/fix/footer.jsp" />
+	</div>
+
 </body>
 </html>

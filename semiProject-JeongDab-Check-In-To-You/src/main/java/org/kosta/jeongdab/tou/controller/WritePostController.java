@@ -24,9 +24,11 @@ public class WritePostController implements Controller {
 		}
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
+		String date=request.getParameter("date");
 		String nation=request.getParameter("nation");
 		System.out.println(title);
 		System.out.println(nation);
+		System.out.println(date);
 		System.out.println(content);
 		MemberVO memberNo = (MemberVO) session.getAttribute("member");
 		MemberVO memberVO= new MemberVO();
@@ -35,6 +37,7 @@ public class WritePostController implements Controller {
 		sbvo.setServiceBoardTitle(title);
 		sbvo.setServiceBoardContent(content);
 		sbvo.setNation(nation);
+		sbvo.setServiceDate(date);
 		sbvo.setMemberVO(memberVO);
 		ServiceBoardDAO.getInstance().posting(sbvo);
 		System.out.println(sbvo);

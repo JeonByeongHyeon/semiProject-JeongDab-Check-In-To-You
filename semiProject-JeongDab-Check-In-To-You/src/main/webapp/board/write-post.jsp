@@ -60,7 +60,7 @@
                   required="required"></td>
             </tr>
             <tr>
-               <td><input type="date" name="content" placeholder="출국 날짜"
+               <td><input type="date" name="date" placeholder="출국 날짜"
                   required="required"></td>
             </tr>
             <tr>

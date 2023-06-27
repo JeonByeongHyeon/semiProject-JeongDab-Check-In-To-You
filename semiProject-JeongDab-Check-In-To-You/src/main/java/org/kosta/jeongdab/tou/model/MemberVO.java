@@ -1,7 +1,7 @@
 package org.kosta.jeongdab.tou.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class MemberVO implements Serializable {
 	private static final long serialVersionUID = -7822446113218586799L;
@@ -9,7 +9,7 @@ public class MemberVO implements Serializable {
 	private String memberName;
 	private String memberEmail;
 	private String password;
-	private String  memberBirth;
+	private Date memberBirth;
 	private int memberStatus;
 	private String memberAddress;
 	private String memberDetailAddress;
@@ -20,7 +20,7 @@ public class MemberVO implements Serializable {
 	}
 
 	
-	public MemberVO(long memberNo, String memberName, String memberEmail, String password, String memberBirth,
+	public MemberVO(long memberNo, String memberName, String memberEmail, String password, Date memberBirth,
 			int memberStatus, String memberAddress, String memberDetailAddress) {
 		super();
 		this.memberNo = memberNo;
@@ -66,11 +66,11 @@ public class MemberVO implements Serializable {
 		this.password = password;
 	}
 
-	public String getMemberBirth() {
+	public Date getMemberBirth() {
 		return memberBirth;
 	}
 
-	public void setMemberBirth(String memberBirth) {
+	public void setMemberBirth(Date memberBirth) {
 		this.memberBirth = memberBirth;
 	}
 
@@ -104,7 +104,7 @@ public class MemberVO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MemberVO2 [memberNo=" + memberNo + ", memberEmail=" + memberEmail + ", memberName=" + memberName
+		return "MemberVO [memberNo=" + memberNo + ", memberEmail=" + memberEmail + ", memberName=" + memberName
 				+ ", password=" + password + ", memberBirth=" + memberBirth + ", memberStatus=" + memberStatus
 				+ ", memberAddress=" + memberAddress + ", memberDetailAddress=" + memberDetailAddress + "]";
 	}
