@@ -23,7 +23,7 @@ public class DeleteReplyAjaxController implements Controller {
 		ReplyVO replyVO =new ReplyVO(); 
 		replyVO.setReplyNo(no);
 		replyVO.setMemberVO(memberVO);
-		boolean result=ReplyDAO.getInstance().deletePostByNo(replyVO);
+		boolean result=ReplyDAO.getInstance().deleteReplyByNo(replyVO);
 		if (result) {
 			message = "succes";
 		}else {

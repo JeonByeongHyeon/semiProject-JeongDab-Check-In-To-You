@@ -33,7 +33,7 @@ public class ReplyDAO {
 		closeAll(pstmt, con);
 	}
 
-	public boolean deletePostByNo(ReplyVO replyVO) throws SQLException {
+	public boolean deleteReplyByNo(ReplyVO replyVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
