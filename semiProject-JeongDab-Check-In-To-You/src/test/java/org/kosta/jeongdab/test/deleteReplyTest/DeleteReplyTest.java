@@ -8,8 +8,9 @@ public class DeleteReplyTest {
 	public static void main(String[] args) {
 		try {
 			ReplyVO rvo=new ReplyVO();
-			MemberVO mvo=new MemberVO();
-			mvo.setMemberNo(62);
+			MemberVO memberVO=new MemberVO();
+			memberVO.setMemberNo(62);
+			rvo.setMemberVO(memberVO);
 			rvo.setReplyNo(4);
 			ReplyDAO.getInstance().deleteReplyByNo(rvo);
 			System.out.println(rvo);
