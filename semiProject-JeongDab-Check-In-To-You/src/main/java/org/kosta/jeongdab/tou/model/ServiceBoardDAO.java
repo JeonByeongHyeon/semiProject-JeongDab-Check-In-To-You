@@ -174,7 +174,18 @@ public class ServiceBoardDAO {
 			} finally {
 				closeAll(pstmt, con);
 			}
-			
-
+		}
+		public void updateHits(long no) throws SQLException {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			try {
+				con=dataSource.getConnection();
+				String sql="update service_board set service_board_hits=service_board_hits+1 where service_board_no=?";
+				pstmt=con.prepareCall(sql);
+				pstmt.setLong(1, no);
+				pstmt.executeUpdate();
+			}finally {
+				closeAll(pstmt,con);
+			}
 		}
 }
