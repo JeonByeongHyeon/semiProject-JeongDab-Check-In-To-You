@@ -238,6 +238,7 @@ update service_board set service_board_hits=service_board_hits+1 where service_b
 
 select * from reply;
 
+<<<<<<< HEAD
 UPDATE reply SET reply_content='내가 댓글 바꿔썽', reply_date=sysdate WHERE service_board_no=65 AND reply_no=4;
 select * from reply;
 
@@ -260,6 +261,8 @@ ALTER TABLE reply
 DROP CONSTRAINT FK_SERVICE_BOARD_REPLY;
 select * from reply;
 
+=======
+>>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 ALTER TABLE reply
 ADD CONSTRAINT FK_MEMBER_REPLY
 FOREIGN KEY (member_no)

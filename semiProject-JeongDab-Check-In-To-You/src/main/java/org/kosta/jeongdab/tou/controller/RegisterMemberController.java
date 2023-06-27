@@ -1,6 +1,5 @@
 package org.kosta.jeongdab.tou.controller;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +15,10 @@ public class RegisterMemberController implements Controller {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String birthStr = request.getParameter("birth");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date birth = (Date) dateFormat.parse(request.getParameter("birth"));
+		java.util.Date utilDate = dateFormat.parse(birthStr);
+		java.sql.Date memberBirth = new java.sql.Date(utilDate.getTime());
 		String address = request.getParameter("address");
 		String addressDetail = request.getParameter("addressDetail");
 		System.out.println(addressDetail);
@@ -25,7 +26,7 @@ public class RegisterMemberController implements Controller {
 		memberVO.setMemberName(name);
 		memberVO.setMemberEmail(email);
 		memberVO.setPassword(password);
-		memberVO.setMemberBirth(birth);
+		memberVO.setMemberBirth(memberBirth);
 		memberVO.setMemberAddress(address);
 		memberVO.setMemberDetailAddress(addressDetail);
 		MemberDAO.getInstance().registerMember(memberVO);
