@@ -53,6 +53,7 @@ public class ReplyDAO {
 		}
 	}
 
+
 	public void insertReply(ReplyVO replyVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -112,6 +113,8 @@ public class ReplyDAO {
 		} 
 		return ajaxReplyList;
 	}
+
+
 
 	public boolean deleteReplyByNo(ReplyVO replyVO) throws SQLException {
 		Connection con = null;
