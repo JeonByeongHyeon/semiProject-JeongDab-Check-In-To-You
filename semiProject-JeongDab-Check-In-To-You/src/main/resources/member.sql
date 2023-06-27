@@ -38,7 +38,7 @@ CREATE TABLE reply (
     CONSTRAINT FK_SERVICE_BOARD_REPLY FOREIGN KEY (service_board_no) REFERENCES service_board (service_board_no)
 );
 --댓글 삽입
-insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'asdqwe',sysdate,62,65); 
+insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'야미',sysdate,62,65); 
 select*from reply
 
 --시퀀스 생성
@@ -55,8 +55,8 @@ INNER JOIN Member m ON r.member_no = m.member_no
 INNER JOIN Service_board sb ON r.service_board_no = sb.service_board_no
 where sb.service_board_no = 65 and m.member_no =62
 
-
-
+--댓글 삭제
+delete from reply where reply_no= 3 and member_no=62
 
 
 
@@ -228,6 +228,7 @@ UPDATE service_board SET service_board_title='수정테스트제목',service_boa
 service_date= TO_DATE('2023-7-7','YYYY-MM-DD'), nation='수정테스트국가'
 WHERE service_board_no=63;
 
+
 select * from member;
 
 delete from member where member_no = 66;
@@ -237,6 +238,31 @@ update service_board set service_board_hits=service_board_hits+1 where service_b
 
 select * from reply;
 
+<<<<<<< HEAD
+UPDATE reply SET reply_content='내가 댓글 바꿔썽', reply_date=sysdate WHERE service_board_no=65 AND reply_no=4;
+select * from reply;
+
+ALTER TABLE reply
+ADD CONSTRAINT FK_MEMBER_REPLY
+FOREIGN KEY (member_no)
+REFERENCES member(member_no)
+ON DELETE CASCADE;
+
+ALTER TABLE reply
+ADD CONSTRAINT FK_SERVICE_BOARD_REPLY
+FOREIGN KEY (service_board_no)
+REFERENCES service_board(service_board_no)
+ON DELETE CASCADE;
+
+ALTER TABLE reply
+DROP CONSTRAINT FK_MEMBER_REPLY;
+
+ALTER TABLE reply
+DROP CONSTRAINT FK_SERVICE_BOARD_REPLY;
+select * from reply;
+
+=======
+>>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 ALTER TABLE reply
 ADD CONSTRAINT FK_MEMBER_REPLY
 FOREIGN KEY (member_no)

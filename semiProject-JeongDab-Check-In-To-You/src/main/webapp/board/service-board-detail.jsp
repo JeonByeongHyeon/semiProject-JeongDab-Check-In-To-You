@@ -150,11 +150,50 @@
 						}
 					</script>
 
-					
  
 				</div>
 			</div>
+		
+			
+		
+		<div class="service" id="replyList">
+  <div class="reply-body">
+    <form>
+      <div class="form-group">
+        <label>댓글 작성</label>
+        <textarea class="form-control" id="reply-content" rows="3" placeholder="이동봉사신청을 원하시면 댓글을 남겨주세요!"></textarea>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" id="reply-insert-btn">등록</button>
+      <button type="button" class="btn btn-primary" id="reply-update-btn">수정</button>
+      <button type="button" class="btn btn-primary" id="reply-delete-btn">삭제</button>
+    </form>
+  </div>
+</div>
+		<script type="text/javascript">
+			$(function() {
+				$("#reply-update-btn").click(function() {
+					type:"post",
+					url:"UpdateReply.do",
+					dataType:"json"
+					data:
+					success:	
+				});
+			});
 
+			$(function (){
+				$$("#reply-delete-btn").click(function(){
+						url: '../DeleteReplyAjax.do',
+				        method: 'GET',
+				        data: { deletereply: reply},
+				        success: function(message) {
+				            if (message == 'success') {
+				            	deleteReplySuccess.text('삭제되었습니다.');
+				});
+				}
+			}
+			
+		</script>
 			<%--footer 영역 --%>
 			<div class="row">
 				<!-- 메인영역을 동적으로 import 해옴-->

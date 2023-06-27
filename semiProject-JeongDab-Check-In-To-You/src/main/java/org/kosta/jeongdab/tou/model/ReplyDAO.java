@@ -32,4 +32,39 @@ public class ReplyDAO {
 			rs.close();
 		closeAll(pstmt, con);
 	}
+	
+	// 댓글 수정
+	public void updateReplyBoard(ReplyVO replyVO) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			StringBuilder sql= new StringBuilder();
+			sql.append("UPDATE reply SET reply_content=?, reply_date=sysdate ");
+			sql.append("WHERE reply_no=?");
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setString(1, replyVO.getReplyContent());
+			pstmt.setLong(2, replyVO.getReplyNo());
+			//System.out.println(replyVO);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
+	public boolean deleteReplyByNo(ReplyVO replyVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from reply where reply_no= ? and member_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, replyVO.getReplyNo());
+			pstmt.setLong(2, replyVO.getMemberVO().getMemberNo());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+		return true;
+	}
+	
 }
