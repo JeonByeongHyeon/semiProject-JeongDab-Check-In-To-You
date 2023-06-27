@@ -142,6 +142,7 @@ public class MemberDAO {
 		return String.valueOf(code);
 	}
 
+// 	회원 정보 수정
 	public void updateMember(MemberVO memberVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -162,6 +163,7 @@ public class MemberDAO {
 
 	}
 
+//	회원 정보 수정에 필요한 정보들 조회
 	public MemberVO findMemberInfo(long memberNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -184,5 +186,86 @@ public class MemberDAO {
 			closeAll(rs, pstmt, con);
 		}
 		return memberVO;
+	}
+
+//	로그인한 회원과 같은 이메일 조회
+	public String findEmailByMemberNo(long memberNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String memberEmail = null;
+		try {
+			con = dataSource.getConnection();
+			// 이메일과 회원 ID를 이용하여 데이터베이스에서 일치하는지 확인하는 로직 작성
+			String sql = "SELECT member_email FROM member WHERE member_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, memberNo);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				memberEmail = rs.getString(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		// 반환값은 일치 여부에 따라 true 또는 false
+		return memberEmail;
+	}
+
+//	비밀번호 변경
+	public void updatePassword(MemberVO memberVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "UPDATE member SET password = ? WHERE member_no = ?";
+			pstmt = con.prepareStatement(sql);
+			String hashedPassword = hashPassword(memberVO.getPassword());
+			pstmt.setString(1, hashedPassword);
+			pstmt.setLong(2, memberVO.getMemberNo());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
+
+//	로그인한 회원과 같은 이메일 조회
+	public String findEmailByMemberNameAndEmail(MemberVO memberVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String findEmail = null;
+		try {
+			con = dataSource.getConnection();
+			// 이메일과 회원 ID를 이용하여 데이터베이스에서 일치하는지 확인하는 로직 작성
+			String sql = "SELECT member_email FROM member WHERE member_name = ? and member_email = ?  ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberVO.getMemberName());
+			pstmt.setString(2, memberVO.getMemberEmail());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				findEmail = rs.getString(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		// 반환값은 일치 여부에 따라 true 또는 false
+		return findEmail;
+	}
+
+//	비밀번호 찾기
+	public void findPassword(MemberVO memberVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "UPDATE member SET password = ? WHERE member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			String hashedPassword = hashPassword(memberVO.getPassword());
+			pstmt.setString(1, hashedPassword);
+			pstmt.setString(2, memberVO.getMemberEmail());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
 	}
 }

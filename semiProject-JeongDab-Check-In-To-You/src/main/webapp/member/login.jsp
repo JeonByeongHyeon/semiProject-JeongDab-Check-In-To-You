@@ -54,7 +54,8 @@
 					</a>
 				</div>
 				<div class="login-form">
-					<form action="${pageContext.request.contextPath}/Login.do" method="post">
+					<form action="${pageContext.request.contextPath}/Login.do"
+						method="post">
 						<div class="form-group">
 							<label>이메일 계정</label> <input type="email" class="form-control"
 								name="memberEmail" placeholder="이메일">
@@ -64,7 +65,9 @@
 								name="password" placeholder="비밀번호">
 						</div>
 						<div class="checkbox">
-							<label class="pull-right"> <a href="#">비밀번호 찾기</a>
+							<label class="pull-right"> <a
+								href="${pageContext.request.contextPath}/member/find-password.jsp">비밀번호
+									찾기</a>
 							</label>
 
 						</div>

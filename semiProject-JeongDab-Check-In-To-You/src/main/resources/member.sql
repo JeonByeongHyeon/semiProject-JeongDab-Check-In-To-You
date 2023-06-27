@@ -82,7 +82,7 @@ ALTER TABLE member MODIFY (member_status DEFAULT 1);
 --게시판 조회수 기본값 설정 
 ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0); 
 
-
+ALTER TABLE reply MODIFY (reply_date DEFAULT sysdate);
 
 -- 회원보기
 SELECT * FROM member;
