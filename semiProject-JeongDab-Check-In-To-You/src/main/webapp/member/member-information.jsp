@@ -72,7 +72,10 @@
 								value="박해준" oninput="validateName()">
 							<div id="nameError" style="color: red;"></div>
 						</div>
+<<<<<<< HEAD
 						<span id="verificationResult" style="color: red;"></span>
+=======
+>>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 						<div class="form-group">
 							<label>생년월일</label> <input type="date" name="birth"
 								value="2023-06-26" class="form-control" placeholder=""
