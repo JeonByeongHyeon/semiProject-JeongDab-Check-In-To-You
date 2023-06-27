@@ -227,10 +227,7 @@ SELECT * FROM service_board;
 UPDATE service_board SET service_board_title='수정테스트제목',service_board_content='수정테스트내용', 
 service_date= TO_DATE('2023-7-7','YYYY-MM-DD'), nation='수정테스트국가'
 WHERE service_board_no=63;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 
 select * from member;
 
@@ -241,3 +238,4 @@ update service_board set service_board_hits=service_board_hits+1 where service_b
 
 select * from reply;
 
+UPDATE reply SET reply_content='내가 댓글 바꿔썽', reply_date=sysdate WHERE service_board_no=65 AND reply_no=4;

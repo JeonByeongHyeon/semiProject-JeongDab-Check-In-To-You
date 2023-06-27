@@ -34,22 +34,18 @@ public class ReplyDAO {
 	}
 	
 	// 댓글 수정
-	public void updateReplyBoard(ReplyVO ReplyVO) throws SQLException {
+	public void updateReplyBoard(ReplyVO replyVO) throws SQLException {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
-//			con=dataSource.getConnection();
-//			StringBuilder sql= new StringBuilder();
-//			sql.append("UPDATE service_board SET service_board_title=?,service_board_content=?, ");
-//			sql.append("service_date=?, nation=? ");
-//			sql.append("WHERE service_board_no=?");
-//			pstmt=con.prepareStatement(sql.toString());
-//			pstmt.setString(1,serviceBoardVO.getServiceBoardTitle());
-//			pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
-//			pstmt.setString(3, serviceBoardVO.getServiceDate());
-//			pstmt.setString(4, serviceBoardVO.getNation());
-//			pstmt.setLong(5, serviceBoardVO.getServiceBoardNo());
-//			System.out.println(serviceBoardVO);
+			con=dataSource.getConnection();
+			StringBuilder sql= new StringBuilder();
+			sql.append("UPDATE reply SET reply_content=?, reply_date=sysdate ");
+			sql.append("WHERE reply_no=?");
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setString(1, replyVO.getReplyContent());
+			pstmt.setLong(2, replyVO.getReplyNo());
+			//System.out.println(replyVO);
 			pstmt.executeUpdate();
 		}finally {
 			closeAll(pstmt, con);
