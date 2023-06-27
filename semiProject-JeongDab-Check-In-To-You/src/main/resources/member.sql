@@ -207,16 +207,13 @@ ADD CONSTRAINT unique_email  UNIQUE (member_email);
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
 
-<<<<<<< HEAD
 -- service_board 글 수정
 SELECT * FROM service_board;
 UPDATE service_board SET service_board_title='수정테스트제목',service_board_content='수정테스트내용', 
 service_date= TO_DATE('2023-7-7','YYYY-MM-DD'), nation='수정테스트국가'
 WHERE service_board_no=63;
-=======
 
 select * from member;
->>>>>>> refs/heads/main
 
 delete from member where member_no = 66;
 

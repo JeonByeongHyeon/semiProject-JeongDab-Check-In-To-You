@@ -65,25 +65,24 @@
 					</a>
 				</div>
 				<div class="login-form">
-					<form action="../RegisterMember.do" method="post">
+					<form action="${pageContext.request.contextPath}/UpdateMember.do" method="post">
 						<div class="form-group">
 							<label>이름</label> <input id="nameInput" type="text" name="name"
 								class="form-control" placeholder="이름" required="required"
-								value="박해준" oninput="validateName()">
+								value="${memberInfo.memberName}" oninput="validateName()">
 							<div id="nameError" style="color: red;"></div>
 						</div>
-						<span id="verificationResult" style="color: red;"></span>
 						<div class="form-group">
 							<label>생년월일</label> <input type="date" name="birth"
-								value="2023-06-26" class="form-control" placeholder=""
-								required="required">
+								value="${memberInfo.memberBirth}" class="form-control"
+								placeholder="" required="required">
 						</div>
 						<div class="form-group">
 							<label>주소</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="address"
 									id="address" placeholder="주소 검색 버튼으로 주소 선택" required="required"
-									value="아튼빌 아파트" readonly>
+									value="${memberInfo.memberAddress}" readonly>
 
 								<div class="input-group-append">
 									<button type="button" class="btn btn-info"
@@ -92,10 +91,11 @@
 
 							</div>
 							<input type="text" class="form-control" name="addressDetail"
-								value="1009동 1404호" id="addressDetail" placeholder="상세주소">
+								value="${memberInfo.memberDetailAddress}" id="addressDetail"
+								placeholder="상세주소">
 						</div>
 						<button type="submit" id="signupButton"
-							class="btn btn-primary btn-flat m-b-30 m-t-30" disabled>정보
+							class="btn btn-primary btn-flat m-b-30 m-t-30">정보
 							수정</button>
 					</form>
 				</div>
@@ -116,7 +116,7 @@
 	<script
 		src="${pageContext.request.contextPath}/member/assets/js/main.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/member/assets/js/register.js"></script>
+		src="${pageContext.request.contextPath}/fix/assets/js/register.js"></script>
 
 </body>
 </html>

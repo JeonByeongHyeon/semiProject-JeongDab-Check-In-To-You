@@ -1,5 +1,7 @@
 package org.kosta.jeongdab.tou.controller;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +15,10 @@ public class UpdateMemberController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String memberName = request.getParameter("name");
-		String memberBirth = request.getParameter("birth");
+		String birthStr = request.getParameter("birth");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date utilDate = dateFormat.parse(birthStr);
+		java.sql.Date memberBirth = new java.sql.Date(utilDate.getTime());
 		String memberAddress = request.getParameter("address");
 		String memberAddressDetail = request.getParameter("addressDetail");
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
@@ -25,7 +30,7 @@ public class UpdateMemberController implements Controller {
 		memberVO.setMemberNo(memberNo);
 		System.out.println(memberVO);
 		MemberDAO.getInstance().updateMember(memberVO);
-		return "redirect:/successPage.jsp";
+		return "/UpdateMemberForm.do";
 	}
 
 }

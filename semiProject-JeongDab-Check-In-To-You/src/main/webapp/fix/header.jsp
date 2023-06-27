@@ -29,6 +29,10 @@
 						<form method="post"
 							action="${pageContext.request.contextPath}/Logout.do"
 							id="logoutForm"></form>
+						<button class="btn btn-outline-warning btn-sm" onclick="mypage()">마이페이지</button>
+						<form method="post"
+							action="${pageContext.request.contextPath}/UpdateMemberForm.do"
+							id="mypageForm"></form>
 					</c:when>
 					<c:otherwise>
 						<!-- 사용자가 로그아웃 상태 또는 로그인하지 않은 상태 -->
@@ -51,6 +55,10 @@
 					function logout() {
 						// 로그아웃
 						document.getElementById("logoutForm").submit();
+					}
+					function mypage() {
+						// 로그아웃
+						document.getElementById("mypageForm").submit();
 					}
 				</script>
 			</ul>

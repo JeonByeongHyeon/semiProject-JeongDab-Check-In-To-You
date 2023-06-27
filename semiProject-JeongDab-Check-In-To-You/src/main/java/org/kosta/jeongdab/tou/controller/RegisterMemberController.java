@@ -1,5 +1,8 @@
 package org.kosta.jeongdab.tou.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +16,8 @@ public class RegisterMemberController implements Controller {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String birth = request.getParameter("birth");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date birth = (Date) dateFormat.parse(request.getParameter("birth"));
 		String address = request.getParameter("address");
 		String addressDetail = request.getParameter("addressDetail");
 		System.out.println(addressDetail);

@@ -79,7 +79,7 @@ public class MemberDAO {
 			String hashedPassword = hashPassword(memberVO.getPassword());
 			System.out.println("register" + hashedPassword);
 			pstmt.setString(3, hashedPassword);
-			pstmt.setString(4, memberVO.getMemberBirth());
+			pstmt.setDate(4, memberVO.getMemberBirth());
 			pstmt.setString(5, memberVO.getMemberAddress());
 			pstmt.setString(6, memberVO.getMemberDetailAddress());
 			pstmt.executeUpdate();
@@ -150,7 +150,7 @@ public class MemberDAO {
 			String sql = "UPDATE member SET member_name = ?, member_birth = ?, member_address = ?, member_detail_address = ? WHERE member_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberVO.getMemberName());
-			pstmt.setString(2, memberVO.getMemberBirth());
+			pstmt.setDate(2, memberVO.getMemberBirth());
 			pstmt.setString(3, memberVO.getMemberAddress());
 			pstmt.setString(4, memberVO.getMemberDetailAddress());
 			pstmt.setLong(5, memberVO.getMemberNo());
@@ -160,5 +160,29 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 
+	}
+
+	public MemberVO findMemberInfo(long memberNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO memberVO = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT member_name, member_birth, member_address, member_detail_address FROM member WHERE member_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, memberNo);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				memberVO = new MemberVO();
+				memberVO.setMemberName(rs.getString("member_name"));
+				memberVO.setMemberBirth(rs.getDate("member_birth"));
+				memberVO.setMemberAddress(rs.getString("member_address"));
+				memberVO.setMemberDetailAddress(rs.getString("member_detail_address"));
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return memberVO;
 	}
 }
