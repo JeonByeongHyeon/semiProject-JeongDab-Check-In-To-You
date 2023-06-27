@@ -68,7 +68,7 @@
 			<div class="row main">
 				<div class="col-sm-8 offset-sm-2">
 					<table border="4"
-						class="table table-bordered table-dark table-striped">
+						class="table table-bordered table-striped">
 						<tr>
 							<td>글번호: ${serviceBoard.serviceBoardNo}</td>
 							<td>제목: ${serviceBoard.serviceBoardTitle}</td>

@@ -53,7 +53,7 @@
 </div>
 <%-- side --%>
 <div class="row header">
-	<c:import url="/fix/side.jsp" />
+	<c:import url="../fix/side.jsp" />
 </div>
 <body class="bg-white">
 	<div class="sufee-login d-flex align-content-center flex-wrap">
@@ -71,28 +71,6 @@
 								class="form-control" placeholder="이름" required="required"
 								value="박해준" oninput="validateName()">
 							<div id="nameError" style="color: red;"></div>
-						</div>
-						<label>이메일</label>
-						<div class="input-group">
-							<input type="email" id="emailInput" name="email"
-								class="form-control" placeholder="이메일" required="required"
-								value="cyon8254@gmail.com" oninput="validateEmail()">
-							<div class="input-group-append">
-								<button type="button" id="sendEmailButton" class="btn btn-info"
-									onclick="certificationEmail()" disabled>인증번호 전송</button>
-							</div>
-						</div>
-						<div>
-							<span id="emailError" style="color: red;"></span>
-						</div>
-						<div class="input-group">
-							<input type="text" id="verificationCodeInput"
-								name="verificationCode" class="form-control" placeholder="인증번호"
-								required="required">
-							<div class="input-group-append">
-								<button type="button" class="btn btn-info"
-									onclick="numberCheck()">인증번호 확인</button>
-							</div>
 						</div>
 						<span id="verificationResult" style="color: red;"></span>
 						<div class="form-group">
