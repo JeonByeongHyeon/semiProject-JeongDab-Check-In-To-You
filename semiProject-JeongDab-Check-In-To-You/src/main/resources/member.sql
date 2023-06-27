@@ -211,7 +211,7 @@ SELECT * FROM service_board;
 UPDATE service_board SET service_board_title='수정테스트제목',service_board_content='수정테스트내용', 
 service_date= TO_DATE('2023-7-7','YYYY-MM-DD'), nation='수정테스트국가'
 WHERE service_board_no=63;
-=======
+
 
 select * from member;
 
@@ -221,3 +221,4 @@ delete from member where member_no = 66;
 update service_board set service_board_hits=service_board_hits+1 where service_board_no=65
 
 select * from reply;
+
