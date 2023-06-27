@@ -206,3 +206,7 @@ select * from member;
 >>>>>>> refs/heads/main
 
 delete from member where member_no = 66;
+
+--조회수 업데이트
+update service_board set service_board_hits=service_board_hits+1 where service_board_no=65
+
