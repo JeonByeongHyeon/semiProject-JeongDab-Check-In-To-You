@@ -90,7 +90,7 @@
 										onclick="searchAddress()">주소 검색</button>
 								</div>
 
-							</div>
+							</div>ㄴ
 							<input type="text" class="form-control" name="addressDetail"
 								value="1009동 1404호" id="addressDetail" placeholder="상세주소">
 						</div>
