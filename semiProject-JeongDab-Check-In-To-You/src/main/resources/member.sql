@@ -80,7 +80,6 @@ ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0);
 
 -- 회원보기
 SELECT * FROM member;
-SELECT  FROM member;
 
 
 -- 게시글 보기
@@ -223,7 +222,6 @@ ADD CONSTRAINT unique_email  UNIQUE (member_email);
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
 INSERT INTO service_board(service_board_no,service_board_title,service_board_content,service_date) VALUES(service_board_seq.nextval,이강인,이강인,'YYYY-MM-DD')
 
-<<<<<<< HEAD
 -- service_board 글 수정
 SELECT * FROM service_board;
 UPDATE service_board SET service_board_title='수정테스트제목',service_board_content='수정테스트내용', 
@@ -232,10 +230,10 @@ WHERE service_board_no=63;
 =======
 
 select * from member;
->>>>>>> refs/heads/main
 
 delete from member where member_no = 66;
 
 --조회수 업데이트
 update service_board set service_board_hits=service_board_hits+1 where service_board_no=65
 
+select * from reply;
