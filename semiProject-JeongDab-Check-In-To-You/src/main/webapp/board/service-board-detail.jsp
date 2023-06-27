@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>봉사구인 상세게시글보기</title>
+<title>Clean Blog - Start Bootstrap Theme</title>
 <link rel="icon" type="image/x-icon" href="fix/assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -26,6 +26,8 @@
 <link href="fix/assets/css/styles.css" rel="stylesheet" />
 <!--end header footer 관련 링크 -->
 
+
+
 <!-- start board 관련 링크 -->
 <link
 	href="${pageContext.request.contextPath}/board/assets/lib/animate/animate.min.css"
@@ -36,101 +38,131 @@
 <link
 	href="${pageContext.request.contextPath}/board/assets/lib/lightbox/css/lightbox.min.css"
 	rel="stylesheet">
+
 <!-- Customized Bootstrap Stylesheet -->
 <link
 	href="${pageContext.request.contextPath}/board/assets/css/bootstrap.min.css"
 	rel="stylesheet">
+
 <!-- Template Stylesheet -->
 <link
 	href="${pageContext.request.contextPath}/board/assets/css/style.css"
 	rel="stylesheet">
 <!-- end board 관련 링크 -->
+
+
 </head>
 <body>
 	<div class="container-fluid pt-3">
+
 		<div class="culmn">
 			<%-- header 영역 --%>
 			<div class="row header">
 				<div class="col-sm-8 offset-sm-2" align="right">
-					<c:import url="/fix/header.jsp" />
+					<c:import url="../fix/header.jsp" />
 				</div>
 			</div>
-			<%-- main(게시판 상세글보기) 영역 --%>
+			<%-- main 영역 --%>
+			<br>
+			<br>
 			<div class="row main">
 				<div class="col-sm-8 offset-sm-2">
-					<table class="table table-bordered">
+					<table border="4"
+						class="table table-bordered table-dark table-striped">
 						<tr>
-							<td>글번호 ${serviceBoard.serviceBoardNo}</td>
-							<td>제목 ${serviceBoard.serviceBoardTitle}</td>
-							<td>${serviceBoard.serviceBoardCreateDate}</td>
-							<td>이동국가 ${serviceBoard.nation}</td>
-						</tr>
-						<tr>
-							<td>작성자 ${serviceBoard.memberVO.memberName}</td>
-							<td>아이디 ${serviceBoard.memberVO.memberEmail}</td>
-							<td>조회수 ${serviceBoard.serviceBoardHits}</td>
-						</tr>
-						<tr>
-							<td>출국일시 ${serviceBoard.serviceDate}</td>
-						</tr>
-						<tr>
-							<td><pre><font size="6">내용${serviceBoard.serviceBoardContent}</font></pre></td>
-						</tr>
-					</table>
+							<td>글번호: ${serviceBoard.serviceBoardNo}</td>
+							<td>제목: ${serviceBoard.serviceBoardTitle}</td>
 
-					<table>
+						</tr>
 						<tr>
-							<td colspan="5" class="text-center">
-								<button type="button" class="btn btn-primary"
-									onclick="serviceBoardList()">목록</button>
-								<form id="serviceBoardList" action="ServiceBoardList.do"
-									method="post"></form> <c:if
-									test="${sessionScope.member.memberStatus == 0 }">
-									<button type="button" class="btn btn-primary"
-										onclick="deletePost()">삭제</button>
-									<form id="deletePostForm" action="DeletePost.do" method="post">
-										<input type="hidden" name="no"
-											value="${serviceBoard.serviceBoardNo}">
-									</form>
-									<button type="button" class="btn btn-primary"
-										onclick="updateServiceBoard()">수정</button>
-									<form id="updateServiceBoard"
-										action="UpdateServiceBoardForm.do" method="post">
-										<input type="hidden" name="no"
-											value="${serviceBoard.serviceBoardNo}">
-									</form>
-								</c:if> <script type="text/javascript">
-									function deletePost() {
-										if (confirm("삭제하시겠습니까?")) {
-											document.getElementById(
-													"deletePostForm").submit();
-										}
-									}
-									function updateServiceBoard() {
-										if (confirm("수정하시겠습니까?")) {
-											document.getElementById(
-													"updateServiceBoard")
-													.submit();
-										}
-									}
-									function serviceBoardList() {
-										if (confirm("게시글 목록으로 이동하시겠습니까?")) {
-											document.getElementById(
-													"serviceBoardList")
-													.submit();
-										}
-									}
-								</script>
+							<td>작성일: ${serviceBoard.serviceBoardCreateDate}</td>
+							<td>이동국가: ${serviceBoard.nation}</td>
+						</tr>
+						<tr>
+							<td>작성자: ${serviceBoard.memberVO.memberName}</td>
+							<td>아이디: ${serviceBoard.memberVO.memberEmail}</td>
+
+						</tr>
+						<tr>
+							<td>출국일시: ${serviceBoard.serviceDate}</td>
+							<td>조회수: ${serviceBoard.serviceBoardHits}</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div align="center">
+									<font size="6">내용</font>
+								</div>
+								<div style="display: flex; justify-content: right;">
+									<pre>
+									<font size="6">${serviceBoard.serviceBoardContent}</font>
+								</pre>
+								</div>
 							</td>
 						</tr>
 					</table>
+
+
+
+					<div style="display: flex; justify-content: right;">
+						<button type="button" class="btn btn-primary"
+							onclick="serviceBoardList()">목록</button>
+
+						<form id="serviceBoardList" action="ServiceBoardList.do"
+							method="post"></form>
+					
+					<c:if test="${sessionScope.member.memberStatus == 0 }">
+						
+							<button type="button" class="btn btn-primary"
+								onclick="deletePost()">삭제</button>
+							<form id="deletePostForm" action="DeletePost.do" method="post">
+								<input type="hidden" name="no"
+									value="${serviceBoard.serviceBoardNo}">
+							</form>
+						
+						
+							<button type="button" class="btn btn-primary"
+								onclick="updateServiceBoard()">수정</button>
+							<form id="updateServiceBoard" action="UpdateServiceBoardForm.do"
+								method="post">
+								<input type="hidden" name="no"
+									value="${serviceBoard.serviceBoardNo}">
+							</form>
+						
+					</c:if>
+					<script type="text/javascript">
+						function deletePost() {
+							if (confirm("삭제하시겠습니까?")) {
+								document.getElementById("deletePostForm")
+										.submit();
+							}
+						}
+						function updateServiceBoard() {
+							if (confirm("수정하시겠습니까?")) {
+								document.getElementById("updateServiceBoard")
+										.submit();
+							}
+						}
+						function serviceBoardList() {
+							if (confirm("게시글 목록으로 이동하시겠습니까?")) {
+								document.getElementById("serviceBoardList")
+										.submit();
+							}
+						}
+					</script>
+
+					
+
 				</div>
 			</div>
+
 			<%--footer 영역 --%>
-			<div class="row footer">
-				<c:import url="/fix/footer.jsp" />
+			<div class="row">
+				<!-- 메인영역을 동적으로 import 해옴-->
+				<c:import url="../fix/footer.jsp" />
 			</div>
 		</div>
 	</div>
+	</div>
 </body>
 </html>
+
