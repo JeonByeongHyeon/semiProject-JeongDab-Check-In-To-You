@@ -65,38 +65,43 @@
 					</a>
 				</div>
 				<div class="login-form">
-					<form action="${pageContext.request.contextPath}/UpdateMember.do"
+					<form action="${pageContext.request.contextPath}/UpdatePassword.do"
 						method="post">
-						<div class="form-group">
-							<label>이름</label> <input id="nameInput" type="text" name="name"
-								class="form-control" placeholder="이름" required="required"
-								value="${memberInfo.memberName}" oninput="validateName()">
-							<div id="nameError" style="color: red;"></div>
-						</div>
-						<div class="form-group">
-							<label>생년월일</label> <input type="date" name="birth"
-								value="${memberInfo.memberBirth}" class="form-control"
-								placeholder="" required="required">
-						</div>
-						<div class="form-group">
-							<label>주소</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="address"
-									id="address" placeholder="주소 검색 버튼으로 주소 선택" required="required"
-									value="${memberInfo.memberAddress}" readonly>
-
-								<div class="input-group-append">
-									<button type="button" class="btn btn-info"
-										onclick="searchAddress()">주소 검색</button>
-								</div>
-
+						<label>이메일 인증 후 비밀번호 변경</label>
+						<div class="input-group">
+							<input type="email" id="emailInput" name="email"
+								class="form-control" placeholder="이메일" required="required"
+								oninput="validateEmail()">
+							<div class="input-group-append">
+								<button type="button" id="sendEmailButton" class="btn btn-info"
+									onclick="certificationEmail()" disabled>인증번호 전송</button>
 							</div>
-							<input type="text" class="form-control" name="addressDetail"
-								value="${memberInfo.memberDetailAddress}" id="addressDetail"
-								placeholder="상세주소">
+						</div>
+						<div>
+							<span id="emailError" style="color: red;"></span>
+						</div>
+						<div class="input-group">
+							<input type="text" id="verificationCodeInput"
+								name="verificationCode" class="form-control" placeholder="인증번호"
+								required="required">
+							<div class="input-group-append">
+								<button type="button" class="btn btn-info"
+									onclick="numberCheck()">인증번호 확인</button>
+							</div>
+						</div>
+						<span id="verificationResult" style="color: red;"></span>
+						<div class="form-group">
+							<label>변경할 비밀번호</label> <input type="password" name="password"
+								id="password" class="form-control" placeholder="변경할 비밀번호"
+								required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" id="confirm_password" class="form-control"
+								placeholder="비밀번호 확인" required="required"> <span
+								id="message" style="color: blue;"></span>
 						</div>
 						<button type="submit" id="signupButton"
-							class="btn btn-primary btn-flat m-b-30 m-t-30" disabled>정보 수정</button>
+							class="btn btn-primary btn-flat m-b-30 m-t-30" disabled>비밀번호 변경</button>
 					</form>
 				</div>
 			</div>
@@ -116,7 +121,7 @@
 	<script
 		src="${pageContext.request.contextPath}/member/assets/js/main.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/member/assets/js/member-info.js"></script>
+		src="${pageContext.request.contextPath}/member/assets/js/change-password.js"></script>
 
 </body>
 </html>
