@@ -236,3 +236,21 @@ delete from member where member_no = 66;
 update service_board set service_board_hits=service_board_hits+1 where service_board_no=65
 
 select * from reply;
+
+ALTER TABLE reply
+ADD CONSTRAINT FK_MEMBER_REPLY
+FOREIGN KEY (member_no)
+REFERENCES member(member_no)
+ON DELETE CASCADE;
+
+ALTER TABLE reply
+ADD CONSTRAINT FK_SERVICE_BOARD_REPLY
+FOREIGN KEY (service_board_no)
+REFERENCES service_board(service_board_no)
+ON DELETE CASCADE;
+
+ALTER TABLE reply
+DROP CONSTRAINT FK_MEMBER_REPLY;
+
+ALTER TABLE reply
+DROP CONSTRAINT FK_SERVICE_BOARD_REPLY;
