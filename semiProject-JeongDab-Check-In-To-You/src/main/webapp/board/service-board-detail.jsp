@@ -127,6 +127,16 @@
 								<input type="hidden" name="no"
 									value="${serviceBoard.serviceBoardNo}">
 							</form>
+							
+							
+								<button type="button" class="btn btn-primary"
+								onclick="deleteReply()">댓글 삭제</button>
+							<form id="deleteReply" action="DeleteReplyAjax.do"
+								method="post">
+								<input type="hidden" name="no"
+									value="${reply.replyNo}">
+							</form>
+						
 						
 					</c:if>
 					<script type="text/javascript">
@@ -148,6 +158,19 @@
 										.submit();
 							}
 						}
+						
+						function deleteReply(reply){
+							$.ajax({
+									url: '../DeleteReplyAjax.do',
+							        method: 'GET',
+							        data: { deletereply: reply},
+							        success: function(message) {
+							            if (message == 'success') {
+							            	deleteReplySuccess.text('삭제되었습니다.');
+							});
+							}
+						}
+						
 					</script>
 
 					

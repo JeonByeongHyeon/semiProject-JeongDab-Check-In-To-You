@@ -51,5 +51,20 @@ public class ReplyDAO {
 			closeAll(pstmt, con);
 		}
 	}
+	public boolean deleteReplyByNo(ReplyVO replyVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from reply where reply_no= ? and member_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, replyVO.getReplyNo());
+			pstmt.setLong(2, replyVO.getMemberVO().getMemberNo());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+		return true;
+	}
 	
 }
