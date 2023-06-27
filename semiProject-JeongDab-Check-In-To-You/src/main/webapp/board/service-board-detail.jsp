@@ -65,10 +65,10 @@
 			<%-- main 영역 --%>
 			<br>
 			<br>
-			<div class="row main">
-				<div class="col-sm-8 offset-sm-2">
-					<table border="4"
-						class="table table-bordered table-dark table-striped">
+			<div class="row main"> 
+		<div class="align-self-center">
+					<table 
+						class="table table-bordered">
 						<tr>
 							<td>글번호: ${serviceBoard.serviceBoardNo}</td>
 							<td>제목: ${serviceBoard.serviceBoardTitle}</td>
@@ -92,10 +92,8 @@
 								<div align="center">
 									<font size="6">내용</font>
 								</div>
-								<div style="display: flex; justify-content: right;">
-									<pre>
-									<font size="6">${serviceBoard.serviceBoardContent}</font>
-								</pre>
+								<div style="display: flex; justify-content: left;">
+							<pre><font size="6">${serviceBoard.serviceBoardContent}</font></pre>
 								</div>
 							</td>
 						</tr>
@@ -151,7 +149,7 @@
 					</script>
 
 					
-
+ 
 				</div>
 			</div>
 
