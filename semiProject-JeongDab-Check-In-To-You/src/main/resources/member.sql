@@ -26,7 +26,7 @@ CREATE TABLE service_board (
     REFERENCES member (member_no)
 );
 
-
+--댓글 테이블 생성
 CREATE TABLE reply (
     reply_no NUMBER NOT NULL,
     reply_content VARCHAR2(1000),
@@ -37,12 +37,28 @@ CREATE TABLE reply (
     CONSTRAINT FK_MEMBER_REPLY FOREIGN KEY (member_no) REFERENCES member (member_no),
     CONSTRAINT FK_SERVICE_BOARD_REPLY FOREIGN KEY (service_board_no) REFERENCES service_board (service_board_no)
 );
+--댓글 삽입
+insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'asdqwe',sysdate,62,65); 
+select*from reply
 
-
+--시퀀스 생성
 CREATE SEQUENCE service_board_seq;
+create sequence reply_seq;
 create sequence member_seq;
+--댓글
 
-INSERT INTO service_board(service_board_no)VALUES(service_board_seq.nextval);
+--댓글 조회
+
+SELECT r.reply_no, r.reply_content, r.reply_date, m.member_no, m.member_name, sb.service_board_no, sb.service_board_title
+FROM Reply r
+INNER JOIN Member m ON r.member_no = m.member_no
+INNER JOIN Service_board sb ON r.service_board_no = sb.service_board_no
+where sb.service_board_no = 65 and m.member_no =62
+
+
+
+
+
 
 insert into member(member_no,member_name, member_email, password, member_birth,member_status, member_address, member_detail_address) 
 values(member_seq.nextval,'박해준','cyon8254@gmail.com','1234',sysdate,0,'성남시','아튼빌');
@@ -64,7 +80,6 @@ ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0);
 
 -- 회원보기
 SELECT * FROM member;
-SELECT  FROM member;
 
 
 -- 게시글 보기
@@ -220,3 +235,4 @@ delete from member where member_no = 66;
 --조회수 업데이트
 update service_board set service_board_hits=service_board_hits+1 where service_board_no=65
 
+select * from reply;
