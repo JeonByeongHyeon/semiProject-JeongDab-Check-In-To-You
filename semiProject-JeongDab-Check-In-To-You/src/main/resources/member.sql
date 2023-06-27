@@ -38,7 +38,10 @@ CREATE TABLE reply (
     CONSTRAINT FK_SERVICE_BOARD_REPLY FOREIGN KEY (service_board_no) REFERENCES service_board (service_board_no)
 );
 --댓글 삽입
-insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'asdqwe',sysdate,62,65); 
+
+insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'두번째 댓글',sysdate,62,65); 
+
+insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'야미',sysdate,62,65); 
 select*from reply
 
 --시퀀스 생성
@@ -54,6 +57,9 @@ FROM Reply r
 INNER JOIN Member m ON r.member_no = m.member_no
 INNER JOIN Service_board sb ON r.service_board_no = sb.service_board_no
 where sb.service_board_no = 65 and m.member_no =62
+
+--댓글 삭제
+delete from reply where reply_no= 3 and member_no=62
 
 
 
@@ -76,7 +82,7 @@ ALTER TABLE member MODIFY (member_status DEFAULT 1);
 --게시판 조회수 기본값 설정 
 ALTER TABLE service_board MODIFY (service_board_hits DEFAULT 0); 
 
-
+ALTER TABLE reply MODIFY (reply_date DEFAULT sysdate);
 
 -- 회원보기
 SELECT * FROM member;

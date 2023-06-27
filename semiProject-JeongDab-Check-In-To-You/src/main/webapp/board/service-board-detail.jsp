@@ -180,6 +180,19 @@
 					success:	
 				});
 			});
+
+			$(function (){
+				$$("#reply-delete-btn").click(function(){
+						url: '../DeleteReplyAjax.do',
+				        method: 'GET',
+				        data: { deletereply: reply},
+				        success: function(message) {
+				            if (message == 'success') {
+				            	deleteReplySuccess.text('삭제되었습니다.');
+				});
+				}
+			}
+			
 		</script>
 			<%--footer 영역 --%>
 			<div class="row">
