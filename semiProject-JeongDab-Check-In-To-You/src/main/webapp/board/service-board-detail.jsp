@@ -65,10 +65,12 @@
 			<%-- main 영역 --%>
 			<br>
 			<br>
+
 			<div class="row main"> 
 		<div class="align-self-center">
 					<table 
 						class="table table-bordered">
+
 						<tr>
 							<td>글번호: ${serviceBoard.serviceBoardNo}</td>
 							<td>제목: ${serviceBoard.serviceBoardTitle}</td>

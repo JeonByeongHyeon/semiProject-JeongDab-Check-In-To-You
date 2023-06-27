@@ -26,6 +26,19 @@ CREATE TABLE service_board (
     REFERENCES member (member_no)
 );
 
+
+CREATE TABLE reply (
+    reply_no NUMBER NOT NULL,
+    reply_content VARCHAR2(1000),
+    reply_date DATE NOT NULL,
+    member_no NUMBER NOT NULL,
+    service_board_no NUMBER NOT NULL,
+    CONSTRAINT PK_REPLY PRIMARY KEY (reply_no),
+    CONSTRAINT FK_MEMBER_REPLY FOREIGN KEY (member_no) REFERENCES member (member_no),
+    CONSTRAINT FK_SERVICE_BOARD_REPLY FOREIGN KEY (service_board_no) REFERENCES service_board (service_board_no)
+);
+
+
 CREATE SEQUENCE service_board_seq;
 create sequence member_seq;
 
