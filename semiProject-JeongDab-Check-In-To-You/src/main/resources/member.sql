@@ -38,7 +38,7 @@ CREATE TABLE reply (
     CONSTRAINT FK_SERVICE_BOARD_REPLY FOREIGN KEY (service_board_no) REFERENCES service_board (service_board_no)
 );
 --댓글 삽입
-insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'asdqwe',sysdate,62,65); 
+insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'두번째 댓글',sysdate,62,65); 
 select*from reply
 
 --시퀀스 생성

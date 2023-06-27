@@ -1,7 +1,7 @@
 package org.kosta.jeongdab.tou.model;
 
 public class ReplyVO {
-	private String replyNo;
+	private long replyNo;
 	private String replyContent;
 	private String replyDate;
 	private MemberVO memberVO;
@@ -10,7 +10,7 @@ public class ReplyVO {
 		super();
 		
 	}
-	public ReplyVO(String replyNo, String replyContent, String replyDate, MemberVO memberVO,
+	public ReplyVO(long replyNo, String replyContent, String replyDate, MemberVO memberVO,
 			ServiceBoardVO serviceBoadrdVO) {
 		super();
 		this.replyNo = replyNo;
@@ -19,10 +19,10 @@ public class ReplyVO {
 		this.memberVO = memberVO;
 		this.serviceBoadrdVO = serviceBoadrdVO;
 	}
-	public String getReplyNo() {
+	public long getReplyNo() {
 		return replyNo;
 	}
-	public void setReplyNo(String replyNo) {
+	public void setReplyNo(long replyNo) {
 		this.replyNo = replyNo;
 	}
 	public String getReplyContent() {
