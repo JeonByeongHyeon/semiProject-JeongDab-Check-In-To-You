@@ -35,9 +35,7 @@ public class MemberDAO {
 		closeAll(pstmt, con);
 	}
 
-
 	private static final String LOGIN_QUERY = "SELECT member_no ,member_status FROM member WHERE member_email=? AND password=?";
-	
 
 	// 로그인
 	public MemberVO login(String memberEmail, String password) throws SQLException {
@@ -64,7 +62,6 @@ public class MemberDAO {
 		}
 		return memberVO;
 	}
-
 
 	public void registerMember(MemberVO memberVO) throws SQLException {
 		Connection con = null;
@@ -143,5 +140,25 @@ public class MemberDAO {
 		Random random = new Random();
 		int code = 100000 + random.nextInt(900000);
 		return String.valueOf(code);
+	}
+
+	public void updateMember(MemberVO memberVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "UPDATE member SET member_name = ?, member_birth = ?, member_address = ?, member_detail_address = ? WHERE member_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberVO.getMemberName());
+			pstmt.setString(2, memberVO.getMemberBirth());
+			pstmt.setString(3, memberVO.getMemberAddress());
+			pstmt.setString(4, memberVO.getMemberDetailAddress());
+			pstmt.setLong(5, memberVO.getMemberNo());
+			System.out.println(memberVO);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+
 	}
 }
