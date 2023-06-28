@@ -12,7 +12,7 @@
 		<li><a
 			href="${pageContext.request.contextPath}/member/change-password.jsp">비밀번호
 				변경</a></li>
-		<li><a href="${pageContext.request.contextPath}/">회원탈퇴</a></li>
-		<li><a href="#">menu2</a></li>
+		<li><a
+			href="${pageContext.request.contextPath}/member/withdrawal-member.jsp">회원탈퇴</a></li>
 	</ul>
 </aside>
