@@ -132,7 +132,7 @@
                      function updateNoticeBoard() {
                         if (confirm("수정하시겠습니까?")) {
                            document.getElementById(
-                                 "updateNoticeBoard").submit();
+                                 "updateNoticeBoardForm").submit();
                         }
                      }
                      function noticeBoardList() {
