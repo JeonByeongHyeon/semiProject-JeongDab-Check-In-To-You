@@ -172,10 +172,6 @@
 							</div>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-primary" id="replyInsertBtn">등록</button>
-							<button type="button" class="btn btn-primary"
-								id="reply-update-btn">수정</button>
-							<button type="button" class="btn btn-primary"
-								id="reply-delete-btn">삭제</button>
 						</form>
 					</div>
 				</div>
