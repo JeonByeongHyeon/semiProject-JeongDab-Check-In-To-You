@@ -38,10 +38,9 @@ public class NoticeBoardDAO {
 		try {
 			con=dataSource.getConnection();
 			StringBuilder sql=new StringBuilder();
-			sql.append("SELECT n.notice_no,n.notice_board_title, n.notice_board_content,to_char(notice_board_date ,'YYYY.MM.DD') ");
-			sql.append("AS notice_board_date,n.notice_board_hits, m.member_no FROM notice n ");
-			sql.append("INNER JOIN member m ON n.member_no = m.member_no ");
-			sql.append("WHERE n.notice_no=?");
+			sql.append("SELECT notice_no,notice_board_title,notice_board_content,to_char(notice_board_date ,'YYYY.MM.DD') ");
+			sql.append("AS notice_board_date,notice_board_hits FROM notice ");
+			sql.append("WHERE notice_no=?");
 			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setLong(1, no);
 			rs=pstmt.executeQuery();
@@ -52,9 +51,7 @@ public class NoticeBoardDAO {
 				nvo.setNoticeBoardContent(rs.getString("notice_board_content"));
 				nvo.setNoticeBoardDate(rs.getString("notice_board_date"));
 				nvo.setNoticeBoardHits(rs.getLong("notice_board_hits"));
-				MemberVO mvo=new MemberVO();
-				mvo.setMemberName(rs.getString("member_name"));
-				nvo.setMemberVO(mvo);
+				
 			}
 	} finally {
 		closeAll(rs, pstmt, con);

@@ -72,22 +72,13 @@
 					<table class="table table-bordered">
 
 						<tr>
-							<td id="boardNo">글번호: ${serviceBoard.serviceBoardNo}</td>
-							<td>제목: ${serviceBoard.serviceBoardTitle}</td>
+							<td id="boardNo">글번호: ${noticeBoard.noticeBoardNo}</td>
+							<td>제목: ${noticeBoard.noticeBoardTitle}</td>
 
 						</tr>
 						<tr>
-							<td>작성일: ${serviceBoard.serviceBoardCreateDate}</td>
-							<td>이동국가: ${serviceBoard.nation}</td>
-						</tr>
-						<tr>
-							<td>작성자: ${serviceBoard.memberVO.memberName}</td>
-							<td>아이디: ${serviceBoard.memberVO.memberEmail}</td>
-
-						</tr>
-						<tr>
-							<td>출국일시: ${serviceBoard.serviceDate}</td>
-							<td>조회수: ${serviceBoard.serviceBoardHits}</td>
+							<td>작성일: ${noticeBoard.noticeBoardDate}</td>
+							<td>조회수: ${noticeBoard.noticeBoardHits}</td>
 						</tr>
 						<tr>
 							<td colspan="2">
@@ -96,7 +87,7 @@
 								</div>
 								<div style="display: flex; justify-content: left;">
 									<pre>
-                              <font size="6">${serviceBoard.serviceBoardContent}</font>
+                              <font size="6">${noticeBoard.noticeBoardContent}</font>
                            </pre>
 								</div>
 							</td>
@@ -107,46 +98,46 @@
 
 					<div style="display: flex; justify-content: right;">
 						<button type="button" class="btn btn-primary"
-							onclick="serviceBoardList()">목록</button>
+							onclick="noticeBoardList()">목록</button>
 
-						<form id="serviceBoardList" action="ServiceBoardList.do"
+						<form id="noticeBoardList" action="NoticeBoardList.do"
 							method="post"></form>
 
 						<c:if test="${sessionScope.member.memberStatus == 0 }">
 
 							<button type="button" class="btn btn-primary"
-								onclick="deletePost()">삭제</button>
-							<form id="deletePostForm" action="DeletePost.do" method="post">
+								onclick="deleteNotice()">삭제</button>
+							<form id="deleteNoticeForm" action="DeleteNoticeByNo.do" method="post">
 								<input type="hidden" name="no"
-									value="${serviceBoard.serviceBoardNo}">
+									value="${noticeBoard.noticeBoardNo}">
 							</form>
 
 
 							<button type="button" class="btn btn-primary"
-								onclick="updateServiceBoard()">수정</button>
-							<form id="updateServiceBoard" action="UpdateServiceBoardForm.do"
+								onclick="updateNoticeBoard()">수정</button>
+							<form id="updateNoticeBoard" action="UpdateNotice.do"
 								method="post">
 								<input type="hidden" name="no"
-									value="${serviceBoard.serviceBoardNo}">
+									value="${noticeBoard.noticeBoardNo}">
 							</form>
 
 						</c:if>
 						<script type="text/javascript">
-                     function deletePost() {
+                     function deleteNotice() {
                         if (confirm("삭제하시겠습니까?")) {
-                           document.getElementById("deletePostForm")
+                           document.getElementById("deleteNoticeForm")
                                  .submit();
                         }
                      }
-                     function updateServiceBoard() {
+                     function updateNoticeBoard() {
                         if (confirm("수정하시겠습니까?")) {
                            document.getElementById(
-                                 "updateServiceBoard").submit();
+                                 "updateNoticeBoard").submit();
                         }
                      }
-                     function serviceBoardList() {
+                     function noticeBoardList() {
                         if (confirm("게시글 목록으로 이동하시겠습니까?")) {
-                           document.getElementById("serviceBoardList")
+                           document.getElementById("noticeBoardList")
                                  .submit();
                         }
                      }
@@ -155,74 +146,6 @@
 
 					</div>
 				</div>
-
-
-				<ul id="commentList">
-					<!-- 댓글 목록을 동적으로 추가할 위치 -->
-				</ul>
-				<div class="service" id="replyList">
-					<div class="reply-body">
-						<form>
-							<div class="form-group">
-								<label>댓글 작성</label>
-
-								<textarea class="form-control" name="replyContent"
-									id="replyContent" rows="3"
-									placeholder="이동봉사신청을 원하시면 댓글을 남겨주세요!"></textarea>
-							</div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-primary" id="replyInsertBtn">등록</button>
-						</form>
-					</div>
-				</div>
-				<!-- <script type="text/javascript">
-            
-            
-            $(function() {
-            	let boardNo = $("#boardNo").text().trim().replace("글번호: ", "");
-				$("#replyInsertBtn").click(function() {
-					let replyContent =$("#replyContent").val();
-					if(replyContent==""){
-						alert("댓글을 입력하세요");
-					return;
-					}
-					$.ajax({
-						type:"post",
-						url:"RegisterReply.do",
-						data:replyContent:replyContent,boardNo:boardNo
-						success:function(result){	
-							alert(result);
-						}
-						
-					});
-					
-				});
-			});
-            </script> -->
-				<!-- <script type="text/javascript">
-         $(function() {
-            $("#reply-update-btn").click(function() {
-               type:"post",
-               url:"UpdateReply.do",
-               dataType:"json"
-               data:
-               success:   
-            });
-         });
-
-         $(function (){
-            $$("#reply-delete-btn").click(function(){
-                  url: '../DeleteReplyAjax.do',
-                    method: 'GET',
-                    data: { deletereply: reply},
-                    success: function(message) {
-                        if (message == 'success') {
-                           deleteReplySuccess.text('삭제되었습니다.');
-            });
-            }
-         }
-         
-      </script> -->
 				<%--footer 영역 --%>
 				<div class="row">
 					<!-- 메인영역을 동적으로 import 해옴-->
