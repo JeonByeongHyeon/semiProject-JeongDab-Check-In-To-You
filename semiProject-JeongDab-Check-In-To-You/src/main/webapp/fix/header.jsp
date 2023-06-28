@@ -19,7 +19,7 @@
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="about.html">후기 게시판</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-					href="post.html">공지사항</a></li>
+					href="${pageContext.request.contextPath}/NoticeBoardList.do">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="contact.html">Contact</a></li>
 				<c:choose>
