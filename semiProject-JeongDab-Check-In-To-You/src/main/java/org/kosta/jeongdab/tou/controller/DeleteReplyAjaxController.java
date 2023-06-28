@@ -14,14 +14,8 @@ public class DeleteReplyAjaxController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if (request.getMethod().equals("POST") == false)
-			throw new ServletException("POST 방식만 서비스 됩니다");
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("member") == null) {
-			System.out.println("인증안돼서 댓글수정 안해줌!");
-			return "redirect:FindServiceBoardByNo.do";
-		}
 		String message = null;
+		HttpSession session = request.getSession(false);
 		String replyNo = request.getParameter("no");
 		long no = Long.parseLong(replyNo);
 		MemberVO memberVO = new MemberVO();
