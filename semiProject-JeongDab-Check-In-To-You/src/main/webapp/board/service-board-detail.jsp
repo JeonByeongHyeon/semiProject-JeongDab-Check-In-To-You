@@ -163,12 +163,12 @@
                   <form>
                      <div class="form-group">
                         <label>댓글 작성</label>
-                        <textarea class="form-control" id="reply-content" rows="3"
+                        <textarea class="form-control"  name="replyContent" id="replyContent" rows="3"
                            placeholder="이동봉사신청을 원하시면 댓글을 남겨주세요!"></textarea>
                      </div>
                      &nbsp;&nbsp;&nbsp;&nbsp;
                      <button type="button" class="btn btn-primary"
-                        id="reply-insert-btn">등록</button>
+                        id="replyInsertBtn">등록</button>
                      <button type="button" class="btn btn-primary"
                         id="reply-update-btn">수정</button>
                      <button type="button" class="btn btn-primary"
@@ -176,6 +176,29 @@
                   </form>
                </div>
             </div>
+            <script type="text/javascript">
+            
+            
+            $(function() {
+				$("#replyInsertBtn").click(function() {
+					let replyContent =$("#replyContent").val();
+					if(replyContent==""){
+						alert("댓글을 입력하세요");
+					return;
+					}
+					$.ajax({
+						type:"post",
+						url:"RegisterReplyController.do",
+						data:"replyContent="+replyContent,
+						success:function(result){
+							
+						}
+						
+					});
+					
+				});
+			});
+            </script>
             <!-- <script type="text/javascript">
          $(function() {
             $("#reply-update-btn").click(function() {
