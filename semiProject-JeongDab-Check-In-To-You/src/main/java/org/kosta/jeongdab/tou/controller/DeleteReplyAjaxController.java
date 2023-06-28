@@ -1,5 +1,6 @@
 package org.kosta.jeongdab.tou.controller;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,18 +15,11 @@ public class DeleteReplyAjaxController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String message = null;
-		String replyNo = request.getParameter("no");
-		HttpSession session=request.getSession(false);
-		long no = Long.parseLong(replyNo);
-		MemberVO memberVO = new MemberVO();
-		memberVO = (MemberVO) session.getAttribute("member");
-		long memberNo = memberVO.getMemberNo();
-		ReplyVO replyVO =new ReplyVO(); 
-		replyVO.setReplyNo(no);
-		replyVO.setMemberVO(memberVO);
-		boolean result=ReplyDAO.getInstance().deleteReplyByNo(replyVO);
+		long replyNo = Long.parseLong(request.getParameter("commentId")) ;
+		boolean result=ReplyDAO.getInstance().deleteReplyByNo(replyNo);
+		System.out.println(replyNo+"-------controller");
 		if (result) {
-			message = "succes";
+			message = "success";
 		}else {
 			message = "fail";
 		}
