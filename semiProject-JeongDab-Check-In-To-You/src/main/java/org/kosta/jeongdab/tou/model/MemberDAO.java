@@ -63,6 +63,7 @@ public class MemberDAO {
 		return memberVO;
 	}
 
+//	회원가입
 	public void registerMember(MemberVO memberVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -90,7 +91,7 @@ public class MemberDAO {
 	}
 
 	// 비밀번호 암호화를 수행하는 메서드
-	public static String hashPassword(String password) {
+	public String hashPassword(String password) {
 		try {
 			// MessageDigest 인스턴스를 생성하여 SHA-256 알고리즘을 사용하도록 설정
 			// SHA-256은 해시 알고리즘 중 하나로, 입력값을 고유한 256비트 길이의 해시 값으로 변환합니다.
@@ -171,13 +172,14 @@ public class MemberDAO {
 		MemberVO memberVO = null;
 		try {
 			con = dataSource.getConnection();
-			String sql = "SELECT member_name, member_birth, member_address, member_detail_address FROM member WHERE member_no = ?";
+			String sql = "SELECT member_name, member_email, member_birth, member_address, member_detail_address FROM member WHERE member_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, memberNo);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				memberVO = new MemberVO();
 				memberVO.setMemberName(rs.getString("member_name"));
+				memberVO.setMemberEmail(rs.getString("member_email"));
 				memberVO.setMemberBirth(rs.getDate("member_birth"));
 				memberVO.setMemberAddress(rs.getString("member_address"));
 				memberVO.setMemberDetailAddress(rs.getString("member_detail_address"));
@@ -267,5 +269,42 @@ public class MemberDAO {
 		} finally {
 			closeAll(pstmt, con);
 		}
+	}
+
+//	회원탈퇴
+	public void withdrawalMember(long memberNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "DELETE FROM member WHERE member_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, memberNo);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+
+	}
+
+//	로그인한 회원의 비밀번호인지 검사
+	public String checkPassword(long memberNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String password = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "SELECT password FROM member WHERE member_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, memberNo);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				password = rs.getString("password");
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return password;
 	}
 }
