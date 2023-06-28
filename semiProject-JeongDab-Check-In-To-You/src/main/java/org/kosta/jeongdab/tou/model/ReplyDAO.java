@@ -35,13 +35,13 @@ public class ReplyDAO {
 	}
 
 	// 댓글 수정
-	public void updateReplyBoard(ReplyVO replyVO) throws SQLException {
+	public boolean updateReplyBoard(ReplyVO replyVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("UPDATE reply SET reply_content=?, reply_date=sysdate ");
+			sql.append("UPDATE reply SET reply_content=?");
 			sql.append("WHERE reply_no=?");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, replyVO.getReplyContent());
@@ -51,6 +51,7 @@ public class ReplyDAO {
 		} finally {
 			closeAll(pstmt, con);
 		}
+		return true;
 	}
 
 	public void insertReply(ReplyVO replyVO) throws SQLException {
