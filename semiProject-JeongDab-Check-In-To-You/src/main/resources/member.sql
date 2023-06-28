@@ -37,6 +37,48 @@ CREATE TABLE reply (
     CONSTRAINT FK_MEMBER_REPLY FOREIGN KEY (member_no) REFERENCES member (member_no),
     CONSTRAINT FK_SERVICE_BOARD_REPLY FOREIGN KEY (service_board_no) REFERENCES service_board (service_board_no)
 );
+
+-- 공지사항 테이블 생성
+CREATE TABLE notice(
+	notice_no NUMBER NOT NULL,
+	notice_board_title VARCHAR2(100) NOT NULL,
+  	notice_board_content VARCHAR2(4000) NOT NULL,
+  	notice_board_date DATE NOT NULL,
+  	notice_board_hits NUMBER DEFAULT 0 NOT NULL,
+  	member_no NUMBER NOT NULL,
+  	CONSTRAINT PK_NOTICE_BOARD PRIMARY KEY (notice_no),
+  CONSTRAINT FK_NOTICE_BOARD_MEMBER FOREIGN KEY (member_no)
+    REFERENCES member (member_no)
+);
+-- 공지게시판 게시글 insert
+INSERT INTO notice (notice_no, notice_board_title,notice_board_content,notice_board_date ,member_no) 
+VALUES(notice_board_seq.nextval,'얘드라 할말이써','강아지좀 버리지말고 유기견입양해서 잘키우라니까',sysdate,62); 
+commit
+
+
+SELECT * FROM notice;
+-- 상세공지사항보기
+SELECT n.notice_no,n.notice_board_title, n.notice_board_content,to_char(notice_board_date ,'YYYY.MM.DD') AS notice_board_date,
+n.notice_board_hits,m.member_no FROM notice n
+INNER JOIN member m ON n.member_no = m.member_no
+WHERE n.notice_no=1;
+
+--공지사항리스트보기
+SELECT rnum,notice_no,notice_board_title, 
+to_char(notice_board_date ,'YYYY.MM.DD') AS notice_board_date,
+notice_board_hits FROM (SELECT row_number() over(ORDER BY notice_no DESC) as rnum,
+notice_no,notice_board_title,notice_board_date,notice_board_hits FROM notice) n
+WHERE rnum BETWEEN 1 AND 4;
+
+--공지사항수정
+UPDATE notice SET notice_board_title='수정테스트 개버리지마라ㅡㅡ',
+notice_board_content='수정테스트 사지말고 입양해라고'
+WHERE notice_no=1;
+--공지사항삭제
+delete from notice where notice_no=3;
+-- 공지사항게시판 조회수
+update notice set notice_board_hits=notice_board_hits+1 where notice_no=2;
+
 --댓글 삽입
 
 insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,'두번째 댓글',sysdate,62,65); 
@@ -46,6 +88,7 @@ select*from reply
 
 --시퀀스 생성
 CREATE SEQUENCE service_board_seq;
+CREATE SEQUENCE notice_board_seq;
 create sequence reply_seq;
 create sequence member_seq;
 --댓글

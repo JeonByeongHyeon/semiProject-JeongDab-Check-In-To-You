@@ -142,7 +142,7 @@ public class ServiceBoardDAO {
 		public void updateServiceBoard(ServiceBoardVO serviceBoardVO) throws SQLException {
 			Connection con=null;
 			PreparedStatement pstmt=null;
-			System.out.println("==========DAO 들어옴==============");
+			//System.out.println("==========DAO 들어옴==============");
 			try {
 				con=dataSource.getConnection();
 				StringBuilder sql= new StringBuilder();
@@ -155,7 +155,7 @@ public class ServiceBoardDAO {
 				pstmt.setString(3, serviceBoardVO.getServiceDate());
 				pstmt.setString(4, serviceBoardVO.getNation());
 				pstmt.setLong(5, serviceBoardVO.getServiceBoardNo());
-				System.out.println(serviceBoardVO);
+				//System.out.println(serviceBoardVO);
 				pstmt.executeUpdate();
 			}finally {
 				closeAll(pstmt, con);
