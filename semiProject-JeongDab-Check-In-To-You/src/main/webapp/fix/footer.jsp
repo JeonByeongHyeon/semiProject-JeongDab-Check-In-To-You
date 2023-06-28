@@ -27,8 +27,8 @@
 						</span>
 					</a></li>
 				</ul>
-				<div class="small text-center text-muted fst-italic">Copyright
-					&copy; Your Website 2023</div>
+				<div class="small text-center text-muted fst-italic">Check In To U
+					&copy; 정답조</div>
 			</div>
 		</div>
 	</div>
