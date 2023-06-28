@@ -15,7 +15,7 @@ public class TestInsertReply {
 			ServiceBoardVO sbvo = new ServiceBoardVO();
 			mvo.setMemberNo(62);
 			sbvo.setServiceBoardNo(65);
-			rvo.setReplyContent("댓글테스트");
+			rvo.setReplyContent("댓글테스트1211");
 			rvo.setMemberVO(mvo);
 			rvo.setServiceBoadrdVO(sbvo);
 			ReplyDAO.getInstance().insertReply(rvo);

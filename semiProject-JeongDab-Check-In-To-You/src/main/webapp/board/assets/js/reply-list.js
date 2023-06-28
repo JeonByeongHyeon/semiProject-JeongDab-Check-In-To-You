@@ -1,8 +1,25 @@
 let boardNo = $("#boardNo").text().trim().replace("글번호: ", "");
 
 $(document).ready(function() {
-	loadCommentList(); // 페이지 로딩 시 댓글 목록을 가져와서 표시
 
+	loadCommentList(); // 페이지 로딩 시 댓글 목록을 가져와서 표시
+	$("#replyInsertBtn").click(function() {
+		let replyContent = $("#replyContent").val();
+		if (replyContent == "") {
+			alert("댓글을 입력하세요");
+			return;
+		}
+		$.ajax({
+			type: "post",
+			url: "RegisterReply.do",
+			data: { replyContent: replyContent, boardNo: boardNo },
+			success: function(result) {
+				location.reload();
+			}
+
+		});
+
+	});
 	function loadCommentList() {
 		// 현재 사용자 정보 가져오기
 		$.ajax({
@@ -64,6 +81,10 @@ $(document).ready(function() {
 												if (message == 'success') {
 													// 삭제 요청이 성공한 경우, 해당 댓글을 화면에서도 제거
 													commentItem.remove();
+
+
+
+													location.reload();
 
 												}
 											},
