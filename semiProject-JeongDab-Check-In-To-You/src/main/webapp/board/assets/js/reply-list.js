@@ -38,14 +38,39 @@ $(document).ready(function() {
 							if (comment.memberVO.memberNo == currentUserNo) {
 								var editButton = $('<button>').text('수정');
 								var deleteButton = $('<button>').text('삭제');
+								// 댓글 번호를 버튼의 data 속성에 저장
+								editButton.data('commentId', comment.replyNo);
+								deleteButton.data('commentId', comment.replyNo);
 								editButton.click(function() {
+									var commentId = $(this).data('commentId'); // 저장된 댓글 번호 가져오기
 									// 수정 버튼 클릭 시 동작할 코드 작성
 									// 해당 댓글을 수정하는 로직을 구현하면 됩니다.
+									console.log("수정 버튼 클릭 - 댓글 ID: " + commentId);
 								});
 								deleteButton.click(function() {
+									var commentId = $(this).data('commentId'); // 저장된 댓글 번호 가져오기
 									// 삭제 버튼 클릭 시 동작할 코드 작성
 									// 해당 댓글을 삭제하는 로직을 구현하면 됩니다.
+									console.log("삭제 버튼 클릭 - 댓글 ID: " + commentId);
+									if(confirm("삭제하시겠습니까?")){
+									$.ajax({
+										url: 'DeleteReplyAjax.do',
+										method: 'GET',
+										data: { commentId: commentId },
+										success: function(message) {
+											if (message == 'success') {
+												// 삭제 요청이 성공한 경우, 해당 댓글을 화면에서도 제거
+												commentItem.remove();
+												location.reload();
+											}
+										},
+										error: function(xhr, status, error) {
+											console.error('댓글 삭제 요청 실패: ' + error);
+										}
+									});
+									}
 								});
+								
 								commentItem.append(editButton);
 								commentItem.append(deleteButton);
 							}

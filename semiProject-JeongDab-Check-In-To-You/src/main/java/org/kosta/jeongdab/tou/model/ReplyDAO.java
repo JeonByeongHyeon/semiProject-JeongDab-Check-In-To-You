@@ -111,16 +111,16 @@ public class ReplyDAO {
 		return ajaxReplyList;
 	}
 
-	public boolean deleteReplyByNo(ReplyVO replyVO) throws SQLException {
+	public boolean deleteReplyByNo(long replyNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = dataSource.getConnection();
-			String sql = "delete from reply where reply_no= ? and member_no=?";
+			String sql = "delete from reply where reply_no= ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setLong(1, replyVO.getReplyNo());
-			pstmt.setLong(2, replyVO.getMemberVO().getMemberNo());
+			pstmt.setLong(1, replyNo);
 			pstmt.executeUpdate();
+			System.out.println(replyNo+"-------controller");
 		} finally {
 			closeAll(pstmt, con);
 		}

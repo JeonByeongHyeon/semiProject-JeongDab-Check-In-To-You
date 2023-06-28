@@ -3,7 +3,7 @@ package org.kosta.jeongdab.test.deleteReplyTest;
 import org.kosta.jeongdab.tou.model.MemberVO;
 import org.kosta.jeongdab.tou.model.ReplyDAO;
 import org.kosta.jeongdab.tou.model.ReplyVO;
-
+/*
 public class DeleteReplyTest {
 	public static void main(String[] args) {
 		try {
@@ -19,3 +19,4 @@ public class DeleteReplyTest {
 		}
 	}
 }
+*/
