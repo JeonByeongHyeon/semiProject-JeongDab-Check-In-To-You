@@ -329,4 +329,12 @@ DROP CONSTRAINT FK_MEMBER_REPLY;
 ALTER TABLE reply
 DROP CONSTRAINT FK_SERVICE_BOARD_REPLY;
 
+
+
+
 select r.reply_content, r.reply_date, m.member_name from reply r, member m, service_board b where r.member_no = m.member_no and r.service_board_no = b.service_board_no and r.service_board_no = 65;
+
+
+insert into reply (reply_no,reply_content,reply_date) values(reply_seq.nextval,'tqt',sysdate)
+
+insert into reply (reply_no,reply_content,reply_date) values(reply_seq.nextval,'dfdf',sysdate)

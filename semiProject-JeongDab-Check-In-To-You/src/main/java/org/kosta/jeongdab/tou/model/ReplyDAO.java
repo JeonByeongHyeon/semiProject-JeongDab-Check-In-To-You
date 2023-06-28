@@ -58,11 +58,14 @@ public class ReplyDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = dataSource.getConnection();
-			String sql = "insert into reply (reply_no, reply_content, reply_date,member_no,service_board_no) values(reply_seq.nextval,?,sysdate,?,?)";
+			String sql = "insert into reply (reply_no, reply_content,reply_date,member_no,service_board_no)values(reply_seq.nextval,?,sysdate,?,?)";
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, replyVO.getReplyContent());
+
 			pstmt.setLong(2, replyVO.getMemberVO().getMemberNo());
 			pstmt.setLong(3, replyVO.getServiceBoadrdVO().getServiceBoardNo());
+
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
@@ -120,7 +123,7 @@ public class ReplyDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, replyNo);
 			pstmt.executeUpdate();
-			System.out.println(replyNo+"-------controller");
+			System.out.println(replyNo + "-------controller");
 		} finally {
 			closeAll(pstmt, con);
 		}
