@@ -57,7 +57,7 @@
 			</div>
 	<div class="container pt-3">
 		<form method="post"
-			action="${pageContext.request.contextPath}/UpdateNoticeBoard.do">
+			action="${pageContext.request.contextPath}/UpdateNotice.do">
 			<input type="hidden" name="no" value="${noticeBoard.noticeBoardNo}">
 			<table class="table">
 				<tr>
