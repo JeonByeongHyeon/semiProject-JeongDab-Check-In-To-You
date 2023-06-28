@@ -237,6 +237,8 @@ WHERE service_board_no=63;
 
 select * from member;
 
+select * from service_board;
+
 delete from member where member_no = 66;
 
 --조회수 업데이트
@@ -244,7 +246,6 @@ update service_board set service_board_hits=service_board_hits+1 where service_b
 
 select * from reply;
 
-<<<<<<< HEAD
 UPDATE reply SET reply_content='내가 댓글 바꿔썽', reply_date=sysdate WHERE service_board_no=65 AND reply_no=4;
 select * from reply;
 
@@ -267,8 +268,6 @@ ALTER TABLE reply
 DROP CONSTRAINT FK_SERVICE_BOARD_REPLY;
 select * from reply;
 
-=======
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 ALTER TABLE reply
 ADD CONSTRAINT FK_MEMBER_REPLY
 FOREIGN KEY (member_no)
@@ -286,3 +285,5 @@ DROP CONSTRAINT FK_MEMBER_REPLY;
 
 ALTER TABLE reply
 DROP CONSTRAINT FK_SERVICE_BOARD_REPLY;
+
+select r.reply_content, r.reply_date, m.member_name from reply r, member m, service_board b where r.member_no = m.member_no and r.service_board_no = b.service_board_no and r.service_board_no = 65;
