@@ -135,13 +135,14 @@ public class ReplyDAO {
 		ArrayList<ReplyVO> arrayList = new ArrayList<>();
 		try {
 			con = dataSource.getConnection();
-			String sql = "select r.reply_content, r.reply_date, m.member_name, r.member_no from reply r, member m, service_board b where r.member_no = m.member_no and r.service_board_no = b.service_board_no and r.service_board_no = ?";
+			String sql = "select r.reply_no, r.reply_content, r.reply_date, m.member_name, r.member_no from reply r, member m, service_board b where r.member_no = m.member_no and r.service_board_no = b.service_board_no and r.service_board_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, boardNo);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ReplyVO replyVO = new ReplyVO();
 				MemberVO memberVO = new MemberVO();
+				replyVO.setReplyNo(rs.getLong("reply_no"));
 				replyVO.setReplyContent(rs.getString("reply_content"));
 				replyVO.setReplyDate(rs.getString("reply_date"));
 				memberVO.setMemberName(rs.getString("member_name"));
