@@ -58,10 +58,15 @@ commit
 
 SELECT * FROM notice;
 -- 상세공지사항보기
+--이슈에 이 에러 추가하기
 SELECT n.notice_no,n.notice_board_title, n.notice_board_content,to_char(notice_board_date ,'YYYY.MM.DD') AS notice_board_date,
-n.notice_board_hits,m.member_no FROM notice n
+n.notice_board_hits FROM notice n
 INNER JOIN member m ON n.member_no = m.member_no
 WHERE n.notice_no=1;
+-----------------------------------------
+SELECT notice_no,notice_board_title, notice_board_content,to_char(notice_board_date ,'YYYY.MM.DD') AS notice_board_date,
+notice_board_hits FROM notice
+WHERE notice_no=1;
 
 --공지사항리스트보기
 SELECT rnum,notice_no,notice_board_title, 
