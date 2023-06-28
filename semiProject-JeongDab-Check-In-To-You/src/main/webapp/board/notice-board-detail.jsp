@@ -115,7 +115,7 @@
 
 							<button type="button" class="btn btn-primary"
 								onclick="updateNoticeBoard()">수정</button>
-							<form id="updateNoticeBoard" action="UpdateNotice.do"
+							<form id="updateNoticeBoardForm" action="UpdateNotice.do"
 								method="post">
 								<input type="hidden" name="no"
 									value="${noticeBoard.noticeBoardNo}">
@@ -132,7 +132,7 @@
                      function updateNoticeBoard() {
                         if (confirm("수정하시겠습니까?")) {
                            document.getElementById(
-                                 "updateNoticeBoard").submit();
+                                 "updateNoticeBoardForm").submit();
                         }
                      }
                      function noticeBoardList() {
