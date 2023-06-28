@@ -115,7 +115,7 @@
 
 							<button type="button" class="btn btn-primary"
 								onclick="updateNoticeBoard()">수정</button>
-							<form id="updateNoticeBoardForm" action="UpdateNotice.do"
+							<form id="updateNoticeBoard" action="UpdateNoticeBoardForm.do"
 								method="post">
 								<input type="hidden" name="no"
 									value="${noticeBoard.noticeBoardNo}">
