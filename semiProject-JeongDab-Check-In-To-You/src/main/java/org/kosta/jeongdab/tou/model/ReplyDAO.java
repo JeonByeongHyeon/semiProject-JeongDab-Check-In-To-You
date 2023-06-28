@@ -135,7 +135,7 @@ public class ReplyDAO {
 		ArrayList<ReplyVO> arrayList = new ArrayList<>();
 		try {
 			con = dataSource.getConnection();
-			String sql = "select r.reply_content, r.reply_date, m.member_name from reply r, member m, service_board b where r.member_no = m.member_no and r.service_board_no = b.service_board_no and r.service_board_no = ?";
+			String sql = "select r.reply_content, r.reply_date, m.member_name, r.member_no from reply r, member m, service_board b where r.member_no = m.member_no and r.service_board_no = b.service_board_no and r.service_board_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, boardNo);
 			rs = pstmt.executeQuery();
@@ -145,6 +145,7 @@ public class ReplyDAO {
 				replyVO.setReplyContent(rs.getString("reply_content"));
 				replyVO.setReplyDate(rs.getString("reply_date"));
 				memberVO.setMemberName(rs.getString("member_name"));
+				memberVO.setMemberNo(rs.getLong("member_no"));
 				replyVO.setMemberVO(memberVO);
 				arrayList.add(replyVO);
 			}
