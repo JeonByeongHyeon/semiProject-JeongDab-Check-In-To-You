@@ -107,7 +107,8 @@
 
 							<button type="button" class="btn btn-primary"
 								onclick="deleteNotice()">삭제</button>
-							<form id="deleteNoticeForm" action="DeleteNoticeByNo.do" method="post">
+							<form id="deleteNoticeForm" action="DeleteNoticeByNo.do"
+								method="post">
 								<input type="hidden" name="no"
 									value="${noticeBoard.noticeBoardNo}">
 							</form>
@@ -123,25 +124,25 @@
 
 						</c:if>
 						<script type="text/javascript">
-                     function deleteNotice() {
-                        if (confirm("삭제하시겠습니까?")) {
-                           document.getElementById("deleteNoticeForm")
-                                 .submit();
-                        }
-                     }
-                     function updateNoticeBoard() {
-                        if (confirm("수정하시겠습니까?")) {
-                           document.getElementById(
-                                 "updateNoticeBoardForm").submit();
-                        }
-                     }
-                     function noticeBoardList() {
-                        if (confirm("게시글 목록으로 이동하시겠습니까?")) {
-                           document.getElementById("noticeBoardList")
-                                 .submit();
-                        }
-                     }
-                  </script>
+							function deleteNotice() {
+								if (confirm("삭제하시겠습니까?")) {
+									document.getElementById("deleteNoticeForm")
+											.submit();
+								}
+							}
+							function updateNoticeBoard() {
+								if (confirm("수정하시겠습니까?")) {
+									document.getElementById("updateNoticeBoard")
+									.submit();
+								}
+							}
+							function noticeBoardList() {
+								if (confirm("게시글 목록으로 이동하시겠습니까?")) {
+									document.getElementById("noticeBoardList")
+											.submit();
+								}
+							}
+						</script>
 
 
 					</div>
