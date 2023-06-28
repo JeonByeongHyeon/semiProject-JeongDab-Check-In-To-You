@@ -165,10 +165,10 @@
 							<button type="button" class="btn btn-primary"
 								id="reply-insert-btn">등록</button>
 							<c:if test="${member.memberNo==reply.memberNo}">
-									<button type="button" class="btn btn-primary"
-										id="reply-update-btn">댓글수정</button>
-									<button type="button" class="btn btn-primary"
-										id="delete-reply-btn">댓글삭제</button>
+								<button type="button" class="btn btn-primary"
+									id="reply-update-btn">댓글수정</button>
+								<button type="button" class="btn btn-primary"
+									id="delete-reply-btn">댓글삭제</button>
 							</c:if>
 						</form>
 					</div>
@@ -205,22 +205,10 @@
 					success:	
 				});
 			});
-			$(function() {
-				$("#delete-reply-btn").click(function() {
-					$.ajax({
-						type="get",
-						url: "DeleteReplyAjax.do",
-				        data: "memberNo=replyNo",
-				        success: function(message) {
-				            if (message == 'success') {
-				            	deleteReplySuccess.text('삭제되었습니다.');
-					});
-				}				        
-				});
-				}
+			
 			
 		</script>
-		</script> -->
+				-->
 				<%--footer 영역 --%>
 				<div class="row">
 					<!-- 메인영역을 동적으로 import 해옴-->
@@ -234,7 +222,6 @@
 		src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/board/assets/js/reply-list.js"></script>
->>>>>>> branch 'main' of https://github.com/JeonByeongHyeon/semiProject-JeongDab-Check-In-To-You.git
 </body>
 </html>
 
