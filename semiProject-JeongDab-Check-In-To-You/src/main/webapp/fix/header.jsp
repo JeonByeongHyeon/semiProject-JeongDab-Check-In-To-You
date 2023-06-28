@@ -19,7 +19,7 @@
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 					href="${pageContext.request.contextPath}/NoticeBoardList.do">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-					href="contact.html">Contact</a></li>
+					href="contact.jsp">Contact</a></li>
 				<c:choose>
 					<c:when test="${not empty sessionScope.member}">
 						<!-- 사용자가 로그인한 상태 -->
