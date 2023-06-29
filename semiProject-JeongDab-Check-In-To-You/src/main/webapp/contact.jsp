@@ -21,7 +21,7 @@
 </head>
 <body>
 <div class="container pt-3">
-<img alt="" src="${pageContext.request.contextPath}/img/dog.jpg">
+<img alt="" src="${pageContext.request.contextPath}/img/contactdog.jpg">
 </div>
 
 </body>
