@@ -31,7 +31,7 @@ public class RegisterMemberController implements Controller {
 		memberVO.setMemberDetailAddress(addressDetail);
 		MemberDAO.getInstance().registerMember(memberVO);
 		System.out.println(memberVO);
-		return "redirect:member/register-result.jsp";
+		return "redirect:index.jsp";
 	}
 
 }
