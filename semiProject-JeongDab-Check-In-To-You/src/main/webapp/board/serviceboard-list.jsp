@@ -81,7 +81,7 @@
 								href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
 								<img class="img-fluid rounded mb-4"
 								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
-								alt="">
+								alt="" style="width: 250px; height: 250px;">
 
 								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
 								<div>

@@ -78,7 +78,7 @@
 								href="${pageContext.request.contextPath}/FindNoticeBoardByNo.do?no=${board.noticeBoardNo}">
 								<img class="img-fluid rounded mb-4"
 								src="${pageContext.request.contextPath}/board/assets/img/noticeDog.jpg"
-								alt="">
+								alt="" style="width: 250px; height: 250px;">
 
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
