@@ -71,7 +71,7 @@
 
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
-									<h6 class="mb-0">${board.noticeBoardHits}&nbsp;&nbsp;${board.noticeBoardDate}</h6>
+									<h6 class="mb-0">조회수:${board.noticeBoardHits}&nbsp;&nbsp;등록일:${board.noticeBoardDate}</h6>
 								</div>
 							</a>
 						</c:when>
@@ -84,7 +84,7 @@
 
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
-									<h6 class="mb-0">${board.noticeBoardHits}&nbsp;&nbsp;${board.noticeBoardDate}</h6>
+									<h6 class="mb-0">조회수:${board.noticeBoardHits}&nbsp;&nbsp;등록일:${board.noticeBoardDate}</h6>
 								</div>
 							</a>
 						</c:otherwise>

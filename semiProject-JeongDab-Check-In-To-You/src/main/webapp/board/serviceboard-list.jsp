@@ -70,11 +70,12 @@
 								alt="">
 
 								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
+								
 								<div>
-									<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+									<h6 class="mb-0"> 조회수:${board.serviceBoardHits}&nbsp;&nbsp;등록일:${board.serviceBoardCreateDate}</h6>
 								</div>
 							</a>
-						</c:when>
+						</c:when> 
 						<c:otherwise>
 							<a class="service-item d-block rounded text-center h-100 p-4"
 								href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
@@ -84,7 +85,7 @@
 
 								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
 								<div>
-									<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+									<h6 class="mb-0">조회수:${board.serviceBoardHits}&nbsp;&nbsp; 등록일:${board.serviceBoardCreateDate}</h6>
 								</div>
 							</a>
 						</c:otherwise>
