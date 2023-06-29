@@ -2,7 +2,7 @@ let nameFlag = false;
 let emailFlag = false;
 let passwordFlag = false;
 let numberFlag = false;
-    
+let passwordCheckFlag = false;
 function searchAddress() {
     new daum.Postcode({
         oncomplete: function (data) {
@@ -106,10 +106,10 @@ $(document).ready(function() {
 
         if (password !== confirmPassword) {
             $('#message').text('비밀번호가 일치하지 않습니다.').css('color', 'red');
-            passwordFlag = false;
+            passwordCheckFlag = false;
         } else if (password == confirmPassword) {
             $('#message').text('비밀번호가 일치합니다').css('color', 'blue');
-            passwordFlag = true;
+            passwordCheckFlag = true;
         }
 
         enableSignupButton();
@@ -186,6 +186,11 @@ $("#emailInput").on("keydown", function(e) {
   });
 $("#password").on("keydown", function(e) {
     if (!passwordFlag && e.keyCode === 9) { // Tab 키를 눌렀을 때
+      e.preventDefault(); // 기본 동작인 다음 `<input>` 요소로 이동하는 것을 막음
+    }
+  });
+$("#confirm_password").on("keydown", function(e) {
+    if (!passwordCheckFlag && e.keyCode === 9) { // Tab 키를 눌렀을 때
       e.preventDefault(); // 기본 동작인 다음 `<input>` 요소로 이동하는 것을 막음
     }
   });
