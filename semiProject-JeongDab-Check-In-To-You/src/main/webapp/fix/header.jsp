@@ -24,12 +24,12 @@
 				<c:choose>
 					<c:when test="${not empty sessionScope.member}">
 						<!-- 사용자가 로그인한 상태 -->
-						<button class="btn btn-outline-warning btn-sm" onclick="logout()"
+						<button class="btn btn-info btn-sm" onclick="logout()"
 							style="border-radius: 20%;">로그아웃</button>
 						<form method="post"
 							action="${pageContext.request.contextPath}/Logout.do"
 							id="logoutForm"></form>
-						<button class="btn btn-outline-warning btn-sm" onclick="mypage()"
+						<button class="btn btn-info btn-sm" onclick="mypage()"
 							style="border-radius: 20%;">마이페이지</button>
 						<form method="post"
 							action="${pageContext.request.contextPath}/UpdateMemberForm.do"
@@ -37,9 +37,9 @@
 					</c:when>
 					<c:otherwise>
 						<!-- 사용자가 로그아웃 상태 또는 로그인하지 않은 상태 -->
-						<button class="btn btn-outline-warning btn-sm" onclick="login()"
+						<button class="btn btn-info btn-sm" onclick="login()"
 							style="border-radius: 20%;">로그인</button>
-						<button class="btn btn-outline-warning btn-sm"
+						<button class="btn btn-info btn-sm"
 							onclick="redirectToSignUp()" style="border-radius: 20%;">회원가입</button>
 					</c:otherwise>
 				</c:choose>
