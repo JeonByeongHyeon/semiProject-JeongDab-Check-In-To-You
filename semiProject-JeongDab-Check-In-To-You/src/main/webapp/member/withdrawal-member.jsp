@@ -45,7 +45,7 @@
 <link
 	href="${pageContext.request.contextPath}/fix/assets/css/styles.css"
 	rel="stylesheet" />
-<title>너에개 체크인</title>
+<title>CHECKOUT탈퇴</title>
 </head>
 <%-- side --%>
 <div class="row header">

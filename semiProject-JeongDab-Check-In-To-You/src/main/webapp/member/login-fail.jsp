@@ -41,7 +41,7 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
-<title>너에개 체크인 로그인</title>
+<title>로그인 fail</title>
 </head>
 <body class="bg-white">
 
