@@ -67,7 +67,7 @@
 		
 			<div class="login-content">
 				<div class="login-logo">
-					<a href="#"> <img class="align-content"
+					<a href="${pageContext.request.contextPath}/index.jsp"> <img class="align-content"
 						src="${pageContext.request.contextPath}/img/logo1.png" alt="">
 					</a>
 				</div>
