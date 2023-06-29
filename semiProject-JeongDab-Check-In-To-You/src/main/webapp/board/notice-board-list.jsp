@@ -66,9 +66,9 @@
 							<a class="service-item d-block rounded text-center h-100 p-4"
 								href="#">
 								<img class="img-fluid rounded mb-4"
-								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+								src="${pageContext.request.contextPath}/board/assets/img/noticeDog.jpg"
 								alt="">
-
+ㄴㄴㄴㄴ
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
 									<h6 class="mb-0">조회수:${board.noticeBoardHits}&nbsp;&nbsp;등록일:${board.noticeBoardDate}</h6>
@@ -79,7 +79,7 @@
 							<a class="service-item d-block rounded text-center h-100 p-4"
 								href="${pageContext.request.contextPath}/FindNoticeBoardByNo.do?no=${board.noticeBoardNo}">
 								<img class="img-fluid rounded mb-4"
-								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+								src="${pageContext.request.contextPath}/board/assets/img/noticeDog.jpg"
 								alt="">
 
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
