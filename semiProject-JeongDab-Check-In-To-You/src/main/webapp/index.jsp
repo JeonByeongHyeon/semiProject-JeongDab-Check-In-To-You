@@ -80,7 +80,6 @@
 
          <%--footer 영역 --%>
          <div class="row">
-            <!-- 메인영역을 동적으로 import 해옴-->
             <c:import url="/fix/footer.jsp" />
          </div>
       </div>
