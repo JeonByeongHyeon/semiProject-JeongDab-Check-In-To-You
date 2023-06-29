@@ -64,11 +64,9 @@
 					<c:choose>
 						<c:when test="${sessionScope.member==null }">
 							<a class="service-item d-block rounded text-center h-100 p-4"
-								href="#">
-								<img class="img-fluid rounded mb-4"
+								href="#"> <img class="img-fluid rounded mb-4"
 								src="${pageContext.request.contextPath}/board/assets/img/noticeDog.jpg"
-								alt="">
-ㄴㄴㄴㄴ
+								alt="" style="width: 250px; height: 250px;">
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
 									<h6 class="mb-0">조회수:${board.noticeBoardHits}&nbsp;&nbsp;등록일:${board.noticeBoardDate}</h6>
