@@ -137,3 +137,17 @@ function enableSignupButton() {
         $("#signupButton").prop("disabled", true);
     }
 }
+
+$(document).ready(function() {
+  // jQuery 코드 작성 위치
+$("#emailInput").on("keydown", function(e) {
+    if (!emailFlag && e.keyCode === 9) { // Tab 키를 눌렀을 때
+      e.preventDefault(); // 기본 동작인 다음 `<input>` 요소로 이동하는 것을 막음
+    }
+  });
+$("#password").on("keydown", function(e) {
+    if (!passwordFlag && e.keyCode === 9) { // Tab 키를 눌렀을 때
+      e.preventDefault(); // 기본 동작인 다음 `<input>` 요소로 이동하는 것을 막음
+    }
+  });
+});
