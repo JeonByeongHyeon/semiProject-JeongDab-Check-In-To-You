@@ -40,7 +40,7 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
-<title>너에개 체크인</title>
+<title>CHECKIN회원가입</title>
 </head>
 <body class="bg-white">
 

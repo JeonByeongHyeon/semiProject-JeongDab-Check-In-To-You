@@ -10,7 +10,7 @@
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>너에개 체크인</title>
+<title>CHECK IN TO U</title>
 <link rel="icon" type="image/x-icon" href="fix/assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -80,7 +80,6 @@
 
          <%--footer 영역 --%>
          <div class="row">
-            <!-- 메인영역을 동적으로 import 해옴-->
             <c:import url="/fix/footer.jsp" />
          </div>
       </div>

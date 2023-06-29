@@ -45,12 +45,9 @@
 <link
 	href="${pageContext.request.contextPath}/fix/assets/css/styles.css"
 	rel="stylesheet" />
-<title>너에개 체크인</title>
+<title>비밀번호 변경</title>
 </head>
-<%-- header 영역 --%>
-<div class="row header">
-	<c:import url="../fix/header.jsp" />
-</div>
+
 <%-- side --%>
 <div class="row header">
 	<c:import url="../fix/side.jsp" />

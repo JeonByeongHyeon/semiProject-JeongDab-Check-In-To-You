@@ -45,7 +45,7 @@
 <link
 	href="${pageContext.request.contextPath}/fix/assets/css/styles.css"
 	rel="stylesheet" />
-<title>너에개 체크인</title>
+<title>비밀번호 찾기</title>
 </head>
 <body class="bg-white">
 	<div class="sufee-login d-flex align-content-center flex-wrap">

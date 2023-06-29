@@ -13,5 +13,7 @@
 				변경</a></li>
 		<li><a
 			href="${pageContext.request.contextPath}/member/withdrawal-member.jsp">회원탈퇴</a></li>
+			<li><a
+			href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
 	</ul>
 </aside>
