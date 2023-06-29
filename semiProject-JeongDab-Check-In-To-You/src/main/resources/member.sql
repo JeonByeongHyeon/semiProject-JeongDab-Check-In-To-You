@@ -134,7 +134,7 @@ ALTER TABLE reply MODIFY (reply_date DEFAULT sysdate);
 
 -- 회원보기
 SELECT * FROM member;
-
+delete from member where member_no = 13;
 
 -- 게시글 보기
 SELECT * FROM service_board;
