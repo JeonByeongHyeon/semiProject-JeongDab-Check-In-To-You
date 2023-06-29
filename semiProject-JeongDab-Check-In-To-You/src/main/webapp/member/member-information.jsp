@@ -49,10 +49,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>너에개 체크인</title>
 </head>
-<%-- header 영역 --%>
-<div class="row header">
-	<c:import url="../fix/header.jsp" />
-</div>
+
 <%-- side --%>
 <div class="row header">
 	<c:import url="../fix/side.jsp" />
@@ -60,10 +57,6 @@
 <body class="bg-white">
 	<div class="sufee-login d-flex align-content-center flex-wrap">
 		<div class="container">
-		<br>
-		<br>
-		<br>
-		<br>
 		
 			<div class="login-content">
 				<div class="login-logo">

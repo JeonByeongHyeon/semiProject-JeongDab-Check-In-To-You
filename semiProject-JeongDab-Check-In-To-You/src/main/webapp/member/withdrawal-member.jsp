@@ -47,10 +47,6 @@
 	rel="stylesheet" />
 <title>너에개 체크인</title>
 </head>
-<%-- header 영역 --%>
-<div class="row header">
-	<c:import url="../fix/header.jsp" />
-</div>
 <%-- side --%>
 <div class="row header">
 	<c:import url="../fix/side.jsp" />
