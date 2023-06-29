@@ -62,7 +62,7 @@
             </div>
          </div>
 
-<div class="container pt-3">
+<div class="container pt-3" align="center">
 <img alt="" src="${pageContext.request.contextPath}/img/contactdog.jpg">
 </div>
 
