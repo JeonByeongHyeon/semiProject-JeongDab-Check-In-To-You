@@ -16,7 +16,7 @@ public class FindPasswordController implements Controller {
 		memberVO.setPassword(password);
 		memberVO.setMemberEmail(email);
 		MemberDAO.getInstance().findPassword(memberVO);
-		return "layout3.jsp";
+		return "index.jsp";
 	}
 
 }

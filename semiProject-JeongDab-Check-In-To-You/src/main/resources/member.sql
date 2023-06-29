@@ -10,8 +10,21 @@ CREATE TABLE member (
   CONSTRAINT PK_MEMBER PRIMARY KEY (member_no)
 );
 
+ALTER SEQUENCE service_board_seq increment by 1
+ALTER SEQUENCE notice_board_seq increment by 1
+ALTER SEQUENCE member_seq increment by 1
+ALTER SEQUENCE reply_seq increment by 1
+
+
 insert into member(member_no,member_name, member_email, password, member_birth, member_status, member_address, member_detail_address) 
-values(1,'박해준','cyon8254@gmail.com','1234',sysdate,0,'성남시','아튼빌');
+values(1,'정답조','jd@gmail.com','1234',sysdate,0,'분당','오리역');
+
+
+
+select*from member
+
+delete from member where member_no=10
+
 CREATE TABLE service_board (
   service_board_no NUMBER NOT NULL,
   service_board_title VARCHAR2(100) NOT NULL,
@@ -54,9 +67,8 @@ CREATE TABLE notice(
 INSERT INTO notice (notice_no, notice_board_title,notice_board_content,notice_board_date ,member_no) 
 VALUES(notice_board_seq.nextval,'얘드라 할말이써','강아지좀 버리지말고 유기견입양해서 잘키우라니까',sysdate,62); 
 commit
+ALTER SEQUENCE service_board_seq RESTART WITH 1;
 
-
-SELECT * FROM notice;
 -- 상세공지사항보기
 --이슈에 이 에러 추가하기
 SELECT n.notice_no,n.notice_board_title, n.notice_board_content,to_char(notice_board_date ,'YYYY.MM.DD') AS notice_board_date,
@@ -80,7 +92,7 @@ UPDATE notice SET notice_board_title='수정테스트 개버리지마라ㅡㅡ',
 notice_board_content='수정테스트 사지말고 입양해라고'
 WHERE notice_no=1;
 --공지사항삭제
-delete from notice where notice_no=3;
+delete from member where member_no=2;
 -- 공지사항게시판 조회수
 update notice set notice_board_hits=notice_board_hits+1 where notice_no=2;
 
@@ -96,7 +108,54 @@ CREATE SEQUENCE service_board_seq;
 CREATE SEQUENCE notice_board_seq;
 create sequence reply_seq;
 create sequence member_seq;
---댓글
+
+delete member
+
+--시퀀스 삭제
+DROP SEQUENCE service_board_seq;
+DROP SEQUENCE notice_board_seq;
+DROP SEQUENCE reply_seq;
+DROP SEQUENCE member_seq
+
+CREATE SEQUENCE service_board_seq
+   START WITH 1 -- 시작 값 설정
+   INCREMENT BY 1 -- 증가 값 설정
+   MINVALUE 1 -- 최소 값 설정
+   MAXVALUE 999999999 -- 최대 값
+ 	NOCYCLE
+   NOCACHE;
+
+   
+CREATE SEQUENCE notice_board_seq
+   START WITH 1 -- 시작 값 설정
+   INCREMENT BY 1 -- 증가 값 설정
+   MINVALUE 1 -- 최소 값 설정
+   MAXVALUE 999999999 -- 최대 값
+ 	NOCYCLE
+   NOCACHE;
+
+   
+   
+CREATE SEQUENCE member_seq
+   START WITH 2 -- 시작 값 설정
+   INCREMENT BY 1 -- 증가 값 설정
+   MINVALUE 1 -- 최소 값 설정
+   MAXVALUE 999999999 -- 최대 값
+ 	NOCYCLE
+   NOCACHE;
+
+   
+CREATE SEQUENCE reply_seq
+   START WITH 1 -- 시작 값 설정
+   INCREMENT BY 1 -- 증가 값 설정
+   MINVALUE 1 -- 최소 값 설정
+   MAXVALUE 999999999 -- 최대 값
+ 	NOCYCLE
+   NOCACHE;
+
+   
+   
+
 
 --댓글 조회
 
@@ -115,7 +174,7 @@ delete from reply where reply_no= 3 and member_no=62
 
 
 insert into member(member_no,member_name, member_email, password, member_birth,member_status, member_address, member_detail_address) 
-values(member_seq.nextval,'박해준','cyon8254@gmail.com','1234',sysdate,0,'성남시','아튼빌');
+values(member_seq.nextval,'정답','jd@gmail.com','1234',sysdate,0,'오리','꽥');
 delete from member;
 --
 ALTER TABLE service_board
@@ -134,7 +193,7 @@ ALTER TABLE reply MODIFY (reply_date DEFAULT sysdate);
 
 -- 회원보기
 SELECT * FROM member;
-
+delete from member where member_no = 13;
 
 -- 게시글 보기
 SELECT * FROM service_board;
@@ -158,6 +217,9 @@ WHERE s.service_board_no=21;
 commit
 
 select * from member;
+select * from reply;
+select * from notice;
+select * from service_board;
 
 insert into member(member_no,member_name, member_email, password, member_birth,member_address, member_detail_address) 
 values(member_seq.nextval,'박해준','cyon8254@gmail.com','1234',sysdate,'성남시','아튼빌');

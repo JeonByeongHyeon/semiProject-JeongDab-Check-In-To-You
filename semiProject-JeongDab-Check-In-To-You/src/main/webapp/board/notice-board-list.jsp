@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>봉사구인게시글수정하기</title>
+<title>공지사항 게시판</title>
 <link rel="icon" type="image/x-icon" href="fix/assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -66,12 +66,12 @@
 							<a class="service-item d-block rounded text-center h-100 p-4"
 								href="#">
 								<img class="img-fluid rounded mb-4"
-								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+								src="${pageContext.request.contextPath}/board/assets/img/noticeDog.jpg"
 								alt="">
-
+ㄴㄴㄴㄴ
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
-									<h6 class="mb-0">${board.noticeBoardHits}&nbsp;&nbsp;${board.noticeBoardDate}</h6>
+									<h6 class="mb-0">조회수:${board.noticeBoardHits}&nbsp;&nbsp;등록일:${board.noticeBoardDate}</h6>
 								</div>
 							</a>
 						</c:when>
@@ -79,12 +79,12 @@
 							<a class="service-item d-block rounded text-center h-100 p-4"
 								href="${pageContext.request.contextPath}/FindNoticeBoardByNo.do?no=${board.noticeBoardNo}">
 								<img class="img-fluid rounded mb-4"
-								src="${pageContext.request.contextPath}/board/assets/img/service-1.jpg"
+								src="${pageContext.request.contextPath}/board/assets/img/noticeDog.jpg"
 								alt="">
 
 								<h4 class="mb-0">${board.noticeBoardTitle}</h4>
 								<div>
-									<h6 class="mb-0">${board.noticeBoardHits}&nbsp;&nbsp;${board.noticeBoardDate}</h6>
+									<h6 class="mb-0">조회수:${board.noticeBoardHits}&nbsp;&nbsp;등록일:${board.noticeBoardDate}</h6>
 								</div>
 							</a>
 						</c:otherwise>

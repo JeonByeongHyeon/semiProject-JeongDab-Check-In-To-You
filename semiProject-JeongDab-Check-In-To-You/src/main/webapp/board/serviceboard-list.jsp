@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>봉사구인게시글수정하기</title>
+<title>봉사 구인 게시판</title>
 <link rel="icon" type="image/x-icon" href="fix/assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -70,11 +70,12 @@
 								alt="">
 
 								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
+								
 								<div>
-									<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+									<h6 class="mb-0"> 조회수:${board.serviceBoardHits}&nbsp;&nbsp;등록일:${board.serviceBoardCreateDate}</h6>
 								</div>
 							</a>
-						</c:when>
+						</c:when> 
 						<c:otherwise>
 							<a class="service-item d-block rounded text-center h-100 p-4"
 								href="${pageContext.request.contextPath}/FindServiceBoardByNo.do?no=${board.serviceBoardNo}">
@@ -84,7 +85,7 @@
 
 								<h4 class="mb-0">${board.serviceBoardTitle}</h4>
 								<div>
-									<h6 class="mb-0">${board.serviceBoardHits}&nbsp;&nbsp;${board.serviceBoardCreateDate}</h6>
+									<h6 class="mb-0">조회수:${board.serviceBoardHits}&nbsp;&nbsp; 등록일:${board.serviceBoardCreateDate}</h6>
 								</div>
 							</a>
 						</c:otherwise>
