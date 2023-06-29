@@ -82,10 +82,6 @@ $(document).ready(function() {
 											success: function(message) {
 												if (message == 'success') {
 													// 삭제 요청이 성공한 경우, 해당 댓글을 화면에서도 제거
-													commentItem.remove();
-
-
-
 													location.reload();
 
 												}
