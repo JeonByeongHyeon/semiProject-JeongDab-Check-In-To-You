@@ -46,15 +46,20 @@ $(document).ready(function() {
 							var writer = $('<span>').text(" 작성자 : "+comment.memberVO.memberName);
 							var date = $('<span>').text(" 작성일 : "+comment.replyDate);
 							var content = $('<span>').text(" 댓글 내용 : "+comment.replyContent);
-
+							
+							commentItem.addClass('comment-item');
+							writer.addClass('comment-writer');
+							date.addClass('comment-date');
+							content.addClass('comment-content');
+							
 							commentItem.append(content);
 							commentItem.append(writer);
 							commentItem.append(date);
 
 							// 작성자와 현재 사용자 번호 비교하여 수정 및 삭제 버튼 보여주기
 							if (comment.memberVO.memberNo == currentUserNo) {
-								var editButton = $('<button>').text('수정');
-								var deleteButton = $('<button>').text('삭제');
+								var editButton = $('<button>').text('수정').addClass('edit-button');
+								var deleteButton = $('<button>').text('삭제').addClass('delete-button');
 								// 댓글 번호를 버튼의 data 속성에 저장
 								editButton.data('commentId', comment.replyNo);
 								deleteButton.data('commentId', comment.replyNo);
@@ -88,7 +93,6 @@ $(document).ready(function() {
 										});
 									}
 								});
-
 								commentItem.append(editButton);
 								commentItem.append(deleteButton);
 							}
@@ -112,8 +116,8 @@ function createEditForm(commentId, updateCommentContent, commentItem) {
 	
   // 수정 폼 요소 생성
   var editForm = $('<form>').addClass('edit-form');
-  var contentInput = $('<input>').attr('type', 'text').val(updateCommentContent);
-  var submitButton = $('<button>').text('확인');
+var contentInput = $('<input>').attr('type', 'text').addClass('content-input').val(updateCommentContent);
+var submitButton = $('<button>').text('확인').addClass('submit-button');
 
   // 폼 제출 처리
   editForm.submit(function(event) {

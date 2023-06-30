@@ -38,6 +38,9 @@
 <link
 	href="${pageContext.request.contextPath}/board/assets/lib/lightbox/css/lightbox.min.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/board/assets/css/comment.css"
+	rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
 <link
@@ -132,25 +135,25 @@
 
 						</c:if>
 						<script type="text/javascript">
-                     function deletePost() {
-                        if (confirm("삭제하시겠습니까?")) {
-                           document.getElementById("deletePostForm")
-                                 .submit();
-                        }
-                     }
-                     function updateServiceBoard() {
-                        if (confirm("수정하시겠습니까?")) {
-                           document.getElementById(
-                                 "updateServiceBoard").submit();
-                        }
-                     }
-                     function serviceBoardList() {
-                        if (confirm("게시글 목록으로 이동하시겠습니까?")) {
-                           document.getElementById("serviceBoardList")
-                                 .submit();
-                        }
-                     }
-                  </script>
+							function deletePost() {
+								if (confirm("삭제하시겠습니까?")) {
+									document.getElementById("deletePostForm")
+											.submit();
+								}
+							}
+							function updateServiceBoard() {
+								if (confirm("수정하시겠습니까?")) {
+									document.getElementById(
+											"updateServiceBoard").submit();
+								}
+							}
+							function serviceBoardList() {
+								if (confirm("게시글 목록으로 이동하시겠습니까?")) {
+									document.getElementById("serviceBoardList")
+											.submit();
+								}
+							}
+						</script>
 
 
 					</div>
