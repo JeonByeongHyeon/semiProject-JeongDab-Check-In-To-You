@@ -16,7 +16,7 @@ public class RegisterReplyController implements Controller {
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		long memberNo = memberVO.getMemberNo();
-		long boardNo = Long.parseLong(request.getParameter("boardNo")) ;
+		long boardNo = Long.parseLong(request.getParameter("boardNo"));
 		String replyContent = request.getParameter("replyContent");
 		ReplyVO replyVO = new ReplyVO();
 		MemberVO mvo = new MemberVO();
@@ -26,7 +26,6 @@ public class RegisterReplyController implements Controller {
 		replyVO.setReplyContent(replyContent);
 		replyVO.setMemberVO(mvo);
 		replyVO.setServiceBoadrdVO(sbvo);
-		System.out.println(replyVO);
 		ReplyDAO.getInstance().insertReply(replyVO);
 		request.setAttribute("responsebody", replyVO);
 		return "AjaxView";

@@ -19,18 +19,16 @@ public class UpdateReplyController implements Controller {
 			System.out.println("인증안돼서 댓글수정 안해줌!");
 			return "redirect:FindServiceBoardByNo.do";
 		}
-		System.out.println("========컨트롤러===");
-		String result=null;
-		String replyContent=request.getParameter("content");
-		long replyNo= Long.parseLong(request.getParameter("commentId"));
-		ReplyVO replyVO= new ReplyVO();
+		String result = null;
+		String replyContent = request.getParameter("content");
+		long replyNo = Long.parseLong(request.getParameter("commentId"));
+		ReplyVO replyVO = new ReplyVO();
 		replyVO.setReplyContent(replyContent);
 		replyVO.setReplyNo(replyNo);
-		System.out.println(replyVO);
-		boolean flag=ReplyDAO.getInstance().updateReplyBoard(replyVO);
-		if(flag) {
+		boolean flag = ReplyDAO.getInstance().updateReplyBoard(replyVO);
+		if (flag) {
 			result = "success";
-		}else {
+		} else {
 			result = "fail";
 		}
 		request.setAttribute("responsebody", result);

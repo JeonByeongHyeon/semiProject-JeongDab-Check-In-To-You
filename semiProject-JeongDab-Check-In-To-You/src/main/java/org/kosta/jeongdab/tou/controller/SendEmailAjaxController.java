@@ -60,8 +60,6 @@ public class SendEmailAjaxController implements Controller {
 		// 이메일 전송
 		Transport.send(message);
 
-		System.out.println("Email sent successfully.");
-
 		// 응답 설정
 		request.setAttribute("responsebody", verificationCode);
 

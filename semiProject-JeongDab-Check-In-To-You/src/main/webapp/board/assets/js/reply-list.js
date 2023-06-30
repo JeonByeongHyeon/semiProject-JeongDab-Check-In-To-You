@@ -61,19 +61,15 @@ $(document).ready(function() {
 								editButton.click(function() {
 									var commentId = $(this).data('commentId'); // 저장된 댓글 번호 가져오기
 									var commentContent = $(this).siblings('span').eq(0).text();
-									console.log(commentContent);
 									// 수정 버튼 클릭 시 동작할 코드 작성
 									// 해당 댓글을 수정하는 로직을 구현하면 됩니다.
-									console.log("수정 버튼 클릭 - 댓글 ID: " + commentId);
 									let updateCommentContent =  commentContent.substring(9);
-									console.log("수정 버튼 클릭 - 댓글 내용: " + updateCommentContent);
 									createEditForm(commentId,updateCommentContent, commentItem);
 								});
 								deleteButton.click(function() {
 									var commentId = $(this).data('commentId'); // 저장된 댓글 번호 가져오기
 									// 삭제 버튼 클릭 시 동작할 코드 작성
 									// 해당 댓글을 삭제하는 로직을 구현하면 됩니다.
-									console.log("삭제 버튼 클릭 - 댓글 ID: " + commentId);
 									if (confirm("삭제하시겠습니까?")) {
 										$.ajax({
 											url: 'DeleteReplyAjax.do',
@@ -131,7 +127,6 @@ function createEditForm(commentId, updateCommentContent, commentItem) {
       method: 'POST',
       data: { commentId: commentId, content: updatedContent },
       success: function(response) {
-        console.log('댓글 수정 완료');
         // DOM에서 댓글 내용 업데이트
         commentItem.find('span').eq(0).text(updatedContent);
         // 수정 폼 제거

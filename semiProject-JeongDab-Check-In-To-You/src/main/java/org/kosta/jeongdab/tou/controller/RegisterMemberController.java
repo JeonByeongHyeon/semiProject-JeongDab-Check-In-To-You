@@ -21,7 +21,6 @@ public class RegisterMemberController implements Controller {
 		java.sql.Date memberBirth = new java.sql.Date(utilDate.getTime());
 		String address = request.getParameter("address");
 		String addressDetail = request.getParameter("addressDetail");
-		System.out.println(addressDetail);
 		MemberVO memberVO = new MemberVO();
 		memberVO.setMemberName(name);
 		memberVO.setMemberEmail(email);
@@ -30,7 +29,6 @@ public class RegisterMemberController implements Controller {
 		memberVO.setMemberAddress(address);
 		memberVO.setMemberDetailAddress(addressDetail);
 		MemberDAO.getInstance().registerMember(memberVO);
-		System.out.println(memberVO);
 		return "redirect:index.jsp";
 	}
 

@@ -10,8 +10,7 @@ import org.kosta.jeongdab.tou.model.MemberVO;
 
 public class LoginController implements Controller {
 
-
-   private static final String POST_METHOD = "POST";
+	private static final String POST_METHOD = "POST";
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -23,15 +22,12 @@ public class LoginController implements Controller {
 		String password = request.getParameter("password");
 		MemberVO memberVO = MemberDAO.getInstance().login(memberEmail, password);
 		if (memberVO == null) {
-			System.out.println("로그인 실패");
 			return "redirect:member/login-fail.jsp";
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberVO);
-			System.out.println("로그인 성공");
 			return "redirect:index.jsp";
 		}
 	}
-
 
 }

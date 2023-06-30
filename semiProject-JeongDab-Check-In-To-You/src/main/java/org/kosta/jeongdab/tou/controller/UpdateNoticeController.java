@@ -29,7 +29,6 @@ public class UpdateNoticeController implements Controller {
 		noticeBoardVO.setNoticeBoardContent(content);
 		noticeBoardVO.setNoticeBoardDate(noticeBoardDate);
 		NoticeBoardDAO.getInstance().updateNotice(noticeBoardVO);
-		System.out.println(noticeBoardVO);
 		return "redirect:FindNoticeBoardByNo.do?no=" + no;
 	}
 

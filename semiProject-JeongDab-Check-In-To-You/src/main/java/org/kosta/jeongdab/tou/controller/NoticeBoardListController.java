@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.jeongdab.tou.model.NoticeBoardDAO;
 import org.kosta.jeongdab.tou.model.Pagination;
-import org.kosta.jeongdab.tou.model.ServiceBoardDAO;
 
 public class NoticeBoardListController implements Controller {
 
@@ -21,7 +20,6 @@ public class NoticeBoardListController implements Controller {
 		}
 		request.setAttribute("pagination", pagination);
 		request.setAttribute("list", NoticeBoardDAO.getInstance().noticeBoardList(pagination));
-//		request.setAttribute("url", "board/serviceboard-list.jsp");
 		return "board/notice-board-list.jsp";
 	}
 }

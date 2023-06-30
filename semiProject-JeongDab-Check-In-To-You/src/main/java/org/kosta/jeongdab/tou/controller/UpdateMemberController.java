@@ -28,7 +28,6 @@ public class UpdateMemberController implements Controller {
 		memberVO.setMemberAddress(memberAddress);
 		memberVO.setMemberDetailAddress(memberAddressDetail);
 		memberVO.setMemberNo(memberNo);
-		System.out.println(memberVO);
 		MemberDAO.getInstance().updateMember(memberVO);
 		return "/UpdateMemberForm.do";
 	}

@@ -10,16 +10,15 @@ public class DeleteReplyAjaxController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String message = null;
-		long replyNo = Long.parseLong(request.getParameter("commentId")) ;
-		boolean result=ReplyDAO.getInstance().deleteReplyByNo(replyNo);
-		System.out.println(replyNo+"-------controller");
+		long replyNo = Long.parseLong(request.getParameter("commentId"));
+		boolean result = ReplyDAO.getInstance().deleteReplyByNo(replyNo);
 		if (result) {
 			message = "success";
-		}else {
+		} else {
 			message = "fail";
 		}
 		request.setAttribute("responsebody", message);
 		return "AjaxView";
-		
+
 	}
 }

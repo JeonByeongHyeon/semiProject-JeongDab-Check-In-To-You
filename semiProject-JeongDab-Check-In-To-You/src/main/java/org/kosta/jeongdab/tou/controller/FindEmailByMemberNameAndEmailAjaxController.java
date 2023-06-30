@@ -16,16 +16,12 @@ public class FindEmailByMemberNameAndEmailAjaxController implements Controller {
 		memberVO.setMemberName(name);
 		memberVO.setMemberEmail(inputEmail);
 		String memberEmail = MemberDAO.getInstance().findEmailByMemberNameAndEmail(memberVO);
-		System.out.println(name + "===============FindEmailByMemberEmailAjaxController");
-		System.out.println(inputEmail + "===============FindEmailByMemberEmailAjaxController");
-		System.out.println(memberEmail + "===============FindEmailByMemberEmailAjaxController");
 		String result = null;
 		if (inputEmail.equals(memberEmail)) {
 			result = "matched";
 		} else {
 			result = "not_matched";
 		}
-		System.out.println(result + "===============FindEmailByMemberEmailAjaxController");
 		request.setAttribute("responsebody", result);
 		return "AjaxView";
 	}

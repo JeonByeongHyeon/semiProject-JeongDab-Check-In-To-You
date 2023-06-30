@@ -13,7 +13,6 @@ public class FindReplyRegisterMemberAjaxController implements Controller {
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		long memberNo = memberVO.getMemberNo();
-		System.out.println(memberNo + "멤버넘버");
 		request.setAttribute("responsebody", memberNo);
 		return "AjaxView";
 	}

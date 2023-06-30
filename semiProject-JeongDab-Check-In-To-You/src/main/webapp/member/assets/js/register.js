@@ -3,6 +3,7 @@ let emailFlag = false;
 let passwordFlag = false;
 let numberFlag = false;
 let passwordCheckFlag = false;
+
 function searchAddress() {
     new daum.Postcode({
         oncomplete: function (data) {

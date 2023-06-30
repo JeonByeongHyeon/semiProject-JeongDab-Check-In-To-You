@@ -18,13 +18,10 @@ public class CheckVerificationCodeAjaxController implements Controller {
 
 		if (enteredCode != null && enteredCode.equals(verificationCode)) {
 			// 인증번호가 일치하는 경우
-			System.out.println(verificationCode);
-			System.out.println(enteredCode + "입력 성공");
 			result = "success";
 		} else {
 			// 인증번호가 일치하지 않는 경우
-			System.out.println(verificationCode);
-			System.out.println(enteredCode + "입력 실패");
+			result = "fail";
 		}
 
 		// 응답 설정

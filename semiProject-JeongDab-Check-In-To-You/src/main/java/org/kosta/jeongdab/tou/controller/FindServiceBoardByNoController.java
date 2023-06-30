@@ -34,7 +34,6 @@ public class FindServiceBoardByNoController implements Controller {
 		}
 		// 게시물 조회
 		request.setAttribute("serviceBoard", ServiceBoardDAO.getInstance().findServiceBoardByNo(no));
-//		request.setAttribute("url", "board/serviceboard-list.jsp");
 		return "board/service-board-detail.jsp";
 	}
 }

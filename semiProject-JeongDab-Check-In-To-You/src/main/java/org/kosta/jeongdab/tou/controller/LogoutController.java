@@ -19,8 +19,6 @@ public class LogoutController implements Controller {
 		// 기존 세션 무효화 (로그아웃)
 		HttpSession session = request.getSession(false);
 		if (session != null) {
-			System.out.println("로그아웃 회원번호 : " + session.getAttribute("member"));
-			System.out.println("세션 무효화");
 			session.invalidate();
 		}
 		// 인덱스 페이지로 리다이렉트

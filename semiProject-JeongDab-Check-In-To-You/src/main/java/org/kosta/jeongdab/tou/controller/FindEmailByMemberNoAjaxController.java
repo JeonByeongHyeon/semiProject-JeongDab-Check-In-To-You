@@ -14,7 +14,6 @@ public class FindEmailByMemberNoAjaxController implements Controller {
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		long memberNo = memberVO.getMemberNo();
 		String inputEmail = request.getParameter("email");
-		System.out.println(memberNo + "=================EmailMatchedAjaxController");
 		String emailMatched = null;
 		String memberEmail = MemberDAO.getInstance().findEmailByMemberNo(memberNo);
 		if (inputEmail.equals(memberEmail)) {
@@ -22,7 +21,6 @@ public class FindEmailByMemberNoAjaxController implements Controller {
 		} else {
 			emailMatched = "not_matched";
 		}
-		System.out.println(emailMatched + "===============FindEmailByMemberNoAjaxController");
 		request.setAttribute("responsebody", emailMatched);
 		return "AjaxView";
 	}

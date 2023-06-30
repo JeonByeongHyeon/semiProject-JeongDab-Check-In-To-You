@@ -39,7 +39,6 @@ public class MemberDAO {
 
 	// 로그인
 	public MemberVO login(String memberEmail, String password) throws SQLException {
-		System.out.println("login 메서드 시작"); // 로깅 프레임워크 사용
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -49,7 +48,6 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(LOGIN_QUERY);
 			pstmt.setString(1, memberEmail);
 			String hashedPassword = hashPassword(password);
-			System.out.println("login" + hashedPassword);
 			pstmt.setString(2, hashedPassword); // 실제로는 비밀번호를 해싱하여 비교해야 함
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -78,7 +76,6 @@ public class MemberDAO {
 			pstmt.setString(1, memberVO.getMemberName());
 			pstmt.setString(2, memberVO.getMemberEmail());
 			String hashedPassword = hashPassword(memberVO.getPassword());
-			System.out.println("register" + hashedPassword);
 			pstmt.setString(3, hashedPassword);
 			pstmt.setDate(4, memberVO.getMemberBirth());
 			pstmt.setString(5, memberVO.getMemberAddress());
@@ -156,7 +153,6 @@ public class MemberDAO {
 			pstmt.setString(3, memberVO.getMemberAddress());
 			pstmt.setString(4, memberVO.getMemberDetailAddress());
 			pstmt.setLong(5, memberVO.getMemberNo());
-			System.out.println(memberVO);
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
@@ -230,7 +226,7 @@ public class MemberDAO {
 		}
 	}
 
-//	로그인한 회원과 같은 이메일 조회
+//	회원 명과 이메일로 동일한 이메일 있는지 검사
 	public String findEmailByMemberNameAndEmail(MemberVO memberVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;

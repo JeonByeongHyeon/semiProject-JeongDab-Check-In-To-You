@@ -19,7 +19,6 @@ public class MemberVO implements Serializable {
 
 	}
 
-	
 	public MemberVO(long memberNo, String memberName, String memberEmail, String password, Date memberBirth,
 			int memberStatus, String memberAddress, String memberDetailAddress) {
 		super();
@@ -32,7 +31,6 @@ public class MemberVO implements Serializable {
 		this.memberAddress = memberAddress;
 		this.memberDetailAddress = memberDetailAddress;
 	}
-
 
 	public long getMemberNo() {
 		return memberNo;
@@ -108,7 +106,5 @@ public class MemberVO implements Serializable {
 				+ ", password=" + password + ", memberBirth=" + memberBirth + ", memberStatus=" + memberStatus
 				+ ", memberAddress=" + memberAddress + ", memberDetailAddress=" + memberDetailAddress + "]";
 	}
-
-	
 
 }

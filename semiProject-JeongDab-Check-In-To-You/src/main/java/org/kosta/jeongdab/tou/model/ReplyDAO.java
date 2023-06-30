@@ -54,19 +54,17 @@ public class ReplyDAO {
 		return true;
 	}
 
+//	댓글 등록
 	public void insertReply(ReplyVO replyVO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = dataSource.getConnection();
 			String sql = "insert into reply (reply_no, reply_content,reply_date,member_no,service_board_no)values(reply_seq.nextval,?,sysdate,?,?)";
-
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, replyVO.getReplyContent());
-
 			pstmt.setLong(2, replyVO.getMemberVO().getMemberNo());
 			pstmt.setLong(3, replyVO.getServiceBoadrdVO().getServiceBoardNo());
-
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
@@ -74,6 +72,7 @@ public class ReplyDAO {
 
 	}
 
+//	댓글 삭제
 	public boolean deleteReplyByNo(long replyNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -83,14 +82,13 @@ public class ReplyDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, replyNo);
 			pstmt.executeUpdate();
-			System.out.println(replyNo + "-------controller");
 		} finally {
 			closeAll(pstmt, con);
 		}
 		return true;
 	}
 
-//	댓글 조회
+//	댓글 리스트
 	public ArrayList<ReplyVO> replyList(long boardNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -116,7 +114,6 @@ public class ReplyDAO {
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
-		System.out.println(arrayList);
 		return arrayList;
 	}
 }

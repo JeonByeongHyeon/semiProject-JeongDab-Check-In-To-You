@@ -32,25 +32,28 @@ public class ServiceBoardDAO {
 			rs.close();
 		closeAll(pstmt, con);
 	}
-	public ServiceBoardVO findServiceBoardByNo(long no) throws SQLException{
-		ServiceBoardVO svo=null;
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
+
+//	게시글 상세보기
+	public ServiceBoardVO findServiceBoardByNo(long no) throws SQLException {
+		ServiceBoardVO svo = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
-			con=dataSource.getConnection();
-			StringBuilder sql=new StringBuilder();
+			con = dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
 			sql.append("SELECT s.service_board_no,s.service_board_title,s.service_board_content, ");
 			sql.append("to_char(service_board_create_date,'YYYY.MM.DD') as service_board_create_date, ");
-			sql.append("s.service_board_hits,to_char(s.service_date,'YYYY.MM.DD') as service_date,s.nation,m.member_name,m.member_email ");
+			sql.append(
+					"s.service_board_hits,to_char(s.service_date,'YYYY.MM.DD') as service_date,s.nation,m.member_name,m.member_email ");
 			sql.append("FROM service_board s ");
 			sql.append("INNER JOIN member m ON s.member_no=m.member_no ");
 			sql.append("WHERE s.service_board_no=?");
-			pstmt=con.prepareStatement(sql.toString());
+			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setLong(1, no);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				svo=new ServiceBoardVO();
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				svo = new ServiceBoardVO();
 				svo.setServiceBoardNo(rs.getLong("service_board_no"));
 				svo.setServiceBoardTitle(rs.getString("service_board_title"));
 				svo.setServiceBoardContent(rs.getString("service_board_content"));
@@ -58,7 +61,7 @@ public class ServiceBoardDAO {
 				svo.setServiceDate(rs.getString("service_date"));
 				svo.setServiceBoardHits(rs.getLong("service_board_hits"));
 				svo.setNation(rs.getString("nation"));
-				MemberVO mvo=new MemberVO();
+				MemberVO mvo = new MemberVO();
 				mvo.setMemberName(rs.getString("member_name"));
 				mvo.setMemberEmail(rs.getString("member_email"));
 				svo.setMemberVO(mvo);
@@ -68,124 +71,130 @@ public class ServiceBoardDAO {
 		}
 		return svo;
 	}
-	//게시물 리스트 보기
-		public ArrayList<ServiceBoardVO> serviceBoardList(Pagination pagination) throws SQLException{
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			ArrayList<ServiceBoardVO> list=new ArrayList<>();
-			try {
-				con=dataSource.getConnection();
-				StringBuilder sql=new StringBuilder();
-				sql.append("SELECT rnum,service_board_no,service_board_title,TO_CHAR(service_date,'YYYY.MM.DD') as service_date,service_board_hits ");
-				sql.append("FROM ( ");
-				sql.append("SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits  FROM  service_board ");
-				sql.append(") sb WHERE rnum BETWEEN ? AND ?");
-				pstmt=con.prepareStatement(sql.toString());
-				pstmt.setLong(1, pagination.getStartRowNumber());
-				pstmt.setLong(2, pagination.getEndRowNumber());
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-				ServiceBoardVO sbvo=new ServiceBoardVO();
+
+	// 게시물 리스트 보기
+	public ArrayList<ServiceBoardVO> serviceBoardList(Pagination pagination) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ServiceBoardVO> list = new ArrayList<>();
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append(
+					"SELECT rnum,service_board_no,service_board_title,TO_CHAR(service_date,'YYYY.MM.DD') as service_date,service_board_hits ");
+			sql.append("FROM ( ");
+			sql.append(
+					"SELECT row_number() over(ORDER BY service_board_no DESC) as rnum,service_board_no,service_board_title,service_date,service_board_hits  FROM  service_board ");
+			sql.append(") sb WHERE rnum BETWEEN ? AND ?");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setLong(1, pagination.getStartRowNumber());
+			pstmt.setLong(2, pagination.getEndRowNumber());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ServiceBoardVO sbvo = new ServiceBoardVO();
 				sbvo.setServiceBoardNo(rs.getLong("service_board_no"));
 				sbvo.setServiceBoardTitle(rs.getString("service_board_title"));
-				MemberVO mvo=new MemberVO();
+				MemberVO mvo = new MemberVO();
 				sbvo.setMemberVO(mvo);
 				sbvo.setServiceBoardCreateDate(rs.getString("service_date"));
 				sbvo.setServiceBoardHits(rs.getLong("service_board_hits"));
 				list.add(sbvo);
-				}
-			}finally {
-				closeAll(rs, pstmt, con);
 			}
-			return list;
+		} finally {
+			closeAll(rs, pstmt, con);
 		}
+		return list;
+	}
 
-		public long findTotalPostCount() throws SQLException {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			long totalPostCount=0;
-					try {
-						con=dataSource.getConnection();
-						String sql="select count(*)from service_board";
-						pstmt=con.prepareStatement(sql);
-						rs=pstmt.executeQuery();
-						if(rs.next())
-							totalPostCount=rs.getLong(1);
-					}finally {
-						closeAll(rs,pstmt,con);
-					}
-			return totalPostCount;
+	public long findTotalPostCount() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		long totalPostCount = 0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select count(*)from service_board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				totalPostCount = rs.getLong(1);
+		} finally {
+			closeAll(rs, pstmt, con);
 		}
+		return totalPostCount;
+	}
 
-		public void posting(ServiceBoardVO serviceBoardVO) throws SQLException {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			try {
-				con=dataSource.getConnection();
-				StringBuilder sql=new StringBuilder();
-				sql.append("INSERT INTO service_board(service_board_no,service_board_title,service_board_content, ");
-				sql.append("service_board_create_date,service_date,nation,member_no) VALUES ");
-				sql.append("(service_board_seq.nextval,?,?, sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),?,?) ");
-				pstmt=con.prepareStatement(sql.toString());
-				pstmt.setString(1, serviceBoardVO.getServiceBoardTitle());
-				pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
-				pstmt.setString(3, serviceBoardVO.getNation());
-				pstmt.setLong(4, serviceBoardVO.getMemberVO().getMemberNo());
-				pstmt.executeUpdate();
-			}finally {
-				closeAll( pstmt, con);
-			}
+//	게시글 등록
+	public void posting(ServiceBoardVO serviceBoardVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO service_board(service_board_no,service_board_title,service_board_content, ");
+			sql.append("service_board_create_date,service_date,nation,member_no) VALUES ");
+			sql.append("(service_board_seq.nextval,?,?, sysdate,TO_DATE('2023-7-1','YYYY-MM-DD'),?,?) ");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, serviceBoardVO.getServiceBoardTitle());
+			pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
+			pstmt.setString(3, serviceBoardVO.getNation());
+			pstmt.setLong(4, serviceBoardVO.getMemberVO().getMemberNo());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
 		}
+	}
 
-		public void updateServiceBoard(ServiceBoardVO serviceBoardVO) throws SQLException {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			//System.out.println("==========DAO 들어옴==============");
-			try {
-				con=dataSource.getConnection();
-				StringBuilder sql= new StringBuilder();
-				sql.append("UPDATE service_board SET service_board_title=?,service_board_content=?, ");
-				sql.append("service_date=?, nation=? ");
-				sql.append("WHERE service_board_no=?");
-				pstmt=con.prepareStatement(sql.toString());
-				pstmt.setString(1,serviceBoardVO.getServiceBoardTitle());
-				pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
-				pstmt.setString(3, serviceBoardVO.getServiceDate());
-				pstmt.setString(4, serviceBoardVO.getNation());
-				pstmt.setLong(5, serviceBoardVO.getServiceBoardNo());
-				//System.out.println(serviceBoardVO);
-				pstmt.executeUpdate();
-			}finally {
-				closeAll(pstmt, con);
-			}
+//	게시글 수정
+	public void updateServiceBoard(ServiceBoardVO serviceBoardVO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE service_board SET service_board_title=?,service_board_content=?, ");
+			sql.append("service_date=?, nation=? ");
+			sql.append("WHERE service_board_no=?");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, serviceBoardVO.getServiceBoardTitle());
+			pstmt.setString(2, serviceBoardVO.getServiceBoardContent());
+			pstmt.setString(3, serviceBoardVO.getServiceDate());
+			pstmt.setString(4, serviceBoardVO.getNation());
+			pstmt.setLong(5, serviceBoardVO.getServiceBoardNo());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
 		}
+	}
 
-		public void deletePostByNo(long no) throws SQLException {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			try {
-				con = dataSource.getConnection();
-				String sql = "delete from service_board where service_board_no= ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setLong(1, no);
-				pstmt.executeUpdate();
-			} finally {
-				closeAll(pstmt, con);
-			}
+//	게시글 삭제
+	public void deletePostByNo(long no) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from service_board where service_board_no= ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, no);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
 		}
-		public void updateHits(long no) throws SQLException {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			try {
-				con=dataSource.getConnection();
-				String sql="update service_board set service_board_hits=service_board_hits+1 where service_board_no=?";
-				pstmt=con.prepareCall(sql);
-				pstmt.setLong(1, no);
-				pstmt.executeUpdate();
-			}finally {
-				closeAll(pstmt,con);
-			}
+	}
+
+//	조회수
+	public void updateHits(long no) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "update service_board set service_board_hits=service_board_hits+1 where service_board_no=?";
+			pstmt = con.prepareCall(sql);
+			pstmt.setLong(1, no);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
 		}
+	}
 }
